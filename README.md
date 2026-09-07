@@ -11,7 +11,7 @@ python3 -m http.server 4173
 
 | File | Screen |
 |---|---|
-| `index.html` | Home — freelancer.com replica hero, three pillars, proof, two-lane timeline, logo wall, CTA |
+| `index.html` | Home — freelancer.com replica hero, services (wireframe block), proof, two-lane timeline, logo wall, CTA |
 | `about.html` | The two rails + full vertical timeline, credentials, languages |
 | `developer.html` | Pillar 01 — teal accent. Progression strip, stack, role cards, project slots |
 | `management.html` | Pillar 02 — graphite accent. Amman/Aqaba map, ownership panels, competencies |
@@ -54,8 +54,8 @@ which reassigns `--accent`. Nothing else needs to change.
     exist for them.
   - The navbar is unchanged structurally; it just rides transparent over the dark
     hero and takes its normal paper treatment once the hero scrolls past.
-- **Services (`consulting.html`) is built to the supplied wireframes** — a
-  numbered rail on the left where the active row takes a fill and a copper bar,
+- **Services is built to the supplied wireframes** — it leads `index.html` in place of the old three-pillar cards, and the same block also appears on `consulting.html`.
+  A numbered rail on the left where the active row takes a fill and a copper bar,
   a hairline, and a two-column grid of six services on the right. Eighteen
   services across three practices:
   1. Development & Digital Transformation
@@ -142,3 +142,16 @@ Resolved. The hero was briefly on freelancer's dark palette; it now runs on the
 site's own tokens, so all seven pages share one colour system. The hero's
 geometry was re-verified against the reference after the recolour and is
 unchanged.
+
+
+## Note: the pillar pages
+
+The home page's old "Three ways I work" cards were the only links to
+`developer.html` and `management.html`. The services block replaced them, so
+those two pages are now reachable only from the footer and the mobile drawer.
+If they matter, the simplest fix is a row of three links under the services
+block, or adding them to the main nav.
+
+The services block currently appears on both `index.html` and
+`consulting.html`, identically. Say the word and it can be dropped from one, or
+the consulting page can carry a longer version.
