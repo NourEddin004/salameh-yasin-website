@@ -185,11 +185,12 @@ p:last-child { margin-bottom: 0; }
 }
 .nav__mark::after {
   content: "";
-  position: absolute; left: 0; right: 100%; bottom: -5px;
+  position: absolute; left: 0; right: 0; bottom: -5px;
   height: 1px; background: var(--copper);
-  transition: right 420ms var(--ease-out);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 420ms var(--ease-out);
 }
-.nav__mark:hover::after { right: 0; }
+.nav__mark:hover::after { transform: scaleX(1); }
 
 .nav__links { display: flex; align-items: center; gap: 30px; }
 
@@ -499,15 +500,17 @@ main { padding-top: var(--nav-h); }
 .pcard[data-c="graphite"] { --c: var(--graphite); }
 .pcard[data-c="copper"]   { --c: var(--copper); }
 
-/* Coloured top rule that widens on hover */
+/* Coloured top rule that widens on hover. Full-width bar scaled on the
+   compositor rather than an animated width, so hover never triggers layout. */
 .pcard::before {
   content: "";
   position: absolute; top: -1px; left: -1px;
-  height: 3px; width: 56px;
+  height: 3px; width: calc(100% + 2px);
   background: var(--c);
-  transition: width 560ms var(--ease-out);
+  transform: scaleX(.16); transform-origin: left;
+  transition: transform 560ms var(--ease-out);
 }
-.pcard:hover::before { width: calc(100% + 2px); }
+.pcard:hover::before { transform: scaleX(1); }
 .pcard:hover {
   transform: translateY(-5px);
   border-color: color-mix(in srgb, var(--c) 34%, var(--rule));
@@ -606,16 +609,18 @@ main { padding-top: var(--nav-h); }
   transition: transform 420ms var(--ease-out), border-color 320ms var(--ease);
 }
 .vtl__card::before {
-  content: ""; position: absolute; top: -1px; height: 2px; width: 40px;
+  content: ""; position: absolute; top: -1px; height: 2px; width: calc(100% + 2px);
   background: var(--c, var(--copper));
-  transition: width 480ms var(--ease-out);
+  transform: scaleX(.11);
+  transition: transform 480ms var(--ease-out);
 }
+/* Left-hand cards grow their rule towards the spine, right-hand cards away. */
 .vtl__row--l .vtl__card { grid-column: 1; --c: var(--teal); }
-.vtl__row--l .vtl__card::before { right: -1px; }
+.vtl__row--l .vtl__card::before { right: -1px; transform-origin: right; }
 .vtl__row--r .vtl__card { grid-column: 3; --c: var(--copper); }
-.vtl__row--r .vtl__card::before { left: -1px; }
+.vtl__row--r .vtl__card::before { left: -1px; transform-origin: left; }
 .vtl__card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--c) 40%, var(--rule)); }
-.vtl__card:hover::before { width: calc(100% + 2px); }
+.vtl__card:hover::before { transform: scaleX(1); }
 .vtl__org { font-family: var(--display); font-size: 1.375rem; line-height: 1.15; }
 .vtl__role { color: var(--graphite); font-size: .9375rem; margin: 2px 0 8px; }
 .vtl__desc { color: var(--muted); font-size: .875rem; margin-top: 8px; }
@@ -628,7 +633,9 @@ main { padding-top: var(--nav-h); }
   border-radius: 3px;
   padding: clamp(24px, 3vw, 34px);
   position: relative;
-  border-top: 3px solid var(--copper);
+  /* Inset shadow rather than a border-top so the copper rule follows the
+     card's rounded corners instead of squaring them off. */
+  box-shadow: inset 0 3px 0 var(--copper);
 }
 .vtl__merge .vtl__org { color: var(--paper); }
 .vtl__merge .vtl__role { color: color-mix(in srgb, var(--paper) 74%, transparent); }
@@ -688,10 +695,13 @@ main { padding-top: var(--nav-h); }
 }
 .tab:hover { color: var(--ink); }
 .tab[aria-selected="true"] { color: var(--copper); }
+/* 1px bar scaled to the active tab's width — one composited transform,
+   no width animation. JS sets translateX + scaleX together. */
 .tabs__ink {
-  position: absolute; bottom: -1px; left: 0; height: 2px;
+  position: absolute; bottom: -1px; left: 0; width: 1px; height: 2px;
   background: var(--copper);
-  transition: transform 480ms var(--ease-out), width 480ms var(--ease-out);
+  transform-origin: left;
+  transition: transform 480ms var(--ease-out);
 }
 
 .tabpanel[hidden] { display: none !important; }
@@ -1032,7 +1042,9 @@ body.is-ready { opacity: 1; }
   .vtl__row { grid-template-columns: 1fr; padding-left: 34px; }
   .vtl__year { grid-column: 1; text-align: left; background: none; padding-block: 0 8px; }
   .vtl__row--l .vtl__card, .vtl__row--r .vtl__card { grid-column: 1; }
-  .vtl__row--l .vtl__card::before, .vtl__row--r .vtl__card::before { left: -1px; right: auto; }
+  .vtl__row--l .vtl__card::before, .vtl__row--r .vtl__card::before {
+    left: -1px; right: auto; transform-origin: left;
+  }
 
   .rec { grid-template-columns: 1fr; gap: 10px; }
   .cta__inner { flex-direction: column; align-items: start; }

@@ -144,10 +144,11 @@
     var ink    = $(".tabs__ink", group);
     var panels = $$(".tabpanel", group);
 
+    // The indicator is a 1px bar, so scaleX maps 1:1 onto pixel width.
     function moveInk(tab) {
       if (!ink) return;
-      ink.style.width = tab.offsetWidth + "px";
-      ink.style.transform = "translateX(" + tab.offsetLeft + "px)";
+      ink.style.transform =
+        "translateX(" + tab.offsetLeft + "px) scaleX(" + tab.offsetWidth + ")";
     }
 
     function select(i, focus) {
