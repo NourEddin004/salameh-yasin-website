@@ -42,10 +42,11 @@ which reassigns `--accent`. Nothing else needs to change.
   can be checked against the original. Verified element-by-element: headline
   block, sub-line, buttons, stat box, logo marquee, the 32px vertical text strip
   and both 266x343 tile columns all land at the reference coordinates.
-  - It keeps freelancer's own palette (`#12151B` ground, `#E60278` pink,
-    `#29B2FE` numerals) rather than the paper/copper system used by the other six
-    pages. **This is a deliberate instruction, not an oversight** — see the note
-    at the bottom of this file.
+  - The **layout** is the replica; the **palette** is this site's own. Freelancer's
+    colour roles are mapped onto the tokens at the top of the `.fl-hero` block:
+    accent 1 (their pink) becomes copper, accent 2 (their blue numerals) becomes
+    teal, the ground becomes paper, hairlines become `--rule`. Changing a token
+    changes the hero with it; no hard-coded colours remain.
   - The photography is replaced by placeholder tiles that keep the original's
     scroll animation (40s, columns running in opposite directions).
   - The client logo strip keeps its slot and its 20s left-scroll, carrying the
@@ -53,9 +54,16 @@ which reassigns `--accent`. Nothing else needs to change.
     exist for them.
   - The navbar is unchanged structurally; it just rides transparent over the dark
     hero and takes its normal paper treatment once the hero scrolls past.
-- **Services** follows vardot.com's tabbed pattern — the eight service lines are
-  grouped into three tabs by what the client is trying to do, rather than being
-  dumped as a flat eight-card grid.
+- **Services (`consulting.html`) reproduces vardot.com's "Digital Experience
+  Solutions" block** — a vertical rail of categories on the left, a hairline with
+  a sliding accent bar marking the active one, and a two-column grid of services
+  on the right. Twelve services across three practices:
+  1. Digital Transformation & Development
+  2. Training and Consultation
+  3. Project Management
+
+  Same structure, this site's palette and type: copper headings, muted
+  descriptions, `--rule` hairline.
 
 ## Animation
 
@@ -104,19 +112,9 @@ through MLC in 2007–2008**, not employers — the logo wall labels them
 "Trained teams at" for exactly this reason. Keep that distinction.
 
 
-## Open question: the home page palette
+## Palette consistency
 
-The hero on `index.html` uses freelancer.com's dark palette, as requested. The
-other six pages use the warm paper / copper editorial system from the build
-brief. Right now the site changes character between the home page and everything
-else.
-
-Two ways to resolve it, whichever is wanted:
-
-1. **Recolour the hero** to the paper/copper tokens. The layout stays pixel-exact;
-   only the six colour values in the `.fl-hero` block change. Roughly a ten-minute
-   job.
-2. **Carry the dark treatment through the whole site.** A much larger change — it
-   means re-tokenising every page and revisiting the brief's typography, since the
-   brief argues explicitly against a dark "tech portfolio" look for a senior
-   consultant.
+Resolved. The hero was briefly on freelancer's dark palette; it now runs on the
+site's own tokens, so all seven pages share one colour system. The hero's
+geometry was re-verified against the reference after the recolour and is
+unchanged.

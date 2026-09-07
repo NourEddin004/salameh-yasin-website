@@ -75,85 +75,84 @@
     </div>
   </section>
 
-  <!-- ============================================= 01 SERVICES (TABBED) -->
+  <!-- ================================== 01 SERVICES (vardot.com layout) -->
   <section class="section section--ruled">
     <div class="wrap">
       <header class="shead rv">
         <span class="shead__num">01 &mdash; Services</span>
-        <h2 class="d2 shead__title">Eight ways to work together.</h2>
-        <p class="shead__sub">Grouped by what you are trying to do. Every line below is backed by a role in the record, not a capability statement.</p>
+        <h2 class="d2 shead__title">Twelve ways to work together.</h2>
+        <p class="shead__sub">Grouped into three practices. Every line below is backed by a role in the record, not a capability statement.</p>
       </header>
 
-      <div data-tabs>
-        <div class="tabs">
-          <div class="tabs__list" role="tablist" aria-label="Service groups">
-            <button class="tab" role="tab" id="t1" aria-controls="p1" aria-selected="true">Build capability</button>
-            <button class="tab" role="tab" id="t2" aria-controls="p2" aria-selected="false">Change how you deliver</button>
-            <button class="tab" role="tab" id="t3" aria-controls="p3" aria-selected="false">Train your people</button>
-          </div>
-          <span class="tabs__ink" aria-hidden="true"></span>
+      <div class="vsvc rv" data-vtabs>
+        <div class="vsvc__rail" role="tablist" aria-orientation="vertical" aria-label="Service categories">
+          <h3 class="vsvc__railtitle">Consulting practices</h3>
+            <button class="vsvc__link" role="tab" id="vt0" aria-controls="vp0" aria-selected="true">Digital Transformation &amp; Development</button>
+            <button class="vsvc__link" role="tab" id="vt1" aria-controls="vp1" aria-selected="false">Training and Consultation</button>
+            <button class="vsvc__link" role="tab" id="vt2" aria-controls="vp2" aria-selected="false">Project Management</button>
         </div>
 
-        <div class="tabpanel" role="tabpanel" id="p1" aria-labelledby="t1">
-          <div class="svc-grid">
-            <article class="svc svc--feature">
-              <span class="svc__num">Signature offer</span>
-              <h3 class="svc__title d3">Coding academy design &amp; operations</h3>
-              <p class="svc__body">Built and run three &mdash; Pioneers, Upskills and Orange, across two cities. Curriculum, cohort model, trainer hiring, KPI design and the operations that hold it together. Almost nobody else can say this.</p>
-              <span class="svc__more">Start here &rarr;</span>
-            </article>
-            <article class="svc">
-              <span class="svc__num">02</span>
-              <h3 class="svc__title">Technical &amp; architecture advisory</h3>
-              <p class="svc__body">System design, technical specification, performance and security &mdash; reviewed by someone who wrote the code, not only the slides.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
-            <article class="svc">
-              <span class="svc__num">03</span>
-              <h3 class="svc__title">ICT workforce development</h3>
-              <p class="svc__body">National-scale programme design aimed at employability and economic participation. The HTU brief was exactly this.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
+        <div class="vsvc__panels">
+          <span class="vsvc__bar" aria-hidden="true"></span>
+          <div class="vsvc__panel" role="tabpanel" id="vp0" aria-labelledby="vt0">
+            <div class="vsvc__grid">
+                <article class="vsvc__item">
+                  <h4>Digital transformation advisory</h4>
+                  <p>Setting the direction and the sequence — where technology actually changes how the organisation works, and what has to be true before it can. Grounded in IT governance and strategic planning from a 2008 IT department through to a national telecom's academy strategy.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Technical &amp; architecture advisory</h4>
+                  <p>System design, technical specification, performance and security, reviewed by someone who wrote the code rather than only the slides. Eight years in production at Indemaj, Souq.com, MarkaVIP and ShopGo.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Web &amp; CMS development</h4>
+                  <p>Full-stack delivery across PHP, MySQL, Linux and Apache, plus CMS builds run end to end for customers through Upskills — project goals, priorities and delivery monitored against them.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>E-commerce &amp; platform engineering</h4>
+                  <p>Magento and large-catalogue e-commerce at real scale: back-end components, third-party integration, data storage, and the complex performance and architectural problems that come with it.</p>
+                </article>
+            </div>
           </div>
-        </div>
-
-        <div class="tabpanel" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
-          <div class="svc-grid">
-            <article class="svc">
-              <span class="svc__num">04</span>
-              <h3 class="svc__title">Digital transformation advisory</h3>
-              <p class="svc__body">Underpinned by IT governance and strategic planning experience &mdash; from a 2008 IT department through to a national telecom's academy strategy.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
-            <article class="svc">
-              <span class="svc__num">05</span>
-              <h3 class="svc__title">Agile &amp; Scrum adoption</h3>
-              <p class="svc__body">Getting delivery cadence into teams that have the talent but not the rhythm. Practised across engineering and academy operations alike.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
-            <article class="svc">
-              <span class="svc__num">06</span>
-              <h3 class="svc__title">Delivery governance &amp; PMO setup</h3>
-              <p class="svc__body">Project planning, software project management and project coordination &mdash; the three strongest signals on his professional record.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
+          <div class="vsvc__panel" role="tabpanel" id="vp1" aria-labelledby="vt1" hidden>
+            <div class="vsvc__grid">
+                <article class="vsvc__item">
+                  <h4>Coding academy design &amp; operations</h4>
+                  <p>The signature offer — built and run three academies across two cities. Curriculum, cohort model, trainer hiring, KPI design and the operations that hold it together. Very few people can say this.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Curriculum development &amp; accreditation</h4>
+                  <p>Built the web development curriculum at Pioneers and the full-stack tracks at HTU, and contributed to a nationally accredited certificate programme. Knows what an accreditor actually asks for.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Corporate &amp; institutional training</h4>
+                  <p>On-site technical training delivered to Arab Potash, the UNHCR refugee programme, USAID and the Jordanian Prime Ministry, alongside university workshops and seminars.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>ICT workforce development</h4>
+                  <p>National-scale programme design aimed at employability and economic participation. The HTU brief was exactly this: 500+ developers trained, 86% of graduates improving their income.</p>
+                </article>
+            </div>
           </div>
-        </div>
-
-        <div class="tabpanel" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
-          <div class="svc-grid">
-            <article class="svc">
-              <span class="svc__num">07</span>
-              <h3 class="svc__title">Curriculum development &amp; accreditation</h3>
-              <p class="svc__body">Built curricula at Pioneers and HTU, and contributed to a nationally accredited certificate programme. Knows what an accreditor actually asks for.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
-            <article class="svc">
-              <span class="svc__num">08</span>
-              <h3 class="svc__title">Corporate &amp; institutional training</h3>
-              <p class="svc__body">Delivered on-site to Arab Potash, the UNHCR refugee programme, USAID and the Jordanian Prime Ministry.</p>
-              <span class="svc__more">Enquire &rarr;</span>
-            </article>
+          <div class="vsvc__panel" role="tabpanel" id="vp2" aria-labelledby="vt2" hidden>
+            <div class="vsvc__grid">
+                <article class="vsvc__item">
+                  <h4>Delivery governance &amp; PMO setup</h4>
+                  <p>Project planning, software project management and project coordination — the three strongest signals on his professional record, and the discipline behind every delivery below.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Agile &amp; Scrum adoption</h4>
+                  <p>Getting cadence into teams that have the talent but not the rhythm. Practised across engineering floors and academy operations alike, and claimed as a consulting line on his own profile.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Technical team leadership</h4>
+                  <p>Directing developers through design, development, testing and debugging; owning code review culture; monitoring and evaluating staff progress. Lead Developer at MarkaVIP, Team Leader at ShopGo.</p>
+                </article>
+                <article class="vsvc__item">
+                  <h4>Performance management &amp; KPIs</h4>
+                  <p>Setting objectives and KPIs, reviewing them with the team, and adapting the plan when they slip — plus regular 1:1s, appraisal and stakeholder reporting against organisational benchmarks.</p>
+                </article>
+            </div>
           </div>
         </div>
       </div>

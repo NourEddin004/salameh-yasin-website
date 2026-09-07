@@ -400,19 +400,26 @@ main { padding-top: var(--nav-h); }
        column A      w 266, tiles 266x343 r6 gap16, 40s scroll down
        column B      w 266, same tiles,             40s scroll up            */
 
-/* The nav overlays the hero on this page, so main loses its top padding */
-body[data-hero="dark"] main { padding-top: 0; }
+/* The nav overlays the hero on this page, so main loses its top padding.
+   This is what keeps the hero's internal offsets on the reference values. */
+body[data-hero="flat"] main { padding-top: 0; }
 
 .fl-hero {
   position: relative;
-  background: #12151B;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
   overflow: hidden;
-  --fl-pink:  #E60278;
-  --fl-blue:  #29B2FE;
-  --fl-line:  #3D4A5D;
-  --fl-dim:   #BCC5D3;
-  --fl-white: #FCFCFD;
-  --fl-grey:  #CDD4DF;
+  /* Freelancer's roles mapped onto this site's palette. The layout above is
+     unchanged and still pixel-exact; only these six values differ.
+       accent 1 (pink)    -> copper      accent 2 (blue numerals) -> teal
+       hairline           -> rule        muted label              -> muted
+       on-accent text     -> paper       recessive headline line  -> graphite */
+  --fl-pink:  var(--copper);
+  --fl-blue:  var(--teal);
+  --fl-line:  var(--rule);
+  --fl-dim:   var(--muted);
+  --fl-white: var(--paper);
+  --fl-grey:  var(--graphite);
 }
 
 .fl-hero__inner {
@@ -450,7 +457,7 @@ body[data-hero="dark"] main { padding-top: 0; }
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: .24px;
-  color: var(--fl-white);
+  color: var(--ink);
   margin: 0 0 32px;
   width: 860px;
   max-width: calc(100vw - 24px);
@@ -472,9 +479,9 @@ body[data-hero="dark"] main { padding-top: 0; }
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 .fl-btn--primary { background: var(--fl-pink); color: var(--fl-white); }
-.fl-btn--primary:hover { background: #C40266; }
-.fl-btn--ghost { background: transparent; color: #fff; border-color: #fff; }
-.fl-btn--ghost:hover { background: #fff; color: #12151B; }
+.fl-btn--primary:hover { background: #8F4208; }
+.fl-btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.fl-btn--ghost:hover { background: var(--ink); color: var(--paper); }
 
 /* -------------------------------------------------------------- stat box */
 .fl-stats {
@@ -538,10 +545,10 @@ body[data-hero="dark"] main { padding-top: 0; }
   font-weight: 700;
   line-height: 24px;
   white-space: nowrap;
-  color: #8E99AB;
+  color: var(--muted);
   transition: color 200ms ease;
 }
-.fl-proof__logo:hover { color: var(--fl-white); }
+.fl-proof__logo:hover { color: var(--ink); }
 
 @keyframes fl-marquee-left {
   from { transform: translate3d(0, 0, 0); }
@@ -600,10 +607,10 @@ body[data-hero="dark"] main { padding-top: 0; }
   flex: none;
   width: 266px; height: 343px;
   border-radius: 6px;
-  border: 1px solid #232833;
+  border: 1px solid var(--rule);
   background:
-    repeating-linear-gradient(-45deg, transparent 0 13px, rgba(255,255,255,.028) 13px 14px),
-    #191D26;
+    repeating-linear-gradient(-45deg, transparent 0 13px, var(--rule-soft) 13px 14px),
+    var(--raised);
   display: flex; flex-direction: column; justify-content: space-between;
   padding: 16px;
   overflow: hidden;
@@ -612,41 +619,23 @@ body[data-hero="dark"] main { padding-top: 0; }
   font-family: Roboto, sans-serif;
   font-size: 10px; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase;
-  color: #5B6473;
+  color: var(--muted);
 }
 .fl-tile__box {
   flex: 1;
   margin: 12px 0;
-  border: 1px dashed #2C323F;
+  border: 1px dashed var(--rule);
   border-radius: 4px;
   display: grid; place-content: center;
-  color: #454D5C;
+  color: var(--muted);
   font-family: Roboto, sans-serif;
   font-size: 11px; font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase;
 }
-.fl-tile--pink  { border-color: rgba(230,2,120,.42); }
-.fl-tile--pink  .fl-tile__k { color: var(--fl-pink); }
-.fl-tile--blue  { border-color: rgba(41,178,254,.36); }
-.fl-tile--blue  .fl-tile__k { color: var(--fl-blue); }
-
-/* Navbar sits transparent over the dark hero, reverting once scrolled past */
-.nav--onhero {
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
-}
-.nav--onhero .nav__mark,
-.nav--onhero .nav__link { color: var(--fl-white, #FCFCFD); }
-.nav--onhero .nav__link:hover { color: #fff; }
-.nav--onhero .nav__burger span { background: #FCFCFD; }
-.nav--onhero .nav__cta {
-  background: #E60278; border-color: #E60278; color: #FCFCFD;
-}
-.nav--onhero .nav__cta::before { background: #fff; }
-.nav--onhero .nav__cta:hover { color: #12151B; border-color: #fff; }
-.nav--onhero .nav__progress { background: #E60278; }
+.fl-tile--a { border-color: color-mix(in srgb, var(--copper) 40%, var(--rule)); }
+.fl-tile--a .fl-tile__k { color: var(--copper); }
+.fl-tile--b { border-color: color-mix(in srgb, var(--teal) 36%, var(--rule)); }
+.fl-tile--b .fl-tile__k { color: var(--teal); }
 
 /* --------------------------------------------------------- hero responsive */
 @media (max-width: 1180px) {
@@ -976,6 +965,87 @@ body[data-hero="dark"] main { padding-top: 0; }
 .svc--feature .svc__more { color: color-mix(in srgb, var(--paper) 88%, transparent); }
 .svc--feature .svc__body { color: color-mix(in srgb, var(--paper) 80%, transparent); }
 .svc--feature::after { background: var(--paper); }
+
+/* ------------------------------------------- 14b. SERVICES (vardot layout) */
+/* vardot.com's "Digital Experience Solutions" block: a vertical rail of
+   categories on the left, a hairline, then a two-column grid of services.
+   Same structure, this site's palette and type. */
+.vsvc {
+  display: grid;
+  grid-template-columns: minmax(0, 288px) minmax(0, 1fr);
+  gap: clamp(24px, 3.4vw, 48px);
+  align-items: start;
+}
+
+.vsvc__rail { display: flex; flex-direction: column; align-items: stretch; }
+.vsvc__railtitle {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 2.3vw, 2rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.vsvc__link {
+  background: none; border: 0; cursor: pointer;
+  font-family: var(--body);
+  font-size: clamp(.98rem, 1.15vw, 1.0625rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--copper);
+  text-align: left;
+  padding: 13px 0;
+  transition: color 240ms var(--ease);
+}
+.vsvc__link:hover { color: var(--ink); }
+.vsvc__link[aria-selected="true"] { color: var(--ink); font-weight: 700; }
+
+/* Panels sit behind the hairline; the copper bar marks the active category */
+.vsvc__panels {
+  position: relative;
+  border-left: 1px solid var(--rule);
+  padding-left: clamp(24px, 3.4vw, 48px);
+  min-height: 240px;
+}
+.vsvc__bar {
+  position: absolute; left: -1px; top: 0;
+  width: 2px; height: 0;
+  background: var(--copper);
+  transition: transform 460ms var(--ease-out), height 320ms var(--ease);
+}
+
+.vsvc__panel[hidden] { display: none !important; }
+.vsvc__panel { animation: panelIn 520ms var(--ease-out); }
+
+.vsvc__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(26px, 3.2vw, 44px) clamp(26px, 3.6vw, 52px);
+}
+.vsvc__item h4 {
+  font-family: var(--body);
+  font-size: clamp(1.1rem, 1.5vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--copper);
+  margin: 0 0 .55rem;
+  transition: color 220ms var(--ease);
+}
+.vsvc__item p { color: var(--muted); font-size: .9375rem; margin: 0; }
+.vsvc__item:hover h4 { color: var(--ink); }
+
+@media (max-width: 900px) {
+  .vsvc { grid-template-columns: 1fr; gap: 24px; }
+  .vsvc__rail { flex-direction: row; overflow-x: auto; gap: 4px; scrollbar-width: none; }
+  .vsvc__rail::-webkit-scrollbar { display: none; }
+  .vsvc__railtitle { display: none; }
+  .vsvc__link { white-space: nowrap; padding: 12px 14px; }
+  .vsvc__link[aria-selected="true"] { box-shadow: inset 0 -2px 0 var(--copper); }
+  .vsvc__panels { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 28px; }
+  .vsvc__bar { display: none; }
+}
+@media (max-width: 640px) {
+  .vsvc__grid { grid-template-columns: 1fr; }
+}
 
 /* -------------------------------------------------------- 15. GENERIC BITS */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
