@@ -67,24 +67,15 @@ reads.
   2. Training & Consultation
   3. Project Management
 
-  Category 02 additionally carries the "What we train" block: three stacked
-  groups — Development (11), Project management (8), Training (6). One skill per
-  tile, 40px mark above, name beneath.
+  Category 02 additionally carries the "What we train" block: three columns in
+  order — Development (11), Training (6), Project management (8) — two tiles per
+  column, 40px mark above the name.
 
 ### Skill logos
 
-Engineering skills use the **real brand marks** from
+Development skills use the **real brand marks** from
 [Simple Icons](https://simpleicons.org) (CC0), inlined as SVG — no external
-request, no CDN dependency — in each brand's **official colour**:
-
-| Mark | Colour |
-|---|---|
-| PHP | `#777BB4` |
-| HTML5 / CSS3 | `#E34F26` / `#1572B6` |
-| MySQL | `#4479A1` |
-| Magento | `#EE672F` |
-| Apache | `#D22128` |
-| JavaScript / Linux | monochrome (see below) |
+request, no CDN dependency.
 
 Marks sit bare at 40px — no tile, no border — rendered in ink to match the
 black-and-white scheme. Each brand's official colour is kept as a comment beside
@@ -96,11 +87,8 @@ have none, and neither does anything under Project management or Training —
 those are practices, not products, so no vendor publishes a mark for them. They
 use line glyphs drawn to the same optical weight.
 
-**The remaining fourteen have no official logo** — REST APIs, Web security, and
-every item under Delivery and Programme are concepts, not products. Those use
-consistent line glyphs drawn in graphite. If a specific one should carry a real
-mark instead (e.g. Scrum.org or a PMI mark for Agile/Scrum), say which and it
-can be swapped in.
+If a specific concept should carry a real mark instead (e.g. a Scrum.org or PMI
+logo), say which and it can be swapped in.
 
 ## Animation
 
