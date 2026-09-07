@@ -68,8 +68,12 @@ reads.
   3. Project Management
 
   Category 02 additionally carries the "What we train" block: three columns in
-  order — Development (11), Training (6), Project management (8) — two tiles per
-  column, 40px mark above the name.
+  order — Development (11), Training (6), Project management (8) — divided by
+  hairlines, two tiles per column, 40px mark above the name.
+
+  The vertical rule sits hard against the rail with the whole gutter on the card
+  side, and the skill columns stretch to a common height so their dividers line
+  up.
 
 ### Skill logos
 

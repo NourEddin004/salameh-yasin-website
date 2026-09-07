@@ -991,7 +991,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wsvc {
   display: grid;
   grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
-  column-gap: clamp(16px, 1.9vw, 26px);
+  column-gap: 0;
   row-gap: clamp(26px, 3.2vw, 44px);
   align-items: start;
 }
@@ -1060,20 +1060,9 @@ body[data-hero="flat"] main { padding-top: 0; }
 
 /* ---- right panels ---- */
 .wsvc__panels {
-  --wsvc-pad: clamp(16px, 1.9vw, 26px);
-  position: relative;
-  padding-left: var(--wsvc-pad);
+  border-left: 1px solid var(--ink);
+  padding-left: clamp(28px, 3.6vw, 52px);
   min-height: 320px;
-}
-/* The rule sits against the cards' left edge rather than on the box edge, so
-   the padding reads as gap on the rail side and the cards keep their width. */
-.wsvc__panels::before {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  left: calc(var(--wsvc-pad) - 1px);
-  width: 1px;
-  background: var(--ink);
 }
 .wsvc__panel[hidden] { display: none !important; }
 .wsvc__panel { animation: panelIn 520ms var(--ease-out); }
@@ -1121,10 +1110,13 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wtrain__cols {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(18px, 2.2vw, 30px);
-  align-items: start;
+  gap: 0;
+  align-items: stretch;   /* so the dividers run a common height */
 }
-.wtrain__group { min-width: 0; }
+.wtrain__group { min-width: 0; padding-inline: clamp(14px, 1.8vw, 24px); }
+.wtrain__group:first-child { padding-left: 0; }
+.wtrain__group:last-child { padding-right: 0; }
+.wtrain__group + .wtrain__group { border-left: 1px solid var(--rule); }
 .wtrain__grouptitle {
   color: var(--muted);
   font-weight: 600;
@@ -1172,12 +1164,16 @@ body[data-hero="flat"] main { padding-top: 0; }
 
 @media (max-width: 1000px) {
   .wsvc { grid-template-columns: 1fr; row-gap: 26px; }
-  .wsvc__panels { border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
-  .wsvc__panels::before { display: none; }
+  .wsvc__panels { border-left: 0; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
 }
 @media (max-width: 640px) {
   .wsvc__grid { grid-template-columns: 1fr; }
-  .wtrain__cols { grid-template-columns: 1fr; gap: 28px; }
+  .wtrain__cols { grid-template-columns: 1fr; }
+  .wtrain__group { padding-inline: 0; }
+  .wtrain__group + .wtrain__group {
+    border-left: 0; border-top: 1px solid var(--rule);
+    margin-top: 28px; padding-top: 28px;
+  }
   .wtrain__grid { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
   .wsvc__cta { display: block; text-align: center; }
 }
