@@ -167,60 +167,35 @@
     }
   });
 
-  /* -------------------------------- 6b. services: vertical category rail */
-  // vardot-style vertical tabs. The copper bar tracks the active link's
-  // offset and height down the hairline between the rail and the panels.
-  $$("[data-vtabs]").forEach(function (group) {
-    var links  = $$(".vsvc__link", group);
-    var panels = $$(".vsvc__panel", group);
-    var bar    = $(".vsvc__bar", group);
-    var rail   = $(".vsvc__rail", group);
-
-    var panelsEl = $(".vsvc__panels", group);
-
-    function moveBar(link) {
-      if (!bar || !rail || !panelsEl) return;
-      // Stacked rail only — the mobile layout swaps to an underline and hides it.
-      if (window.getComputedStyle(rail).flexDirection !== "column") return;
-      // Measure against the panel the bar is positioned in. offsetTop would
-      // resolve against .section, which is itself positioned.
-      var pr = panelsEl.getBoundingClientRect();
-      var lr = link.getBoundingClientRect();
-      bar.style.height = Math.round(lr.height) + "px";
-      bar.style.transform = "translateY(" + Math.round(lr.top - pr.top) + "px)";
-    }
+  /* ------------------------------ 6b. services: numbered category rail */
+  // Wireframe rail: the active row carries the fill and accent bar (both CSS),
+  // so this only swaps selection and panel visibility.
+  $$("[data-wtabs]").forEach(function (group) {
+    var items  = $$(".wsvc__item", group);
+    var panels = $$(".wsvc__panel", group);
 
     function select(i, focus) {
-      links.forEach(function (l, n) {
+      items.forEach(function (b, n) {
         var on = n === i;
-        l.setAttribute("aria-selected", String(on));
-        l.tabIndex = on ? 0 : -1;
-        if (on && focus) l.focus();
+        b.setAttribute("aria-selected", String(on));
+        b.tabIndex = on ? 0 : -1;
+        if (on && focus) b.focus();
       });
       panels.forEach(function (p, n) { p.hidden = n !== i; });
-      moveBar(links[i]);
       observeAll(panels[i]);
     }
 
-    links.forEach(function (l, i) {
-      l.addEventListener("click", function () { select(i); });
-      l.addEventListener("keydown", function (e) {
+    items.forEach(function (b, i) {
+      b.addEventListener("click", function () { select(i); });
+      b.addEventListener("keydown", function (e) {
         var d = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
         if (!d) return;
         e.preventDefault();
-        select((i + d + links.length) % links.length, true);
+        select((i + d + items.length) % items.length, true);
       });
     });
 
     select(0);
-
-    function remeasure() {
-      var active = links.filter(function (l) { return l.getAttribute("aria-selected") === "true"; })[0];
-      if (active) moveBar(active);
-    }
-    window.addEventListener("resize", remeasure);
-    // The rail's own title and links reflow once webfonts land.
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(remeasure);
   });
 
   /* ------------------------------------------ 7. two-lane timeline path prep */

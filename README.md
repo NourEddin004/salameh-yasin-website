@@ -54,16 +54,40 @@ which reassigns `--accent`. Nothing else needs to change.
     exist for them.
   - The navbar is unchanged structurally; it just rides transparent over the dark
     hero and takes its normal paper treatment once the hero scrolls past.
-- **Services (`consulting.html`) reproduces vardot.com's "Digital Experience
-  Solutions" block** — a vertical rail of categories on the left, a hairline with
-  a sliding accent bar marking the active one, and a two-column grid of services
-  on the right. Twelve services across three practices:
-  1. Digital Transformation & Development
-  2. Training and Consultation
+- **Services (`consulting.html`) is built to the supplied wireframes** — a
+  numbered rail on the left where the active row takes a fill and a copper bar,
+  a hairline, and a two-column grid of six services on the right. Eighteen
+  services across three practices:
+  1. Development & Digital Transformation
+  2. Training & Consultation
   3. Project Management
 
-  Same structure, this site's palette and type: copper headings, muted
-  descriptions, `--rule` hairline.
+  Category 02 additionally carries the "What we train" block: three columns
+  (Engineering / Delivery / Programme) of skills, each with a mark.
+
+### Skill logos
+
+Engineering skills use the **real brand marks** from
+[Simple Icons](https://simpleicons.org) (CC0), inlined as SVG — no external
+request, no CDN dependency — in each brand's **official colour**:
+
+| Mark | Colour |
+|---|---|
+| PHP | `#777BB4` |
+| JavaScript | `#F7DF1E` ground, dark glyph — its conventional presentation |
+| HTML5 / CSS3 | `#E34F26` / `#1572B6` |
+| MySQL | `#4479A1` |
+| Magento | `#EE672F` |
+| Linux / Apache | dark glyph / `#D22128` |
+
+JavaScript and Linux ship as pale yellows that would disappear on the paper
+ground, so both take their usual dark-glyph treatment instead.
+
+**The remaining fourteen have no official logo** — REST APIs, Web security, and
+every item under Delivery and Programme are concepts, not products. Those use
+consistent line glyphs drawn in graphite. If a specific one should carry a real
+mark instead (e.g. Scrum.org or a PMI mark for Agile/Scrum), say which and it
+can be swapped in.
 
 ## Animation
 

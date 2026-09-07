@@ -966,85 +966,156 @@ body[data-hero="flat"] main { padding-top: 0; }
 .svc--feature .svc__body { color: color-mix(in srgb, var(--paper) 80%, transparent); }
 .svc--feature::after { background: var(--paper); }
 
-/* ------------------------------------------- 14b. SERVICES (vardot layout) */
-/* vardot.com's "Digital Experience Solutions" block: a vertical rail of
-   categories on the left, a hairline, then a two-column grid of services.
-   Same structure, this site's palette and type. */
-.vsvc {
+/* ------------------------------------------ 14b. SERVICES (wireframe spec) */
+/* Numbered rail on the left with an active fill + accent bar, a hairline, and
+   a two-column service grid on the right. Category 02 carries the extra
+   "What we train" block. Structure per the supplied wireframes; palette and
+   type from this site's tokens. */
+.wsvc {
   display: grid;
-  grid-template-columns: minmax(0, 288px) minmax(0, 1fr);
-  gap: clamp(24px, 3.4vw, 48px);
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
   align-items: start;
 }
 
-.vsvc__rail { display: flex; flex-direction: column; align-items: stretch; }
-.vsvc__railtitle {
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 2.3vw, 2rem);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-}
-.vsvc__link {
-  background: none; border: 0; cursor: pointer;
-  font-family: var(--body);
-  font-size: clamp(.98rem, 1.15vw, 1.0625rem);
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--copper);
-  text-align: left;
-  padding: 13px 0;
-  transition: color 240ms var(--ease);
-}
-.vsvc__link:hover { color: var(--ink); }
-.vsvc__link[aria-selected="true"] { color: var(--ink); font-weight: 700; }
+.wsvc__h { margin-bottom: .5rem; }
+.wsvc__lead { color: var(--muted); margin-bottom: clamp(24px, 3vw, 36px); }
 
-/* Panels sit behind the hairline; the copper bar marks the active category */
-.vsvc__panels {
+/* ---- left rail ---- */
+.wsvc__rail { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+
+.wsvc__item {
   position: relative;
-  border-left: 1px solid var(--rule);
-  padding-left: clamp(24px, 3.4vw, 48px);
-  min-height: 240px;
+  display: flex; gap: 14px; align-items: flex-start;
+  width: 100%;
+  background: none; border: 0; cursor: pointer;
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 18px 20px 16px;
+  text-align: left;
+  transition: background-color 300ms var(--ease);
 }
-.vsvc__bar {
-  position: absolute; left: -1px; top: 0;
-  width: 2px; height: 0;
-  background: var(--copper);
-  transition: transform 460ms var(--ease-out), height 320ms var(--ease);
+/* Accent bar on the active row */
+.wsvc__item::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--copper);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 340ms var(--ease-out);
 }
+.wsvc__item:hover { background: color-mix(in srgb, var(--rule-soft) 55%, transparent); }
+.wsvc__item[aria-selected="true"] { background: var(--rule-soft); }
+.wsvc__item[aria-selected="true"]::before { transform: scaleX(1); }
 
-.vsvc__panel[hidden] { display: none !important; }
-.vsvc__panel { animation: panelIn 520ms var(--ease-out); }
+.wsvc__n { color: var(--muted); padding-top: 11px; flex: none; }
+.wsvc__item[aria-selected="true"] .wsvc__n { color: var(--copper); }
+.wsvc__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.wsvc__name {
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.12; letter-spacing: -.02em;
+  color: var(--ink);
+}
+.wsvc__sub { color: var(--muted); font-size: .875rem; line-height: 1.45; }
 
-.vsvc__grid {
+/* Wireframe shows a sentence-case outlined button here, not the site's
+   uppercase mono one — keeping the wireframe's form, the site's hover. */
+.wsvc__cta {
+  display: inline-block;
+  margin-top: clamp(22px, 2.6vw, 32px);
+  padding: 13px 22px;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  color: var(--ink);
+  font-size: .9375rem;
+  position: relative; overflow: hidden; isolation: isolate;
+  transition: color 300ms var(--ease);
+}
+.wsvc__cta::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--ink);
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform 420ms var(--ease-out);
+}
+.wsvc__cta:hover { color: var(--paper); }
+.wsvc__cta:hover::before { transform: scaleY(1); }
+
+/* ---- right panels ---- */
+.wsvc__panels {
+  border-left: 1px solid var(--ink);
+  padding-left: clamp(26px, 3.6vw, 52px);
+  min-height: 320px;
+}
+.wsvc__panel[hidden] { display: none !important; }
+.wsvc__panel { animation: panelIn 520ms var(--ease-out); }
+
+.wsvc__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(26px, 3.2vw, 44px) clamp(26px, 3.6vw, 52px);
+  gap: clamp(26px, 3.2vw, 40px) clamp(28px, 3.8vw, 56px);
 }
-.vsvc__item h4 {
+.wsvc__card h4 {
   font-family: var(--body);
-  font-size: clamp(1.1rem, 1.5vw, 1.375rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.25;
-  color: var(--copper);
-  margin: 0 0 .55rem;
+  font-size: clamp(1.02rem, 1.3vw, 1.1875rem);
+  font-weight: 500;
+  letter-spacing: -.005em;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 .4rem;
   transition: color 220ms var(--ease);
 }
-.vsvc__item p { color: var(--muted); font-size: .9375rem; margin: 0; }
-.vsvc__item:hover h4 { color: var(--ink); }
+.wsvc__card p { color: var(--muted); font-size: .9375rem; line-height: 1.55; margin: 0; }
+.wsvc__card:hover h4 { color: var(--copper); }
 
-@media (max-width: 900px) {
-  .vsvc { grid-template-columns: 1fr; gap: 24px; }
-  .vsvc__rail { flex-direction: row; overflow-x: auto; gap: 4px; scrollbar-width: none; }
-  .vsvc__rail::-webkit-scrollbar { display: none; }
-  .vsvc__railtitle { display: none; }
-  .vsvc__link { white-space: nowrap; padding: 12px 14px; }
-  .vsvc__link[aria-selected="true"] { box-shadow: inset 0 -2px 0 var(--copper); }
-  .vsvc__panels { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 28px; }
-  .vsvc__bar { display: none; }
+/* ---- "What we train" ---- */
+.wtrain { margin-top: clamp(34px, 4.4vw, 56px); padding-top: clamp(22px, 2.6vw, 32px); border-top: 1px solid var(--ink); }
+.wtrain__title { color: var(--muted); margin-bottom: clamp(20px, 2.4vw, 28px); }
+.wtrain__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 36px); }
+.wtrain__coltitle { color: var(--muted); font-weight: 600; margin: 0 0 16px; }
+.wtrain__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.wtrain__row {
+  display: flex; align-items: center; gap: 12px;
+  font-size: .9375rem; color: var(--graphite);
+}
+.wtrain__mark {
+  flex: none;
+  width: 34px; height: 34px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--raised);
+  display: flex; align-items: center; justify-content: center; gap: 3px;
+  transition: border-color 260ms var(--ease), transform 260ms var(--ease-out);
+}
+.wtrain__row:hover .wtrain__mark { border-color: var(--graphite); transform: translateY(-2px); }
+
+.ico { width: 17px; height: 17px; fill: currentColor; }
+/* Two marks share one tile (HTML / CSS, Linux / Apache) */
+.wtrain__mark .ico + .ico { width: 14px; height: 14px; }
+.wtrain__mark:has(.ico + .ico) .ico { width: 13px; height: 13px; }
+.ico--line { fill: none; color: var(--graphite); width: 18px; height: 18px; }
+
+/* Official brand marks (Simple Icons) in their official colours */
+.ico--php { color: #777BB4; }
+.ico--javascript { color: #14110F; }
+.ico--javascript { background: #F7DF1E; border-color: #F7DF1E; }
+.ico--html5 { color: #E34F26; }
+.ico--css3 { color: #1572B6; }
+.ico--mysql { color: #4479A1; }
+.ico--magento { color: #EE672F; }
+.ico--linux { color: #14110F; }
+.ico--apache { color: #D22128; }
+/* JavaScript and Linux ship as pale yellows that would vanish on paper, so
+   they take their conventional dark-glyph presentation instead. */
+.wtrain__mark:has(.ico--javascript) { background: #F7DF1E; border-color: #E3CC16; }
+
+@media (max-width: 1000px) {
+  .wsvc { grid-template-columns: 1fr; gap: 28px; }
+  .wsvc__panels { border-left: 0; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
+  .wtrain__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
-  .vsvc__grid { grid-template-columns: 1fr; }
+  .wsvc__grid { grid-template-columns: 1fr; }
+  .wtrain__cols { grid-template-columns: 1fr; }
+  .wsvc__cta { display: block; text-align: center; }
 }
 
 /* -------------------------------------------------------- 15. GENERIC BITS */
