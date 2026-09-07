@@ -11,7 +11,7 @@ python3 -m http.server 4173
 
 | File | Screen |
 |---|---|
-| `index.html` | Home — freelancer.com replica hero, services (wireframe block), proof, two-lane timeline, logo wall, CTA |
+| `index.html` | Home — freelancer.com replica hero, services (wireframe block), proof, logo wall, testimonial, CTA |
 | `about.html` | The two rails + full vertical timeline, credentials, languages |
 | `developer.html` | Pillar 01 — teal accent. Progression strip, stack, role cards, project slots |
 | `management.html` | Pillar 02 — graphite accent. Amman/Aqaba map, ownership panels, competencies |
@@ -23,16 +23,21 @@ python3 -m http.server 4173
 
 ## Design system
 
-Editorial consulting report crossed with a developer's notebook — per the build
-brief, deliberately *not* a dark-mode neon tech portfolio.
+Black and white.
 
-- Paper `#FAF7F2` · raised `#FCFBF9` · ink `#14110F` · muted `#6B6560` · rule `#E2DBD1`
-- Pillar coding: Developer **teal** `#0F5257` · Management **graphite** `#3A3A38` · Consulting **copper** `#B4530A`
+- Paper `#FFFFFF` · raised `#FAFAFA` · ink `#0B0B0B` · graphite `#2E2E2E` · muted `#6E6E6E` · rule `#E4E4E4`
 - Instrument Serif (display) · Inter (body) · JetBrains Mono (metadata)
-- Accent colours appear on rules, numerals and hover states only — never as a background wash
 
-Pillar accents are set per page with `<body data-accent="teal|graphite|copper">`,
-which reassigns `--accent`. Nothing else needs to change.
+The accent tokens (`--copper`, `--teal`) still exist but all resolve to ink, so
+every accent reference and the per-page `data-accent` pillar coding keeps
+working. **Restoring colour is a matter of changing those four values at the top
+of `style.css`** — nothing else is hard-coded.
+
+Two consequences of collapsing the accent to ink, both handled: elements that
+sat accent-on-ink (the CTA band's button and eyebrow, the contact panel, the
+calendar slots, the merged timeline card) invert to paper instead, and the
+hero's two-tone headline uses `#8C8C8C` for its second line so the split still
+reads.
 
 ## Where the inspiration landed
 
@@ -80,10 +85,9 @@ request, no CDN dependency — in each brand's **official colour**:
 | Apache | `#D22128` |
 | JavaScript / Linux | monochrome (see below) |
 
-Marks sit bare on the page at 28px — no tile, no border. JavaScript (`#F7DF1E`)
-and Linux (`#FCC624`) are pale yellows officially; with nothing to carry them
-they would disappear on the paper ground, so both use the monochrome mark,
-which is the form Simple Icons ships them in.
+Marks sit bare on the page at 28px — no tile, no border — and now render in ink
+to match the black-and-white scheme. Each brand's official colour is kept as a
+comment beside its rule in `style.css`, so colour can be restored per mark.
 
 **The remaining fourteen have no official logo** — REST APIs, Web security, and
 every item under Delivery and Programme are concepts, not products. Those use
@@ -157,3 +161,16 @@ block, or adding them to the main nav.
 The services block currently appears on both `index.html` and
 `consulting.html`, identically. Say the word and it can be dropped from one, or
 the consulting page can carry a longer version.
+
+
+## Navbar
+
+Per the supplied navbar image: wordmark left, four icon links centred
+(Development, Managing, Training, Consultation), outlined Contact button right.
+
+`Training` has no page of its own — it points at `index.html#training`, which
+opens the Training & Consultation category in the services block and scrolls to
+it. The slugs are `#development`, `#training`, `#project-management`.
+
+`About` and `Work` are no longer in the top nav; both are still in the footer
+and the mobile drawer.

@@ -26,14 +26,12 @@
   <div class="nav__inner">
     <a class="nav__mark" href="index.html">Salameh Yasin</a>
     <nav class="nav__links" aria-label="Primary">
-      <a class="nav__link" href="experience.html">Work</a>
-      <a class="nav__link" href="about.html">About</a>
-      <a class="nav__link" href="consulting.html" aria-current="page">Consulting</a>
-      <a class="nav__link" href="contact.html">Contact</a>
+      <a class="nav__link" href="developer.html"><svg class="nico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></svg><span>Development</span></a>
+      <a class="nav__link" href="management.html"><svg class="nico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="2.6"/><path d="M3.6 19a5.4 5.4 0 0 1 10.8 0"/><circle cx="17.2" cy="8.6" r="1.9"/><path d="M16.2 13.5A4.6 4.6 0 0 1 20.4 19"/></svg><span>Managing</span></a>
+      <a class="nav__link" href="index.html#training"><svg class="nico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.6 22 9.3 12 14 2 9.3z"/><path d="M6.6 11.5V16c0 1.6 2.4 2.9 5.4 2.9s5.4-1.3 5.4-2.9v-4.5"/></svg><span>Training</span></a>
+      <a class="nav__link" href="consulting.html" aria-current="page"><svg class="nico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 11 3 8l3-3 2.6 2.6"/><path d="M18 11l3-3-3-3-2.6 2.6"/><path d="M8.6 7.6h2.2l3 3a1.6 1.6 0 0 1-2.3 2.2l-1.6-1.5"/><path d="M12.9 13.3 15 15.4a1.5 1.5 0 0 1-2.1 2.1l-2.7-2.7"/></svg><span>Consultation</span></a>
     </nav>
-    <a class="btn btn--copper nav__cta" href="contact.html">
-      Book a consultation <span class="btn__arrow" aria-hidden="true">&rarr;</span>
-    </a>
+    <a class="nav__cta" href="contact.html">Contact</a>
     <button class="nav__burger" aria-expanded="false" aria-controls="drawer" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -42,13 +40,13 @@
 </header>
 
 <div class="drawer" id="drawer">
-  <a href="experience.html">Work</a>
+  <a href="developer.html">Development</a>
+  <a href="management.html">Managing</a>
+  <a href="index.html#training">Training</a>
+  <a href="consulting.html">Consultation</a>
   <a href="about.html">About</a>
-  <a href="developer.html">Developer</a>
-  <a href="management.html">Management</a>
-  <a href="consulting.html">Consulting</a>
+  <a href="experience.html">Work</a>
   <a href="contact.html">Contact</a>
-  <a class="btn btn--fill drawer__cta" href="contact.html">Book a consultation <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
 </div>
 
 <main id="main">
@@ -88,21 +86,21 @@
 
         <div class="wsvc__left">
           <div class="wsvc__rail" role="tablist" aria-orientation="vertical" aria-label="Services">
-          <button class="wsvc__item" role="tab" id="ws0" aria-controls="wp0" aria-selected="true">
+          <button class="wsvc__item" data-slug="development" role="tab" id="ws0" aria-controls="wp0" aria-selected="true">
             <span class="wsvc__n mono">01</span>
             <span class="wsvc__body">
               <span class="wsvc__name">Development &amp; Digital Transformation</span>
               <span class="wsvc__sub">Custom software, platforms and modernisation</span>
             </span>
           </button>
-          <button class="wsvc__item" role="tab" id="ws1" aria-controls="wp1" aria-selected="false">
+          <button class="wsvc__item" data-slug="training" role="tab" id="ws1" aria-controls="wp1" aria-selected="false">
             <span class="wsvc__n mono">02</span>
             <span class="wsvc__body">
               <span class="wsvc__name">Training &amp; Consultation</span>
               <span class="wsvc__sub">Academies, corporate upskilling and advisory</span>
             </span>
           </button>
-          <button class="wsvc__item" role="tab" id="ws2" aria-controls="wp2" aria-selected="false">
+          <button class="wsvc__item" data-slug="project-management" role="tab" id="ws2" aria-controls="wp2" aria-selected="false">
             <span class="wsvc__n mono">03</span>
             <span class="wsvc__body">
               <span class="wsvc__name">Project Management</span>

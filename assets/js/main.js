@@ -195,7 +195,21 @@
       });
     });
 
-    select(0);
+    // The nav's Training link is index.html#training — open the matching
+    // category and bring the block into view.
+    function fromHash(scroll) {
+      var slug = (location.hash || "").replace("#", "");
+      if (!slug) return false;
+      var i = -1;
+      items.forEach(function (b, n) { if (b.getAttribute("data-slug") === slug) i = n; });
+      if (i < 0) return false;
+      select(i);
+      if (scroll) group.scrollIntoView({ block: "start", behavior: REDUCED ? "auto" : "smooth" });
+      return true;
+    }
+
+    if (!fromHash(true)) select(0);
+    window.addEventListener("hashchange", function () { fromHash(true); });
   });
 
   /* ------------------------------------------ 7. two-lane timeline path prep */

@@ -6,20 +6,22 @@
 
 /* --------------------------------------------------------------- 1. TOKENS */
 :root {
-  /* Ground & ink */
-  --paper:      #FAF7F2;
-  --raised:     #FCFBF9;
-  --ink:        #14110F;
-  --graphite:   #3A3A38;
-  --muted:      #6B6560;
-  --rule:       #E2DBD1;
-  --rule-soft:  #EDE7DE;
+  /* Ground & ink — monochrome */
+  --paper:      #FFFFFF;
+  --raised:     #FAFAFA;
+  --ink:        #0B0B0B;
+  --graphite:   #2E2E2E;
+  --muted:      #6E6E6E;
+  --rule:       #E4E4E4;
+  --rule-soft:  #F1F1F1;
 
-  /* Accents — pillar coding */
-  --copper:     #B4530A;
-  --copper-lo:  #F3E6D9;
-  --teal:       #0F5257;
-  --teal-lo:    #E0EAEA;
+  /* Accents collapse to ink in the monochrome scheme. Named tokens are kept
+     so the pillar coding and every accent reference still resolve; restoring
+     colour is a matter of changing these four values. */
+  --copper:     #0B0B0B;
+  --copper-lo:  #F2F2F2;
+  --teal:       #0B0B0B;
+  --teal-lo:    #F2F2F2;
 
   /* Per-page accent. Overridden on pillar pages via [data-accent]. */
   --accent:     var(--copper);
@@ -42,7 +44,7 @@
 }
 
 [data-accent="teal"]     { --accent: var(--teal);     --accent-lo: var(--teal-lo); }
-[data-accent="graphite"] { --accent: var(--graphite); --accent-lo: #E8E6E2; }
+[data-accent="graphite"] { --accent: var(--graphite); --accent-lo: #EFEFEF; }
 [data-accent="copper"]   { --accent: var(--copper);   --accent-lo: var(--copper-lo); }
 
 /* ----------------------------------------------------------- 2. FOUNDATION */
@@ -146,7 +148,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 /* -------------------------------------------------------------- 4. NAVBAR  */
-/* Wireframe navbar — shared verbatim across all seven screens. */
+/* Wordmark left, icon links centred, outlined Contact right — per the
+   supplied navbar image. Shared verbatim across all seven screens. */
 .nav {
   position: fixed;
   inset: 0 0 auto 0;
@@ -154,74 +157,88 @@ p:last-child { margin-bottom: 0; }
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  backdrop-filter: saturate(1.6) blur(14px);
-  -webkit-backdrop-filter: saturate(1.6) blur(14px);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
   border-bottom: 1px solid transparent;
   transition: height 320ms var(--ease), background 320ms var(--ease),
               border-color 320ms var(--ease);
 }
 .nav.is-stuck {
-  height: 60px;
+  height: 62px;
   border-bottom-color: var(--rule);
-  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
 }
 
 .nav__inner {
   width: 100%; max-width: var(--wrap);
   margin-inline: auto; padding-inline: var(--gutter);
-  display: flex; align-items: center; gap: 24px;
+  display: flex; align-items: center; gap: clamp(16px, 2vw, 28px);
 }
 
 .nav__mark {
   font-family: var(--mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
+  font-size: 0.8125rem;
+  letter-spacing: 0.17em;
   text-transform: uppercase;
-  font-weight: 700;
-  margin-right: auto;
+  font-weight: 600;
   white-space: nowrap;
-  position: relative;
+  color: var(--ink);
 }
-.nav__mark::after {
-  content: "";
-  position: absolute; left: 0; right: 0; bottom: -5px;
-  height: 1px; background: var(--copper);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 420ms var(--ease-out);
-}
-.nav__mark:hover::after { transform: scaleX(1); }
 
-.nav__links { display: flex; align-items: center; gap: 30px; }
+/* Centred between the wordmark and the Contact button */
+.nav__links {
+  display: flex; align-items: center;
+  gap: clamp(16px, 2.3vw, 34px);
+  margin-inline: auto;
+}
 
 .nav__link {
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--graphite);
-  position: relative;
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--body);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink);
   padding: 6px 0;
+  position: relative;
+  white-space: nowrap;
   transition: color 220ms var(--ease);
 }
-.nav__link::after {
+.nico { width: 19px; height: 19px; flex: none; }
+
+.nav__link span { position: relative; }
+.nav__link span::after {
   content: "";
-  position: absolute; left: 0; bottom: 0;
+  position: absolute; left: 0; bottom: -3px;
   width: 100%; height: 1px;
-  background: var(--copper);
+  background: currentColor;
   transform: scaleX(0); transform-origin: right;
-  transition: transform 360ms var(--ease-out);
+  transition: transform 340ms var(--ease-out);
 }
-.nav__link:hover { color: var(--ink); }
-.nav__link:hover::after,
-.nav__link[aria-current="page"]::after { transform: scaleX(1); transform-origin: left; }
-.nav__link[aria-current="page"] { color: var(--ink); }
+.nav__link:hover { color: var(--muted); }
+.nav__link:hover span::after,
+.nav__link[aria-current="page"] span::after { transform: scaleX(1); transform-origin: left; }
+
+.nav__cta {
+  flex: none;
+  padding: 10px 22px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  white-space: nowrap;
+  transition: color 240ms var(--ease), border-color 240ms var(--ease),
+              background-color 240ms var(--ease);
+}
+.nav__cta:hover { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.nav__cta[aria-current="page"] { color: var(--ink); border-color: var(--ink); }
 
 /* Scroll progress hairline sitting on the nav's bottom edge */
 .nav__progress {
   position: absolute; left: 0; bottom: -1px;
   height: 2px; width: 100%;
-  background: var(--copper);
+  background: var(--ink);
   transform: scaleX(0); transform-origin: left;
   will-change: transform;
 }
@@ -269,7 +286,6 @@ p:last-child { margin-bottom: 0; }
 .drawer.is-open a:nth-child(5) { transition-delay: 290ms; }
 .drawer.is-open a:nth-child(6) { transition-delay: 340ms; }
 .drawer.is-open a:nth-child(7) { transition-delay: 390ms; }
-.drawer__cta { margin-top: 28px; }
 
 /* -------------------------------------------------------------- 5. BUTTONS */
 .btn {
@@ -313,9 +329,10 @@ p:last-child { margin-bottom: 0; }
 .btn--ghost { --btn-bd: var(--rule); --btn-fg: var(--graphite); }
 .btn--ghost::before { background: var(--ink); }
 .btn--ghost:hover { border-color: var(--ink); }
-.btn--onink { --btn-bd: var(--copper); --btn-bg: var(--copper); --btn-fg: var(--paper); }
-.btn--onink::before { background: var(--paper); }
-.btn--onink:hover { color: var(--ink); border-color: var(--paper); }
+/* On an ink ground the accent would vanish, so this one inverts. */
+.btn--onink { --btn-bd: var(--paper); --btn-bg: var(--paper); --btn-fg: var(--ink); }
+.btn--onink::before { background: transparent; }
+.btn--onink:hover { color: var(--ink); border-color: var(--paper); opacity: .84; }
 
 .btn__arrow { transition: transform 380ms var(--ease-out); }
 .btn:hover .btn__arrow { transform: translateX(4px); }
@@ -419,7 +436,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   --fl-line:  var(--rule);
   --fl-dim:   var(--muted);
   --fl-white: var(--paper);
-  --fl-grey:  var(--graphite);
+  --fl-grey:  #8C8C8C;
 }
 
 .fl-hero__inner {
@@ -479,7 +496,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
 .fl-btn--primary { background: var(--fl-pink); color: var(--fl-white); }
-.fl-btn--primary:hover { background: #8F4208; }
+.fl-btn--primary:hover { background: #333333; }
 .fl-btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .fl-btn--ghost:hover { background: var(--ink); color: var(--paper); }
 
@@ -850,7 +867,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 .vtl__merge .vtl__org { color: var(--paper); }
 .vtl__merge .vtl__role { color: color-mix(in srgb, var(--paper) 74%, transparent); }
 .vtl__merge .vtl__desc { color: color-mix(in srgb, var(--paper) 62%, transparent); }
-.vtl__merge .vtl__dates { color: var(--copper); }
+.vtl__merge .vtl__dates { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 
 /* ------------------------------------------------------- 13. LOGO WALL     */
 /* minmax(0,1fr) + min-width:0 stop the grid track from sizing itself to the
@@ -1053,7 +1070,20 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wsvc__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(26px, 3.2vw, 40px) clamp(28px, 3.8vw, 56px);
+  gap: clamp(14px, 1.6vw, 20px);
+}
+.wsvc__card {
+  background: var(--raised);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: clamp(18px, 1.9vw, 24px);
+  transition: transform 420ms var(--ease-out), border-color 300ms var(--ease),
+              box-shadow 420ms var(--ease);
+}
+.wsvc__card:hover {
+  transform: translateY(-3px);
+  border-color: var(--graphite);
+  box-shadow: 0 14px 30px -24px rgba(0,0,0,.5);
 }
 .wsvc__card h4 {
   font-family: var(--body);
@@ -1091,18 +1121,17 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wtrain__mark:has(.ico + .ico) .ico { width: 20px; height: 20px; }
 .ico--line { fill: none; color: var(--graphite); width: 27px; height: 27px; stroke-width: 1.5; }
 
-/* Official brand marks (Simple Icons) in their official colours.
-   JavaScript (#F7DF1E) and Linux (#FCC624) are pale yellows; with the tiles
-   removed there is nothing to carry them on paper, so both use the monochrome
-   mark — the presentation Simple Icons ships them in. */
-.ico--php        { color: #777BB4; }
-.ico--javascript { color: var(--ink); }
-.ico--html5      { color: #E34F26; }
-.ico--css3       { color: #1572B6; }
-.ico--mysql      { color: #4479A1; }
-.ico--magento    { color: #EE672F; }
-.ico--linux      { color: var(--ink); }
-.ico--apache     { color: #D22128; }
+/* Brand marks (Simple Icons) render monochrome to match the black-and-white
+   scheme. Each brand's official colour is kept here, commented, so colour can
+   be restored by swapping the value in. */
+.ico--php        { color: var(--ink); }  /* #777BB4 */
+.ico--javascript { color: var(--ink); }  /* #F7DF1E */
+.ico--html5      { color: var(--ink); }  /* #E34F26 */
+.ico--css3       { color: var(--ink); }  /* #1572B6 */
+.ico--mysql      { color: var(--ink); }  /* #4479A1 */
+.ico--magento    { color: var(--ink); }  /* #EE672F */
+.ico--linux      { color: var(--ink); }  /* #FCC624 */
+.ico--apache     { color: var(--ink); }  /* #D22128 */
 
 @media (max-width: 1000px) {
   .wsvc { grid-template-columns: 1fr; row-gap: 26px; }
@@ -1197,14 +1226,14 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .cta::before {
   content: ""; position: absolute; inset: 0;
-  background: radial-gradient(720px 320px at 82% 18%, rgba(180,83,10,.30), transparent 70%);
+  background: radial-gradient(720px 320px at 82% 18%, rgba(255,255,255,.14), transparent 70%);
   opacity: 0; transition: opacity 1200ms var(--ease);
 }
 .is-in.cta::before { opacity: 1; }
 .cta__inner { position: relative; display: flex; flex-wrap: wrap; gap: 32px; align-items: end; justify-content: space-between; }
 .cta__title { max-width: 16ch; }
 .cta__sub { color: color-mix(in srgb, var(--paper) 62%, transparent); margin-top: 1rem; max-width: 44ch; }
-.cta .eyebrow { color: var(--copper); }
+.cta .eyebrow { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 
 .foot { border-top: 1px solid var(--rule); padding-block: clamp(40px, 5vw, 64px); }
 .foot__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
@@ -1298,7 +1327,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   border-radius: 3px;
   padding: clamp(28px, 4vw, 44px);
 }
-.contact-panel .eyebrow { color: var(--copper); }
+.contact-panel .eyebrow { color: color-mix(in srgb, var(--paper) 72%, transparent); }
 .contact-row {
   display: flex; justify-content: space-between; gap: 16px;
   padding-block: 16px;
@@ -1306,7 +1335,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .contact-row:last-of-type { border-bottom: 0; }
 .contact-row a { color: var(--paper); position: relative; }
-.contact-row a:hover { color: var(--copper); }
+.contact-row a:hover { color: var(--paper); opacity: .7; }
 .contact-row span:first-child { color: color-mix(in srgb, var(--paper) 52%, transparent); }
 
 .slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap: 8px; margin-top: 14px; }
@@ -1318,8 +1347,9 @@ body[data-hero="flat"] main { padding-top: 0; }
   text-align: center; line-height: 1.5;
   transition: all 260ms var(--ease);
 }
-.slotbtn:hover:not(:disabled) { border-color: var(--copper); color: var(--paper); transform: translateY(-2px); }
-.slotbtn[aria-pressed="true"] { background: var(--copper); border-color: var(--copper); color: var(--paper); }
+.slotbtn:hover:not(:disabled) { border-color: var(--paper); color: var(--paper); transform: translateY(-2px); }
+.slotbtn[aria-pressed="true"] { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.slotbtn[aria-pressed="true"] b { color: var(--ink); }
 .slotbtn:disabled { opacity: .28; cursor: not-allowed; }
 .slotbtn b { display: block; font-size: .8125rem; color: var(--paper); font-weight: 500; }
 
@@ -1402,10 +1432,13 @@ body.is-ready { opacity: 1; }
   .steps::before { display: none; }
 }
 
-@media (max-width: 860px) {
+@media (max-width: 980px) {
   .nav__links { display: none; }
   .nav__cta { display: none; }
-  .nav__burger { display: grid; }
+  .nav__burger { display: grid; margin-left: auto; }
+}
+
+@media (max-width: 860px) {
 
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stat { border-left: 1px solid var(--rule); padding-left: clamp(14px, 2vw, 28px); }
