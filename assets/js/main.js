@@ -32,7 +32,7 @@
       }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 })
     : null;
 
-  var REVEAL_SEL = ".rv, .rv-stagger, .reveal-lines, .lanes__inner, .steps, .cta, .hero__mosaic, .map-wrap, [data-count]";
+  var REVEAL_SEL = ".rv, .rv-stagger, .reveal-lines, .lanes__inner, .steps, .cta, .map-wrap, [data-count]";
 
   function observeAll(root) {
     $$(REVEAL_SEL, root).forEach(function (el) {
@@ -73,9 +73,20 @@
   var nav      = $(".nav");
   var progress = $(".nav__progress");
 
+  // On the dark-hero home page the nav rides transparent over the hero and
+  // only takes its paper treatment once the hero has scrolled past.
+  var darkHero = document.body.getAttribute("data-hero") === "dark"
+    ? document.querySelector(".fl-hero") : null;
+
   function onScroll() {
     var y = window.scrollY || document.documentElement.scrollTop;
-    if (nav) nav.classList.toggle("is-stuck", y > 24);
+    var overHero = false;
+
+    if (darkHero) {
+      overHero = y < darkHero.offsetHeight - (nav ? nav.offsetHeight : 0);
+      if (nav) nav.classList.toggle("nav--onhero", overHero);
+    }
+    if (nav) nav.classList.toggle("is-stuck", y > 24 && !overHero);
 
     if (progress) {
       var doc = document.documentElement;
@@ -115,30 +126,8 @@
     });
   }
 
-  /* ------------------------------------------ 5. hero mosaic photo tile */
-  // The portrait file is optional — fall back to the typographic placeholder
-  // inside the same tile so the mosaic never shows a broken image.
-  $$(".tile--photo img").forEach(function (img) {
-    function fail() {
-      var tile = img.closest(".tile--photo");
-      img.remove();
-      var ph = tile && tile.querySelector(".tile__ph");
-      if (ph) ph.hidden = false;
-    }
-    img.addEventListener("error", fail);
-    if (img.complete && img.naturalWidth === 0) fail();
-  });
-
-  // Soft parallax on the photo tile once a real image is present.
-  var photo = $(".tile--photo img");
-  if (photo && !REDUCED) {
-    window.addEventListener("scroll", function () {
-      var r = photo.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var mid = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
-      photo.style.transform = "translate3d(0," + (mid * -14).toFixed(2) + "px,0) scale(1.06)";
-    }, { passive: true });
-  }
+  /* --------------------------- 5. (hero photo tile removed — the replica hero
+     uses placeholder tiles with no <img>, so no fallback is needed here) */
 
   /* ------------------------------------------------- 6. services tab group */
   $$("[data-tabs]").forEach(function (group) {

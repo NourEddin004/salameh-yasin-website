@@ -18,7 +18,7 @@
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="13" fill="%23B4530A"/><text x="32" y="44" font-family="Georgia,serif" font-size="29" fill="%23FAF7F2" text-anchor="middle">SY</text></svg>'>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Roboto:wght@400;700;900&family=Roboto+Flex:wght@900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 
 <script type="application/ld+json">
@@ -38,7 +38,7 @@
 </script>
 </head>
 
-<body>
+<body data-hero="dark">
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ============================================================ NAVBAR -->
@@ -74,111 +74,184 @@
 <main id="main">
 
   <!-- ============================================================== HERO -->
-  <section class="hero">
-    <div class="hero__grid">
+  <!-- Pixel replica of the freelancer.com hero. Measurements and reference
+       values are documented at the top of the hero block in style.css. -->
+  <section class="fl-hero">
+    <div class="fl-hero__inner">
 
-      <!-- LEFT: headline, sub, CTAs, stat box, logo strip -->
-      <div class="hero__left">
-        <span class="xh xh--tl" aria-hidden="true"></span>
-        <span class="xh xh--tr" aria-hidden="true"></span>
-        <span class="xh xh--bl" aria-hidden="true"></span>
-
-        <span class="eyebrow rv">Technology Leader — Amman, Jordan</span>
-
-        <h1 class="hero__title reveal-lines">
-          <span><i class="l1">I build software,</i></span>
-          <span><i class="l2">teams, and academies.</i></span>
+      <div class="fl-left">
+        <h1 class="fl-title">
+          <span class="fl-title__a">Technical</span>
+          <span class="fl-title__b">Capability.</span>
         </h1>
 
-        <p class="hero__sub rv">
-          Nineteen years turning code into products, engineers into teams, and
-          organisations into ones that can build for themselves.
-        </p>
+        <p class="fl-sub">Nineteen years building software, teams, and academies</p>
 
-        <div class="hero__actions rv">
-          <a class="btn btn--fill" href="contact.html">
-            Book a consultation <span class="btn__arrow" aria-hidden="true">→</span>
-          </a>
-          <a class="btn btn--ghost" href="experience.html">Download CV</a>
+        <div class="fl-cta">
+          <a class="fl-btn fl-btn--primary" href="contact.html">Book a consultation</a>
+          <a class="fl-btn fl-btn--ghost" href="experience.html">Download CV</a>
         </div>
 
-        <div class="hero__stats rv" data-count>
-          <div class="hstat">
-            <span class="hstat__n"><span data-to="19">19</span></span>
-            <span class="hstat__c mono">Years in technology</span>
+        <div class="fl-stats" data-count>
+          <div class="fl-stat">
+            <span class="fl-stat__n"><span data-to="500" data-suffix="+">500+</span></span>
+            <span class="fl-stat__l">Developers trained</span>
           </div>
-          <div class="hstat">
-            <span class="hstat__n"><span data-to="500" data-suffix="+">500+</span></span>
-            <span class="hstat__c mono">Developers trained</span>
+          <div class="fl-stat">
+            <span class="fl-stat__n"><span data-to="86" data-suffix="%">86%</span></span>
+            <span class="fl-stat__l">Raised their income</span>
           </div>
-          <div class="hstat">
-            <span class="hstat__n"><span data-to="86" data-suffix="%">86%</span></span>
-            <span class="hstat__c mono">Raised their income</span>
-          </div>
-          <div class="hstat hstat--note">
-            <p class="mono">
-              PMP · Agile &amp; Scrum · Available for<br>advisory work — Amman, GMT+3
-            </p>
-          </div>
+          <p class="fl-stats__note">
+            19 years · PMP · Agile &amp; Scrum<br>
+            Available for advisory work
+          </p>
         </div>
 
-        <div class="hero__logos rv">
-          <span class="logo">Orange Jordan</span>
-          <span class="logo">Souq.com</span>
-          <span class="logo">MarkaVIP</span>
-          <span class="logo">ShopGo</span>
-          <span class="logo">HTU</span>
-          <span class="logo">Indemaj</span>
+        <div class="fl-proof">
+          <div class="fl-proof__track">
+            <span class="fl-proof__logo">Orange Jordan</span>
+            <span class="fl-proof__logo">Souq.com</span>
+            <span class="fl-proof__logo">MarkaVIP</span>
+            <span class="fl-proof__logo">ShopGo</span>
+            <span class="fl-proof__logo">Al Hussein Technical University</span>
+            <span class="fl-proof__logo">Indemaj Technology</span>
+            <span class="fl-proof__logo">Pioneers Academy</span>
+            <span class="fl-proof__logo">Upskills Academy</span>
+            <span class="fl-proof__logo">MLC Modern Language Center</span>
+            <span class="fl-proof__logo">Fawzi Alnajjar &amp; Partner Co.</span>
+            <span class="fl-proof__logo" aria-hidden="true">Orange Jordan</span>
+            <span class="fl-proof__logo" aria-hidden="true">Souq.com</span>
+            <span class="fl-proof__logo" aria-hidden="true">MarkaVIP</span>
+            <span class="fl-proof__logo" aria-hidden="true">ShopGo</span>
+            <span class="fl-proof__logo" aria-hidden="true">Al Hussein Technical University</span>
+            <span class="fl-proof__logo" aria-hidden="true">Indemaj Technology</span>
+            <span class="fl-proof__logo" aria-hidden="true">Pioneers Academy</span>
+            <span class="fl-proof__logo" aria-hidden="true">Upskills Academy</span>
+            <span class="fl-proof__logo" aria-hidden="true">MLC Modern Language Center</span>
+            <span class="fl-proof__logo" aria-hidden="true">Fawzi Alnajjar &amp; Partner Co.</span>
+          </div>
         </div>
       </div>
 
-      <!-- Vertical scrolling rail -->
-      <div class="hero__rail" aria-hidden="true">
-        <span>Making technical capability&nbsp;&nbsp;·&nbsp;&nbsp;Amman + Aqaba&nbsp;&nbsp;·&nbsp;&nbsp;Making technical capability&nbsp;&nbsp;·&nbsp;&nbsp;Amman + Aqaba&nbsp;&nbsp;·&nbsp;&nbsp;</span>
-      </div>
-
-      <!-- RIGHT: proof mosaic, bleeding off the viewport edge -->
-      <div class="hero__mosaic rv">
-        <figure class="tile tile--photo tile--tall" style="margin:0">
-          <img src="assets/img/portrait.jpg" alt="Salameh Yasin" width="800" height="1000">
-          <figcaption class="tile__ph" hidden>
-            <span class="tile__initials">SY</span>
-            <span class="mono">Portrait — drop a 1600px image<br>at assets/img/portrait.jpg</span>
-          </figcaption>
-        </figure>
-
-        <article class="tile tile--copper">
-          <span class="tile__k">Al Hussein Technical University</span>
-          <p class="tile__n">500+</p>
-          <p class="tile__k" style="opacity:.9">Developers personally trained</p>
-        </article>
-
-        <article class="tile tile--ink">
-          <span class="tile__k">Graduate outcomes</span>
-          <p class="tile__n">86%</p>
-          <p class="tile__k" style="opacity:.9">Improved their income</p>
-        </article>
-
-        <article class="tile tile--teal tile--wide">
-          <span class="tile__k">Rail A — building product</span>
-          <p class="tile__t">Every seat on an engineering floor, in order.</p>
-          <span class="tile__k" style="opacity:.9">QA → Front-end → Back-end → Lead → Team Leader</span>
-        </article>
-
-        <article class="tile tile--ink tile--cities">
-          <span class="tile__k">Multi-site operations</span>
-          <div class="cities">
-            <span class="cities__pt"><i aria-hidden="true"></i>Amman</span>
-            <span class="cities__pt"><i aria-hidden="true"></i>Aqaba</span>
+      <div class="fl-right" aria-hidden="true">
+        <div class="fl-strip">
+          <div class="fl-strip__track">
+          <span>Making technical capability &middot; Amman + Aqaba &middot; </span>
+          <span>Making technical capability &middot; Amman + Aqaba &middot; </span>
+          <span>Making technical capability &middot; Amman + Aqaba &middot; </span>
+          <span>Making technical capability &middot; Amman + Aqaba &middot; </span>
           </div>
-          <span class="tile__k" style="opacity:.9">600 km apart, one team</span>
-        </article>
+        </div>
 
-        <article class="tile">
-          <span class="tile__k" style="color:var(--copper)">2020 — present</span>
-          <p class="tile__t">Orange Coding Academy</p>
-          <span class="tile__k" style="color:var(--muted)">Coding Academy Manager</span>
-        </article>
+        <div class="fl-col">
+          <div class="fl-col__track fl-col__track--down">
+            <div class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 01</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Academy</span>
+              <span class="fl-tile__box">Cohort photography</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile">
+              <span class="fl-tile__k">Delivery</span>
+              <span class="fl-tile__box">Project 02</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">Orange</span>
+              <span class="fl-tile__box">Amman campus</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 03</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 01</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Academy</span>
+              <span class="fl-tile__box">Cohort photography</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile">
+              <span class="fl-tile__k">Delivery</span>
+              <span class="fl-tile__box">Project 02</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">Orange</span>
+              <span class="fl-tile__box">Amman campus</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 03</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fl-col">
+          <div class="fl-col__track fl-col__track--up">
+            <div class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">HTU</span>
+              <span class="fl-tile__box">Training floor</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 04</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile">
+              <span class="fl-tile__k">Aqaba</span>
+              <span class="fl-tile__box">Southern campus</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">Upskills</span>
+              <span class="fl-tile__box">Workshop</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 05</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">HTU</span>
+              <span class="fl-tile__box">Training floor</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 04</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile">
+              <span class="fl-tile__k">Aqaba</span>
+              <span class="fl-tile__box">Southern campus</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--pink">
+              <span class="fl-tile__k">Upskills</span>
+              <span class="fl-tile__box">Workshop</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+            <div aria-hidden="true" class="fl-tile fl-tile--blue">
+              <span class="fl-tile__k">Portfolio</span>
+              <span class="fl-tile__box">Project 05</span>
+              <span class="fl-tile__k">266 &times; 343</span>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

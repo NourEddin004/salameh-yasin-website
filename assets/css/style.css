@@ -380,210 +380,305 @@ main { padding-top: var(--nav-h); }
 .is-in .rule-draw, .rule-draw.is-in { transform: scaleX(1); }
 
 /* ----------------------------------------------------------- 7. HERO (§01) */
-/* Composition follows freelancer.com: a dominant two-tone headline, a single
-   sub-line, dual CTA, a bordered stat box and a client logo strip all stacked
-   in the left column — with a tile mosaic bleeding off the right edge, a
-   vertical text rail between them, and corner crosshairs on the content block.
-   Palette and type stay on the brief's paper/copper editorial system. */
-.hero {
+/* Pixel replica of the freelancer.com hero, measured off the live page at a
+   1440px viewport. Reference values kept in comments so any future change can
+   be checked against the original.
+     hero            1440 x 845, bg #12151B
+     content x       12
+     headline block  720 x 190  (two lines)
+     sub-line        24px / 700 / lh 31.2 / #FCFCFD          at y 456
+     buttons         h 56, pad 13px 48px, radius 4, 20px/700  at y 519
+       primary       bg #E60278, w 248
+       ghost         1px solid #fff, x 268, w 310   (8px gap)
+     stat box        795 x 86, 1px solid #3D4A5D               at y 655
+       numerals      40px / 900 / lh 32 / #29B2FE, cells 240 wide, inner pad 13
+       labels        18px / 700 / uppercase / lh 24 / #BCC5D3
+       note cell     16px / 700 / uppercase / lh 20, pad 12 16, border-left
+     logo marquee    y 757, h 24, 20s linear, translateX 0 -> -50%
+     right block     starts x 876, total w 596 (overflows the 1440 by 32)
+       text strip    w 32,  scroll up
+       column A      w 266, tiles 266x343 r6 gap16, 40s scroll down
+       column B      w 266, same tiles,             40s scroll up            */
+
+/* The nav overlays the hero on this page, so main loses its top padding */
+body[data-hero="dark"] main { padding-top: 0; }
+
+.fl-hero {
   position: relative;
-  border-bottom: 1px solid var(--rule);
+  background: #12151B;
   overflow: hidden;
+  --fl-pink:  #E60278;
+  --fl-blue:  #29B2FE;
+  --fl-line:  #3D4A5D;
+  --fl-dim:   #BCC5D3;
+  --fl-white: #FCFCFD;
+  --fl-grey:  #CDD4DF;
 }
 
-.hero__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 0.62fr);
-  align-items: stretch;
-}
-
-/* Left column aligns to the 1200px wrap; the mosaic runs to the viewport edge */
-.hero__left {
+.fl-hero__inner {
   position: relative;
-  min-width: 0;
-  padding-left: max(var(--gutter), calc((100vw - var(--wrap)) / 2));
-  padding-right: clamp(20px, 3.4vw, 48px);
-  padding-block: clamp(36px, 5vw, 68px) clamp(32px, 4.4vw, 56px);
+  height: 845px;
+  max-width: 1440px;
+  margin-inline: auto;
 }
 
-/* Crosshair ticks marking the content block's corners */
-.xh { position: absolute; width: 11px; height: 11px; opacity: .5; }
-.xh::before, .xh::after { content: ""; position: absolute; background: var(--muted); }
-.xh::before { left: 0; right: 0; top: 5px; height: 1px; }
-.xh::after { top: 0; bottom: 0; left: 5px; width: 1px; }
-.xh--tl { top: 14px; left: max(calc(var(--gutter) - 22px), calc((100vw - var(--wrap)) / 2 - 22px)); }
-.xh--tr { top: 14px; right: 10px; }
-.xh--bl { bottom: 14px; left: max(calc(var(--gutter) - 22px), calc((100vw - var(--wrap)) / 2 - 22px)); }
-
-/* Headline — two lines, colour-split on the second */
-.hero__title {
-  font-size: clamp(2.9rem, 7.2vw, 6rem);
-  line-height: .93;
-  letter-spacing: -0.035em;
-  margin-bottom: 1.35rem;
-}
-.hero__title .l2 { color: var(--copper); }
-
-.hero__sub {
-  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-  color: var(--graphite);
-  max-width: 44ch;
-  margin-bottom: 1.9rem;
+/* ------------------------------------------------------------- left column */
+.fl-left {
+  position: absolute;
+  left: 12px; top: 234px;
+  width: 795px;
+  max-width: calc(100% - 24px);
 }
 
-.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.fl-title {
+  font-family: "Archivo Black", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: clamp(40px, 6.95vw, 100px);
+  line-height: .95;   /* 2 x 95 = 190, matching the reference block height */
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0 0 32px;
+  text-wrap: nowrap;
+}
+.fl-title span { display: block; }
+.fl-title__a { color: var(--fl-pink); }
+.fl-title__b { color: var(--fl-grey); }
 
-/* Bordered stat box with vertical hairline dividers */
-.hero__stats {
-  margin-top: clamp(26px, 3.4vw, 42px);
-  display: grid;
-  grid-template-columns: repeat(3, auto) minmax(0, 1fr);
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  background: var(--raised);
-  max-width: 760px;
-}
-.hstat {
-  padding: clamp(13px, 1.4vw, 18px) clamp(13px, 1.5vw, 20px);
-  border-left: 1px solid var(--rule);
-  min-width: 0;
-}
-.hstat:first-child { border-left: 0; }
-.hstat__n {
-  font-family: var(--display);
-  font-size: clamp(1.85rem, 3.1vw, 2.7rem);
-  line-height: 1; letter-spacing: -.03em;
-  color: var(--copper);
-  display: block;
-}
-.hstat__c {
-  display: block; margin-top: 5px; color: var(--muted);
-  font-size: .625rem; letter-spacing: .07em; line-height: 1.45;
-}
-.hstat--note { display: flex; align-items: center; }
-.hstat--note p {
-  color: var(--graphite); margin: 0;
-  font-size: .625rem; letter-spacing: .07em; line-height: 1.6;
+.fl-sub {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(17px, 1.67vw, 24px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: .24px;
+  color: var(--fl-white);
+  margin: 0 0 32px;
+  width: 860px;
+  max-width: calc(100vw - 24px);
 }
 
-/* Client logo strip */
-.hero__logos {
-  margin-top: clamp(22px, 2.8vw, 34px);
-  padding-top: clamp(15px, 1.9vw, 21px);
-  border-top: 1px solid var(--rule);
-  display: flex; flex-wrap: wrap; align-items: center;
-  gap: clamp(16px, 2.4vw, 32px);
-}
-.hero__logos .logo { font-size: clamp(.92rem, 1.1vw, 1.1rem); opacity: .48; }
-.hero__logos .logo:hover { opacity: 1; color: var(--ink); }
+/* ---------------------------------------------------------------- buttons */
+.fl-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 80px; }
 
-/* Vertical scrolling rail between the columns */
-.hero__rail {
-  position: relative;
-  overflow: hidden;
-  border-inline: 1px solid var(--rule);
-  background: var(--raised);
-}
-.hero__rail span {
-  position: absolute; top: 0; left: 50%;
-  writing-mode: vertical-rl;
-  font-family: var(--mono); font-size: .625rem;
-  letter-spacing: .26em; text-transform: uppercase;
-  color: var(--copper); white-space: nowrap;
-  transform: translateX(-50%);
-  animation: railScroll 30s linear infinite;
-}
-@keyframes railScroll { to { transform: translateX(-50%) translateY(-50%); } }
-
-/* ------------------------------------------------------------ HERO MOSAIC */
-.hero__mosaic {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: clamp(92px, 10.5vw, 146px);
-  gap: 10px;
-  padding: clamp(36px, 5vw, 68px) 0 clamp(32px, 4.4vw, 56px) clamp(14px, 1.8vw, 22px);
-  min-width: 0;
-}
-
-.tile {
-  position: relative;
-  border: 1px solid var(--rule);
+.fl-btn {
+  font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: clamp(16px, 1.39vw, 20px);
+  font-weight: 700;
+  line-height: 28px;
+  padding: 13px clamp(24px, 3.33vw, 48px);
   border-radius: 4px;
-  background: var(--raised);
-  padding: clamp(13px, 1.3vw, 18px);
-  display: flex; flex-direction: column; justify-content: space-between;
+  border: 1px solid transparent;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+.fl-btn--primary { background: var(--fl-pink); color: var(--fl-white); }
+.fl-btn--primary:hover { background: #C40266; }
+.fl-btn--ghost { background: transparent; color: #fff; border-color: #fff; }
+.fl-btn--ghost:hover { background: #fff; color: #12151B; }
+
+/* -------------------------------------------------------------- stat box */
+.fl-stats {
+  display: grid;
+  grid-template-columns: 240px 240px minmax(0, 1fr);
+  border: 1px solid var(--fl-line);
+  max-width: 795px;
+  margin-bottom: 16px;
+}
+.fl-stat { padding: 13px; }
+.fl-stat__n {
+  display: block;
+  font-family: "Roboto Flex", Roboto, sans-serif;
+  font-size: clamp(30px, 2.78vw, 40px);
+  font-weight: 900;
+  line-height: 32px;
+  color: var(--fl-blue);
+}
+.fl-stat__l {
+  display: block;
+  font-family: Roboto, sans-serif;
+  font-size: clamp(14px, 1.25vw, 18px);
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: var(--fl-dim);
+}
+.fl-stats__note {
+  margin: 0;
+  padding: 12px 16px;
+  border-left: 1px solid var(--fl-line);
+  font-family: Roboto, sans-serif;
+  font-size: clamp(13px, 1.11vw, 16px);
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--fl-dim);
+  align-self: center;
+}
+
+/* --------------------------------------------------- company logo marquee */
+/* Same slot, same 20s left-scroll as the original's client logo strip —
+   set as wordmarks, since no logo files exist for these organisations. */
+.fl-proof {
   overflow: hidden;
-  opacity: 0; transform: translateY(14px);
-  transition: opacity 520ms var(--ease), transform 620ms var(--ease-out),
-              box-shadow 420ms var(--ease);
+  height: 24px;
+  display: flex; align-items: center;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
-.is-in .tile { opacity: 1; transform: none; }
-.is-in .tile:nth-child(2) { transition-delay: 80ms; }
-.is-in .tile:nth-child(3) { transition-delay: 160ms; }
-.is-in .tile:nth-child(4) { transition-delay: 240ms; }
-.is-in .tile:nth-child(5) { transition-delay: 320ms; }
-.is-in .tile:nth-child(6) { transition-delay: 400ms; }
-.tile:hover { box-shadow: 0 16px 36px -26px rgba(20,17,15,.5); }
+.fl-proof__track {
+  display: flex; align-items: center;
+  gap: 48px;
+  width: max-content;
+  animation: fl-marquee-left 20s linear infinite;
+}
+.fl-proof:hover .fl-proof__track { animation-play-state: paused; }
+.fl-proof__logo {
+  font-family: Roboto, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 24px;
+  white-space: nowrap;
+  color: #8E99AB;
+  transition: color 200ms ease;
+}
+.fl-proof__logo:hover { color: var(--fl-white); }
 
-.tile--tall { grid-row: span 2; }
-.tile--wide { grid-column: span 2; }
-.tile--copper { background: var(--copper); border-color: var(--copper); color: var(--paper); }
-.tile--teal   { background: var(--teal);   border-color: var(--teal);   color: var(--paper); }
-.tile--ink    { background: var(--ink);    border-color: var(--ink);    color: var(--paper); }
-
-.tile__k {
-  font-family: var(--mono); font-size: .5625rem;
-  letter-spacing: .14em; text-transform: uppercase;
-  opacity: .74;
-}
-.tile__t {
-  font-family: var(--display);
-  font-size: clamp(1.05rem, 1.65vw, 1.45rem);
-  line-height: 1.12; letter-spacing: -.02em;
-  margin: 0;
-}
-.tile__n {
-  font-family: var(--display);
-  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
-  line-height: 1; letter-spacing: -.03em;
-  margin: 0;
+@keyframes fl-marquee-left {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
 }
 
-/* Photo tile — falls back to a typographic placeholder when no file exists */
-.tile--photo { padding: 0; }
-.tile--photo img { width: 100%; height: 100%; object-fit: cover; }
-.tile__ph {
-  position: absolute; inset: 0;
-  display: grid; place-content: center; gap: 10px;
-  text-align: center; padding: 16px;
+/* ------------------------------------------------------------ right block */
+.fl-right {
+  position: absolute;
+  top: 0;
+  left: calc(100% - 564px);   /* 1440 - 564 = 876 */
+  width: 596px;               /* deliberately overruns the viewport by 32 */
+  height: 845px;
+  display: flex;
+  gap: 16px;
+}
+
+/* vertical scrolling text strip */
+.fl-strip { width: 32px; overflow: hidden; position: relative; }
+.fl-strip__track {
+  position: absolute; inset: 0 0 auto 0;
+  display: flex; flex-direction: column;
+  animation: fl-marquee-up 26s linear infinite;
+}
+.fl-strip__track span {
+  writing-mode: vertical-rl;
+  font-family: Roboto, sans-serif;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--fl-pink);
+  white-space: nowrap;
+  padding-block: 18px;
+}
+
+/* the two tile columns */
+.fl-col { width: 266px; overflow: hidden; position: relative; }
+.fl-col__track {
+  position: absolute; inset: 0 0 auto 0;
+  display: flex; flex-direction: column; gap: 16px;
+  will-change: transform;
+}
+.fl-col__track--down { animation: fl-marquee-down 40s linear infinite; }
+.fl-col__track--up   { animation: fl-marquee-up   40s linear infinite; }
+
+@keyframes fl-marquee-up {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, -50%, 0); }
+}
+@keyframes fl-marquee-down {
+  from { transform: translate3d(0, -50%, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* Placeholder tiles standing in for the original's photography */
+.fl-tile {
+  flex: none;
+  width: 266px; height: 343px;
+  border-radius: 6px;
+  border: 1px solid #232833;
   background:
-    repeating-linear-gradient(-45deg, transparent 0 11px, var(--rule-soft) 11px 12px),
-    var(--raised);
+    repeating-linear-gradient(-45deg, transparent 0 13px, rgba(255,255,255,.028) 13px 14px),
+    #191D26;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 16px;
+  overflow: hidden;
 }
-.tile__ph .mono { color: var(--muted); }
-.tile__initials {
-  font-family: var(--display);
-  font-size: clamp(2.2rem, 4.4vw, 3.4rem);
-  line-height: 1;
+.fl-tile__k {
+  font-family: Roboto, sans-serif;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: #5B6473;
+}
+.fl-tile__box {
+  flex: 1;
+  margin: 12px 0;
+  border: 1px dashed #2C323F;
+  border-radius: 4px;
+  display: grid; place-content: center;
+  color: #454D5C;
+  font-family: Roboto, sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+}
+.fl-tile--pink  { border-color: rgba(230,2,120,.42); }
+.fl-tile--pink  .fl-tile__k { color: var(--fl-pink); }
+.fl-tile--blue  { border-color: rgba(41,178,254,.36); }
+.fl-tile--blue  .fl-tile__k { color: var(--fl-blue); }
+
+/* Navbar sits transparent over the dark hero, reverting once scrolled past */
+.nav--onhero {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom-color: transparent !important;
+}
+.nav--onhero .nav__mark,
+.nav--onhero .nav__link { color: var(--fl-white, #FCFCFD); }
+.nav--onhero .nav__link:hover { color: #fff; }
+.nav--onhero .nav__burger span { background: #FCFCFD; }
+.nav--onhero .nav__cta {
+  background: #E60278; border-color: #E60278; color: #FCFCFD;
+}
+.nav--onhero .nav__cta::before { background: #fff; }
+.nav--onhero .nav__cta:hover { color: #12151B; border-color: #fff; }
+.nav--onhero .nav__progress { background: #E60278; }
+
+/* --------------------------------------------------------- hero responsive */
+@media (max-width: 1180px) {
+  /* Below the original's desktop breakpoint the tile columns are dropped and
+     the left column takes the full width, as freelancer.com does. */
+  .fl-right { display: none; }
+  .fl-hero__inner { height: auto; }
+  .fl-left {
+    position: static;
+    width: auto; max-width: none;
+    /* The nav overlays the hero here too, so clear its height before the type */
+    padding: calc(var(--nav-h) + clamp(32px, 8vw, 64px))
+             clamp(16px, 3vw, 40px)
+             clamp(40px, 6vw, 72px);
+  }
+  .fl-title { text-wrap: wrap; }
 }
 
-/* Two-city tile — the full Jordan map lives on the management page, where it
-   has the room to be read. At tile scale, set the city names instead. */
-.cities { display: flex; align-items: center; gap: 14px; }
-.cities__pt {
-  font-family: var(--display);
-  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
-  letter-spacing: -.02em;
-  display: inline-flex; align-items: center; gap: 7px;
+@media (max-width: 720px) {
+  .fl-cta { margin-bottom: 48px; }
+  .fl-btn { flex: 1 1 auto; }
+  .fl-stats { grid-template-columns: 1fr 1fr; }
+  .fl-stats__note {
+    grid-column: 1 / -1;
+    border-left: 0;
+    border-top: 1px solid var(--fl-line);
+  }
 }
-.cities__pt i {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--copper); flex: none;
-}
-/* Copper connector between the two points */
-.cities__pt:first-child::after {
-  content: ""; width: clamp(14px, 2vw, 26px); height: 1px;
-  background: var(--copper); margin-left: 7px;
+
+@media (max-width: 460px) {
+  .fl-stats { grid-template-columns: 1fr; }
+  .fl-stat + .fl-stat { border-top: 1px solid var(--fl-line); }
 }
 
 /* ------------------------------------------------------- 8. STAT BAND (§03)*/

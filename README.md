@@ -11,7 +11,7 @@ python3 -m http.server 4173
 
 | File | Screen |
 |---|---|
-| `index.html` | Home — hero, stat band, three pillars, proof, two-lane timeline, logo wall, CTA |
+| `index.html` | Home — freelancer.com replica hero, three pillars, proof, two-lane timeline, logo wall, CTA |
 | `about.html` | The two rails + full vertical timeline, credentials, languages |
 | `developer.html` | Pillar 01 — teal accent. Progression strip, stack, role cards, project slots |
 | `management.html` | Pillar 02 — graphite accent. Amman/Aqaba map, ownership panels, competencies |
@@ -36,9 +36,23 @@ which reassigns `--accent`. Nothing else needs to change.
 
 ## Where the inspiration landed
 
-- **Hero** follows freelancer.com's structure — decisive headline, dual CTA
-  (primary + recruiter path), visual anchor at right, trust marquee and big
-  numbers immediately below the fold.
+- **Hero (`index.html`) is a pixel replica of the freelancer.com hero**, measured
+  off the live page at a 1440px viewport. Every reference value is documented in
+  a comment block at the top of the hero section in `style.css`, so any change
+  can be checked against the original. Verified element-by-element: headline
+  block, sub-line, buttons, stat box, logo marquee, the 32px vertical text strip
+  and both 266x343 tile columns all land at the reference coordinates.
+  - It keeps freelancer's own palette (`#12151B` ground, `#E60278` pink,
+    `#29B2FE` numerals) rather than the paper/copper system used by the other six
+    pages. **This is a deliberate instruction, not an oversight** — see the note
+    at the bottom of this file.
+  - The photography is replaced by placeholder tiles that keep the original's
+    scroll animation (40s, columns running in opposite directions).
+  - The client logo strip keeps its slot and its 20s left-scroll, carrying the
+    organisations Salameh has worked for, set as wordmarks since no logo files
+    exist for them.
+  - The navbar is unchanged structurally; it just rides transparent over the dark
+    hero and takes its normal paper treatment once the hero scrolls past.
 - **Services** follows vardot.com's tabbed pattern — the eight service lines are
   grouped into three tabs by what the client is trying to do, rather than being
   dumped as a flat eight-card grid.
@@ -46,8 +60,9 @@ which reassigns `--accent`. Nothing else needs to change.
 ## Animation
 
 All motion respects `prefers-reduced-motion` and degrades to static. Includes:
-scroll progress hairline, nav shrink, headline mask reveal, portrait parallax
-with a drawn offset rule, stat count-up, section rule draws, card hover rules,
+scroll progress hairline, nav shrink and dark/paper hand-off, headline mask
+reveals, the hero's opposed-direction tile columns and vertical text strip,
+stat count-up, section rule draws, card hover rules,
 paused-on-hover logo marquees, SVG rail draw-in with staggered nodes, a vertical
 spine that fills with scroll, animated tab indicator, filter transitions, and a
 radial glow on the CTA band.
@@ -56,8 +71,9 @@ radial glow on the CTA band.
 
 Blocking (from the build brief, §12):
 
-1. **Portrait** — drop a 1600px+ image at `assets/img/portrait.jpg`. Until then a
-   typographic placeholder renders automatically. Nothing else to change.
+1. **Hero imagery** — the two scrolling columns are placeholder tiles. Swap each
+   `.fl-tile` for an `<img>` at 266x343 once real photography exists (project
+   shots, cohort/campus photos, a portrait). The scroll animation needs no change.
 2. **CV PDF** — drop at `assets/Salameh-Yasin-CV.pdf` to activate the download button.
 3. **Testimonials** — two to four, with permission. Slots are built and styled on
    `index.html` and `consulting.html`.
@@ -86,3 +102,21 @@ Every claim on the site traces to the LinkedIn profile export. Note that USAID,
 UNHCR, Arab Potash and the Prime Ministry were **training clients delivered
 through MLC in 2007–2008**, not employers — the logo wall labels them
 "Trained teams at" for exactly this reason. Keep that distinction.
+
+
+## Open question: the home page palette
+
+The hero on `index.html` uses freelancer.com's dark palette, as requested. The
+other six pages use the warm paper / copper editorial system from the build
+brief. Right now the site changes character between the home page and everything
+else.
+
+Two ways to resolve it, whichever is wanted:
+
+1. **Recolour the hero** to the paper/copper tokens. The layout stays pixel-exact;
+   only the six colour values in the `.fl-hero` block change. Roughly a ten-minute
+   job.
+2. **Carry the dark treatment through the whole site.** A much larger change — it
+   means re-tokenising every page and revisiting the brief's typography, since the
+   brief argues explicitly against a dark "tech portfolio" look for a senior
+   consultant.
