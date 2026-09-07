@@ -974,12 +974,14 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wsvc {
   display: grid;
   grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px);
+  column-gap: clamp(28px, 4vw, 56px);
+  row-gap: clamp(26px, 3.2vw, 44px);
   align-items: start;
 }
-
+/* Full-width header, so the rail and the service grid share a top edge */
+.wsvc__head { grid-column: 1 / -1; }
 .wsvc__h { margin-bottom: .5rem; }
-.wsvc__lead { color: var(--muted); margin-bottom: clamp(24px, 3vw, 36px); }
+.wsvc__lead { color: var(--muted); margin: 0; }
 
 /* ---- left rail ---- */
 .wsvc__rail { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
@@ -1071,44 +1073,39 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wtrain__title { color: var(--muted); margin-bottom: clamp(20px, 2.4vw, 28px); }
 .wtrain__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 36px); }
 .wtrain__coltitle { color: var(--muted); font-weight: 600; margin: 0 0 16px; }
-.wtrain__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.wtrain__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 15px; }
 .wtrain__row {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: 13px;
   font-size: .9375rem; color: var(--graphite);
 }
 .wtrain__mark {
   flex: none;
-  width: 34px; height: 34px;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  background: var(--raised);
-  display: flex; align-items: center; justify-content: center; gap: 3px;
-  transition: border-color 260ms var(--ease), transform 260ms var(--ease-out);
+  width: 44px;
+  display: flex; align-items: center; gap: 5px;
+  transition: transform 260ms var(--ease-out);
 }
-.wtrain__row:hover .wtrain__mark { border-color: var(--graphite); transform: translateY(-2px); }
+.wtrain__row:hover .wtrain__mark { transform: translateY(-2px); }
 
-.ico { width: 17px; height: 17px; fill: currentColor; }
-/* Two marks share one tile (HTML / CSS, Linux / Apache) */
-.wtrain__mark .ico + .ico { width: 14px; height: 14px; }
-.wtrain__mark:has(.ico + .ico) .ico { width: 13px; height: 13px; }
-.ico--line { fill: none; color: var(--graphite); width: 18px; height: 18px; }
+.ico { width: 28px; height: 28px; fill: currentColor; }
+/* Where two marks share a row (HTML / CSS, Linux / Apache) they sit smaller */
+.wtrain__mark:has(.ico + .ico) .ico { width: 20px; height: 20px; }
+.ico--line { fill: none; color: var(--graphite); width: 27px; height: 27px; stroke-width: 1.5; }
 
-/* Official brand marks (Simple Icons) in their official colours */
-.ico--php { color: #777BB4; }
-.ico--javascript { color: #14110F; }
-.ico--javascript { background: #F7DF1E; border-color: #F7DF1E; }
-.ico--html5 { color: #E34F26; }
-.ico--css3 { color: #1572B6; }
-.ico--mysql { color: #4479A1; }
-.ico--magento { color: #EE672F; }
-.ico--linux { color: #14110F; }
-.ico--apache { color: #D22128; }
-/* JavaScript and Linux ship as pale yellows that would vanish on paper, so
-   they take their conventional dark-glyph presentation instead. */
-.wtrain__mark:has(.ico--javascript) { background: #F7DF1E; border-color: #E3CC16; }
+/* Official brand marks (Simple Icons) in their official colours.
+   JavaScript (#F7DF1E) and Linux (#FCC624) are pale yellows; with the tiles
+   removed there is nothing to carry them on paper, so both use the monochrome
+   mark — the presentation Simple Icons ships them in. */
+.ico--php        { color: #777BB4; }
+.ico--javascript { color: var(--ink); }
+.ico--html5      { color: #E34F26; }
+.ico--css3       { color: #1572B6; }
+.ico--mysql      { color: #4479A1; }
+.ico--magento    { color: #EE672F; }
+.ico--linux      { color: var(--ink); }
+.ico--apache     { color: #D22128; }
 
 @media (max-width: 1000px) {
-  .wsvc { grid-template-columns: 1fr; gap: 28px; }
+  .wsvc { grid-template-columns: 1fr; row-gap: 26px; }
   .wsvc__panels { border-left: 0; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
   .wtrain__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

@@ -74,14 +74,16 @@ request, no CDN dependency — in each brand's **official colour**:
 | Mark | Colour |
 |---|---|
 | PHP | `#777BB4` |
-| JavaScript | `#F7DF1E` ground, dark glyph — its conventional presentation |
 | HTML5 / CSS3 | `#E34F26` / `#1572B6` |
 | MySQL | `#4479A1` |
 | Magento | `#EE672F` |
-| Linux / Apache | dark glyph / `#D22128` |
+| Apache | `#D22128` |
+| JavaScript / Linux | monochrome (see below) |
 
-JavaScript and Linux ship as pale yellows that would disappear on the paper
-ground, so both take their usual dark-glyph treatment instead.
+Marks sit bare on the page at 28px — no tile, no border. JavaScript (`#F7DF1E`)
+and Linux (`#FCC624`) are pale yellows officially; with nothing to carry them
+they would disappear on the paper ground, so both use the monochrome mark,
+which is the form Simple Icons ships them in.
 
 **The remaining fourteen have no official logo** — REST APIs, Web security, and
 every item under Delivery and Programme are concepts, not products. Those use
