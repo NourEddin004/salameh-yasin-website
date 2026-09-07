@@ -307,17 +307,17 @@
 
         <form class="form rv" id="enquiry">
           <div class="field"><label for="c-name">Name</label><input id="c-name" name="Name" required autocomplete="name"></div>
-          <div class="field"><label for="c-org">Organisation</label><input id="c-org" name="Organisation" autocomplete="organization"></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="Email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="c-org">Organisation <span class="field__opt">optional</span></label><input id="c-org" name="Organisation" autocomplete="organization"></div>
           <div class="field"><label for="c-what">What are you building?</label><textarea id="c-what" name="What you are building" required></textarea></div>
           <div class="field">
-            <label for="c-budget">Budget range</label>
-            <select id="c-budget" name="Budget range">
-              <option value="">Select a range</option>
-              <option>Under 5,000 JOD</option>
-              <option>5,000 &ndash; 15,000 JOD</option>
-              <option>15,000 &ndash; 50,000 JOD</option>
-              <option>50,000+ JOD</option>
-              <option>Not sure yet</option>
+            <label for="c-need">What do you need?</label>
+            <select id="c-need" name="What you need" required>
+              <option value="">Choose a service</option>
+              <option>Development &amp; digital transformation</option>
+              <option>Training &amp; consultation</option>
+              <option>Project management</option>
+              <option>Something else</option>
             </select>
           </div>
           <button class="btn btn--fill" type="submit">Send enquiry <span class="btn__arrow" aria-hidden="true">&rarr;</span></button>

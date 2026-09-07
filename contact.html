@@ -70,17 +70,16 @@
           <form class="form rv" id="enquiry">
             <div class="field"><label for="k-name">Name</label><input id="k-name" name="Name" required autocomplete="name"></div>
             <div class="field"><label for="k-email">Email</label><input id="k-email" name="Email" type="email" required autocomplete="email"></div>
-            <div class="field"><label for="k-org">Organisation</label><input id="k-org" name="Organisation" autocomplete="organization"></div>
+            <div class="field"><label for="k-org">Organisation <span class="field__opt">optional</span></label><input id="k-org" name="Organisation" autocomplete="organization"></div>
             <div class="field"><label for="k-what">What are you building?</label><textarea id="k-what" name="What you are building" required></textarea></div>
             <div class="field">
-              <label for="k-budget">Budget range</label>
-              <select id="k-budget" name="Budget range">
-                <option value="">Select a range</option>
-                <option>Under 5,000 JOD</option>
-                <option>5,000 &ndash; 15,000 JOD</option>
-                <option>15,000 &ndash; 50,000 JOD</option>
-                <option>50,000+ JOD</option>
-                <option>Not sure yet</option>
+              <label for="k-need">What do you need?</label>
+              <select id="k-need" name="What you need" required>
+                <option value="">Choose a service</option>
+                <option>Development &amp; digital transformation</option>
+                <option>Training &amp; consultation</option>
+                <option>Project management</option>
+                <option>Something else</option>
               </select>
             </div>
             <input type="hidden" id="slot" name="Preferred slot">

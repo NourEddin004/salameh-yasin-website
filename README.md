@@ -131,7 +131,12 @@ Also worth fixing regardless of the site: his LinkedIn headline reads
 
 Both forms compose a `mailto:` to `salameh.yasin@yahoo.com` — no backend, and the
 UI says so rather than faking a success state. To collect submissions properly,
-point the `submit` handler in `assets/js/main.js` at a form endpoint.
+point the `submit` handler in `assets/js/main.js` at a form endpoint. The handler
+walks `FormData`, so adding or renaming a field needs no JS change.
+
+Fields: Name, Email, what you are building and the service picker are required;
+Organisation is optional and labelled as such. The budget dropdown is gone —
+enquiries now say which of the three practices they need instead.
 
 ## Content provenance
 
