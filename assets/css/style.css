@@ -1099,27 +1099,47 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wsvc__card:hover h4 { color: var(--copper); }
 
 /* ---- "What we train" ---- */
-.wtrain { margin-top: clamp(34px, 4.4vw, 56px); padding-top: clamp(22px, 2.6vw, 32px); border-top: 1px solid var(--ink); }
-.wtrain__title { color: var(--muted); margin-bottom: clamp(20px, 2.4vw, 28px); }
-.wtrain__cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 36px); }
-.wtrain__coltitle { color: var(--muted); font-weight: 600; margin: 0 0 16px; }
-.wtrain__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 15px; }
-.wtrain__row {
-  display: flex; align-items: center; gap: 13px;
-  font-size: .9375rem; color: var(--graphite);
+/* Three stacked groups. One skill per tile: mark above, name beneath. */
+.wtrain {
+  margin-top: clamp(34px, 4.4vw, 56px);
+  padding-top: clamp(22px, 2.6vw, 32px);
+  border-top: 1px solid var(--ink);
 }
-.wtrain__mark {
-  flex: none;
-  width: 44px;
-  display: flex; align-items: center; gap: 5px;
-  transition: transform 260ms var(--ease-out);
-}
-.wtrain__row:hover .wtrain__mark { transform: translateY(-2px); }
+.wtrain__title { color: var(--muted); margin-bottom: clamp(22px, 2.8vw, 32px); }
 
-.ico { width: 28px; height: 28px; fill: currentColor; }
-/* Where two marks share a row (HTML / CSS, Linux / Apache) they sit smaller */
-.wtrain__mark:has(.ico + .ico) .ico { width: 20px; height: 20px; }
-.ico--line { fill: none; color: var(--graphite); width: 27px; height: 27px; stroke-width: 1.5; }
+.wtrain__group + .wtrain__group { margin-top: clamp(28px, 3.4vw, 40px); }
+.wtrain__grouptitle {
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 clamp(16px, 1.8vw, 22px);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.wtrain__grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: clamp(18px, 2.2vw, 28px) clamp(10px, 1.4vw, 18px);
+}
+
+.wtrain__tile {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 11px;
+  text-align: center;
+  transition: transform 300ms var(--ease-out);
+}
+.wtrain__tile:hover { transform: translateY(-3px); }
+
+.wtrain__label {
+  font-size: .8125rem;
+  line-height: 1.35;
+  color: var(--graphite);
+  max-width: 13ch;
+}
+
+.ico { width: 40px; height: 40px; fill: currentColor; }
+.ico--line { fill: none; color: var(--ink); width: 38px; height: 38px; }
 
 /* Brand marks (Simple Icons) render monochrome to match the black-and-white
    scheme. Each brand's official colour is kept here, commented, so colour can
@@ -1136,11 +1156,10 @@ body[data-hero="flat"] main { padding-top: 0; }
 @media (max-width: 1000px) {
   .wsvc { grid-template-columns: 1fr; row-gap: 26px; }
   .wsvc__panels { border-left: 0; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
-  .wtrain__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 640px) {
   .wsvc__grid { grid-template-columns: 1fr; }
-  .wtrain__cols { grid-template-columns: 1fr; }
+  .wtrain__grid { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
   .wsvc__cta { display: block; text-align: center; }
 }
 

@@ -67,8 +67,9 @@ reads.
   2. Training & Consultation
   3. Project Management
 
-  Category 02 additionally carries the "What we train" block: three columns
-  (Engineering / Delivery / Programme) of skills, each with a mark.
+  Category 02 additionally carries the "What we train" block: three stacked
+  groups — Development (11), Project management (8), Training (6). One skill per
+  tile, 40px mark above, name beneath.
 
 ### Skill logos
 
@@ -85,9 +86,15 @@ request, no CDN dependency — in each brand's **official colour**:
 | Apache | `#D22128` |
 | JavaScript / Linux | monochrome (see below) |
 
-Marks sit bare on the page at 28px — no tile, no border — and now render in ink
-to match the black-and-white scheme. Each brand's official colour is kept as a
-comment beside its rule in `style.css`, so colour can be restored per mark.
+Marks sit bare at 40px — no tile, no border — rendered in ink to match the
+black-and-white scheme. Each brand's official colour is kept as a comment beside
+its rule in `style.css`, so colour can be restored per mark.
+
+Nine of the eleven Development skills are real brand logos: PHP, JavaScript,
+HTML5, CSS3, jQuery, MySQL, Magento, Linux, Apache. REST APIs and Web security
+have none, and neither does anything under Project management or Training —
+those are practices, not products, so no vendor publishes a mark for them. They
+use line glyphs drawn to the same optical weight.
 
 **The remaining fourteen have no official logo** — REST APIs, Web security, and
 every item under Delivery and Programme are concepts, not products. Those use
