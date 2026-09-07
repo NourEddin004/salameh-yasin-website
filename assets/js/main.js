@@ -32,7 +32,7 @@
       }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 })
     : null;
 
-  var REVEAL_SEL = ".rv, .rv-stagger, .reveal-lines, .lanes__inner, .steps, .cta, .portrait, .map-wrap, [data-count]";
+  var REVEAL_SEL = ".rv, .rv-stagger, .reveal-lines, .lanes__inner, .steps, .cta, .hero__mosaic, .map-wrap, [data-count]";
 
   function observeAll(root) {
     $$(REVEAL_SEL, root).forEach(function (el) {
@@ -115,28 +115,30 @@
     });
   }
 
-  /* -------------------------------------------- 5. portrait: soft parallax */
-  var portraitImg = $(".portrait__frame img");
-  if (portraitImg && !REDUCED) {
-    var pf = $(".portrait");
-    window.addEventListener("scroll", function () {
-      var r = pf.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return;
-      var mid = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
-      portraitImg.style.transform = "translate3d(0," + (mid * -16).toFixed(2) + "px,0) scale(1.06)";
-    }, { passive: true });
-  }
-
-  // Portrait file is optional — fall back to the typographic placeholder.
-  $$(".portrait__frame img").forEach(function (img) {
+  /* ------------------------------------------ 5. hero mosaic photo tile */
+  // The portrait file is optional — fall back to the typographic placeholder
+  // inside the same tile so the mosaic never shows a broken image.
+  $$(".tile--photo img").forEach(function (img) {
     function fail() {
+      var tile = img.closest(".tile--photo");
       img.remove();
-      var ph = $(".portrait__ph");
+      var ph = tile && tile.querySelector(".tile__ph");
       if (ph) ph.hidden = false;
     }
     img.addEventListener("error", fail);
     if (img.complete && img.naturalWidth === 0) fail();
   });
+
+  // Soft parallax on the photo tile once a real image is present.
+  var photo = $(".tile--photo img");
+  if (photo && !REDUCED) {
+    window.addEventListener("scroll", function () {
+      var r = photo.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      var mid = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+      photo.style.transform = "translate3d(0," + (mid * -14).toFixed(2) + "px,0) scale(1.06)";
+    }, { passive: true });
+  }
 
   /* ------------------------------------------------- 6. services tab group */
   $$("[data-tabs]").forEach(function (group) {
