@@ -1060,9 +1060,20 @@ body[data-hero="flat"] main { padding-top: 0; }
 
 /* ---- right panels ---- */
 .wsvc__panels {
-  border-left: 1px solid var(--ink);
-  padding-left: clamp(16px, 1.9vw, 26px);
+  --wsvc-pad: clamp(16px, 1.9vw, 26px);
+  position: relative;
+  padding-left: var(--wsvc-pad);
   min-height: 320px;
+}
+/* The rule sits against the cards' left edge rather than on the box edge, so
+   the padding reads as gap on the rail side and the cards keep their width. */
+.wsvc__panels::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: calc(var(--wsvc-pad) - 1px);
+  width: 1px;
+  background: var(--ink);
 }
 .wsvc__panel[hidden] { display: none !important; }
 .wsvc__panel { animation: panelIn 520ms var(--ease-out); }
@@ -1161,7 +1172,8 @@ body[data-hero="flat"] main { padding-top: 0; }
 
 @media (max-width: 1000px) {
   .wsvc { grid-template-columns: 1fr; row-gap: 26px; }
-  .wsvc__panels { border-left: 0; border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
+  .wsvc__panels { border-top: 1px solid var(--ink); padding-left: 0; padding-top: 28px; }
+  .wsvc__panels::before { display: none; }
 }
 @media (max-width: 640px) {
   .wsvc__grid { grid-template-columns: 1fr; }
