@@ -15,19 +15,22 @@
   --rule:       #E4E4E4;
   --rule-soft:  #F1F1F1;
 
-  /* The page stays monochrome: --copper/--teal remain ink, so eyebrows,
-     section numbers, rules and marks are all black. */
-  --copper:     #0B0B0B;
-  --copper-lo:  #F2F2F2;
-  --teal:       #0B0B0B;
-  --teal-lo:    #F2F2F2;
+  /* Red is a primary alongside white and black, not a stray accent. The two
+     accent tokens now carry it, which puts red through every eyebrow, section
+     number, tag, chip, step marker, map pin and pillar reference at once. */
+  --copper:     #D42A20;
+  --copper-lo:  #FCEBE9;
+  --teal:       #D42A20;
+  --teal-lo:    #FCEBE9;
 
-  /* One accent, one job. Used ONLY for actions and active states — primary
-     buttons, the active services row, hover, focus and selection. Never for
-     decoration. 5.1:1 on white, so it is safe for text and for white-on-red.
-     Set --action to var(--ink) to return the site to pure black and white. */
-  --action:     #D42A20;
-  --action-lo:  #FCEBE9;
+  /* Actions and active states. Same red — kept as its own token so buttons and
+     hover can be retuned without touching the decorative uses above.
+     5.1:1 on white, so it is safe as text and carries white labels. */
+  --action:      #D42A20;
+  --action-lo:   #FCEBE9;
+  /* #D42A20 only reaches 3.7:1 on the ink ground, so dark panels use a lighter
+     red instead — 5.9:1 on #0B0B0B. */
+  --action-dark: #FF6B5E;
 
   /* Per-page accent. Overridden on pillar pages via [data-accent]. */
   --accent:     var(--copper);
@@ -238,6 +241,7 @@ p:last-child { margin-bottom: 0; }
               background-color 240ms var(--ease);
 }
 .nav__cta:hover { color: var(--paper); background: var(--action); border-color: var(--action); }
+.nav__cta { color: var(--action); border-color: color-mix(in srgb, var(--action) 42%, var(--rule)); }
 .nav__cta[aria-current="page"] { color: var(--ink); border-color: var(--ink); }
 
 /* Scroll progress hairline sitting on the nav's bottom edge */
@@ -336,9 +340,9 @@ p:last-child { margin-bottom: 0; }
 .btn--ghost::before { background: var(--ink); }
 .btn--ghost:hover { border-color: var(--ink); }
 /* On an ink ground the accent would vanish, so this one inverts. */
-.btn--onink { --btn-bd: var(--paper); --btn-bg: var(--paper); --btn-fg: var(--ink); }
-.btn--onink::before { background: transparent; }
-.btn--onink:hover { color: var(--ink); border-color: var(--paper); opacity: .84; }
+.btn--onink { --btn-bd: var(--action); --btn-bg: var(--action); --btn-fg: var(--paper); }
+.btn--onink::before { background: var(--paper); }
+.btn--onink:hover { color: var(--ink); border-color: var(--paper); }
 
 .btn__arrow { transition: transform 380ms var(--ease-out); }
 .btn:hover .btn__arrow { transform: translateX(4px); }
@@ -471,8 +475,8 @@ body[data-hero="flat"] main { padding-top: 0; }
   text-wrap: nowrap;
 }
 .fl-title span { display: block; }
-.fl-title__a { color: var(--fl-pink); }
-.fl-title__b { color: var(--fl-grey); }
+.fl-title__a { color: var(--ink); }
+.fl-title__b { color: var(--action); }
 
 .fl-sub {
   font-family: var(--body);
@@ -573,7 +577,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   color: var(--muted);
   transition: color 200ms ease;
 }
-.fl-proof__logo:hover { color: var(--ink); }
+.fl-proof__logo:hover { color: var(--action); }
 
 @keyframes fl-marquee-left {
   from { transform: translate3d(0, 0, 0); }
@@ -872,7 +876,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 .vtl__merge .vtl__org { color: var(--paper); }
 .vtl__merge .vtl__role { color: color-mix(in srgb, var(--paper) 74%, transparent); }
 .vtl__merge .vtl__desc { color: color-mix(in srgb, var(--paper) 62%, transparent); }
-.vtl__merge .vtl__dates { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+.vtl__merge .vtl__dates { color: var(--action-dark); }
 
 /* ------------------------------------------------------- 13. LOGO WALL     */
 /* minmax(0,1fr) + min-width:0 stop the grid track from sizing itself to the
@@ -909,7 +913,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   transition: color 300ms var(--ease), opacity 300ms var(--ease);
 }
 .marquee__track:hover .logo { opacity: .42; }
-.logo:hover { color: var(--ink); opacity: 1; }
+.logo:hover { color: var(--action); opacity: 1; }
 
 /* -------------------------------------------------- 14. SERVICES (vardot)  */
 /* Tabbed service groups, per vardot.com's tabbed "How We Can Help" pattern. */
@@ -1072,11 +1076,11 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .wsvc__cta::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: var(--ink);
+  background: var(--action);
   transform: scaleY(0); transform-origin: bottom;
   transition: transform 420ms var(--ease-out);
 }
-.wsvc__cta:hover { color: var(--paper); }
+.wsvc__cta:hover { color: var(--paper); border-color: var(--action); }
 .wsvc__cta:hover::before { transform: scaleY(1); }
 
 /* ---- right panels ---- */
@@ -1161,7 +1165,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .wtrain__tile:hover { transform: translateY(-3px); }
 .wtrain__tile .ico { transition: transform 320ms var(--ease-out); }
-.wtrain__tile:hover .ico { transform: scale(1.08); }
+.wtrain__tile:hover .ico { transform: scale(1.08); color: var(--action); }
 
 .wtrain__label {
   font-size: .8125rem;
@@ -1290,7 +1294,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 .cta__inner { position: relative; display: flex; flex-wrap: wrap; gap: 32px; align-items: end; justify-content: space-between; }
 .cta__title { max-width: 16ch; }
 .cta__sub { color: color-mix(in srgb, var(--paper) 62%, transparent); margin-top: 1rem; max-width: 44ch; }
-.cta .eyebrow { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+.cta .eyebrow { color: var(--action-dark); }
 
 .foot { border-top: 1px solid var(--rule); padding-block: clamp(40px, 5vw, 64px); }
 .foot__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
@@ -1327,7 +1331,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   transition: all 280ms var(--ease);
 }
 .filter:hover { color: var(--ink); border-color: var(--graphite); }
-.filter[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.filter[aria-pressed="true"] { background: var(--action); border-color: var(--action); color: var(--paper); }
 
 .rec {
   display: grid;
@@ -1392,7 +1396,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   border-radius: 3px;
   padding: clamp(28px, 4vw, 44px);
 }
-.contact-panel .eyebrow { color: color-mix(in srgb, var(--paper) 72%, transparent); }
+.contact-panel .eyebrow { color: var(--action-dark); }
 .contact-row {
   display: flex; justify-content: space-between; gap: 16px;
   padding-block: 16px;
@@ -1400,7 +1404,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .contact-row:last-of-type { border-bottom: 0; }
 .contact-row a { color: var(--paper); position: relative; }
-.contact-row a:hover { color: var(--paper); opacity: .7; }
+.contact-row a:hover { color: var(--action-dark); opacity: 1; }
 .contact-row span:first-child { color: color-mix(in srgb, var(--paper) 52%, transparent); }
 
 .slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap: 8px; margin-top: 14px; }
@@ -1412,9 +1416,9 @@ body[data-hero="flat"] main { padding-top: 0; }
   text-align: center; line-height: 1.5;
   transition: all 260ms var(--ease);
 }
-.slotbtn:hover:not(:disabled) { border-color: var(--paper); color: var(--paper); transform: translateY(-2px); }
-.slotbtn[aria-pressed="true"] { background: var(--paper); border-color: var(--paper); color: var(--ink); }
-.slotbtn[aria-pressed="true"] b { color: var(--ink); }
+.slotbtn:hover:not(:disabled) { border-color: var(--action-dark); color: var(--action-dark); transform: translateY(-2px); }
+.slotbtn[aria-pressed="true"] { background: var(--action); border-color: var(--action); color: var(--paper); }
+.slotbtn[aria-pressed="true"] b { color: var(--paper); }
 .slotbtn:disabled { opacity: .28; cursor: not-allowed; }
 .slotbtn b { display: block; font-size: .8125rem; color: var(--paper); font-weight: 500; }
 

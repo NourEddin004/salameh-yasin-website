@@ -23,33 +23,34 @@ python3 -m http.server 4173
 
 ## Design system
 
-Black and white, plus one accent that only marks actions.
+White, black and red — red is a primary, not an accent.
 
 - Paper `#FFFFFF` · raised `#FAFAFA` · ink `#0B0B0B` · graphite `#2E2E2E` · muted `#6E6E6E` · rule `#E4E4E4`
-- Action `#D42A20` — 5.1:1 on white, so it is safe for text and for white-on-red
+- Red `#D42A20` — 5.06:1 on white, and white-on-red is the same, so it is safe
+  as text and carries white button labels
+- Red on ink `#FF6B5E` — `#D42A20` only reaches 3.89:1 on the ink ground, so
+  dark panels use the lighter red instead (7.05:1)
 - Instrument Serif (display) · Inter (body) · JetBrains Mono (metadata)
 
-`--copper` and `--teal` remain ink, so eyebrows, section numbers, rules, marks
-and the pillar coding are all black. `--action` is the only colour on the site
-and appears in exactly twelve places: primary buttons, the hero button, the
-active services row (bar and number), service-card hover, text-link hover, the
-nav scroll-progress bar, the nav Contact hover, `::selection`, the focus ring
-and form-field focus.
+Red runs through four tokens. `--copper` and `--teal` carry the decorative uses
+— every eyebrow, section number, tag, chip, step marker, map pin and pillar
+reference. `--action` carries interaction — primary buttons, the active services
+row, hover, focus, `::selection`, form focus. `--action-dark` covers anything
+sitting on an ink panel.
 
-Set `--action: var(--ink)` to return the site to pure black and white. Change
-its value to recolour every action at once.
+Where it shows: the hero headline sets "Technical" in black over "Capability."
+in red, the stat numerals are red, the nav Contact reads red at rest, the CTA
+band's button is red, and the experience filters and calendar slots fill red
+when active.
 
-This follows the category: of twelve peer sites measured (Clay, 42, Deloitte
-Digital, Monterail, Work & Co, thoughtbot, Netguru, Le Wagon, General Assembly,
-Thoughtworks, Pluralsight, Vardot), eleven lead with a near-black or near-white
-ground and spend a single saturated colour on the primary action. Only Vardot
-leads with colour.
+Changing `--copper`, `--teal` and `--action` together recolours the whole site.
+Setting all three to `var(--ink)` returns it to pure black and white.
 
-Two consequences of collapsing the accent to ink, both handled: elements that
-sat accent-on-ink (the CTA band's button and eyebrow, the contact panel, the
-calendar slots, the merged timeline card) invert to paper instead, and the
-hero's two-tone headline uses `#8C8C8C` for its second line so the split still
-reads.
+### Cache busting
+
+`style.css` and `main.js` are linked with `?v=2`. **Bump that number on every
+page whenever either file changes** — without it a browser will happily keep
+running an old copy and the site will look half-updated.
 
 ## Where the inspiration landed
 
