@@ -116,7 +116,7 @@ drawn line glyphs in ink.
 
 ## Hero tile images
 
-Ten monochrome 3:4 photographs, ~410KB total. The columns are `display:none`
+Ten full-colour 3:4 photographs, ~473KB total. The columns are `display:none`
 below 1180px, so the images carry `data-src` and `main.js` attaches the real
 `src` only when the wide media query matches — small screens download none of
 it. That means no hero imagery without JavaScript, which is an acceptable trade
@@ -138,8 +138,8 @@ hovering a column pauses its scroll so a photograph can be looked at.
 Blocking (from the build brief, §12):
 
 1. **Hero imagery is stock, not his.** The ten tiles in `assets/img/hero-*.jpg`
-   are Unsplash photographs (free licence, commercial use permitted), converted
-   to monochrome and cropped to 3:4. They are deliberately atmospheric — screens,
+   are Unsplash photographs (free licence, commercial use permitted), in their
+   own colours and cropped to 3:4. They are deliberately atmospheric — screens,
    whiteboards, workspaces, a full lecture room — and **not** posed groups, so
    nothing implies these are his cohorts or his classrooms. Replace them with
    real Orange / Upskills / HTU photography when it exists: same filenames, same
@@ -159,6 +159,19 @@ Blocking (from the build brief, §12):
 
 Also worth fixing regardless of the site: his LinkedIn headline reads
 "Tranformation" and "Business Enterprers". Both are live and public right now.
+
+## Contact dialog
+
+Every "Contact" / "Book a consultation" link still points at `contact.html`, so
+it works with JavaScript off and stays a real, linkable, shareable page. With
+JavaScript on, `main.js` intercepts the click and opens the same form in a
+native `<dialog>` — which brings focus trapping, Esc, backdrop inertness and
+scroll locking for free rather than hand-rolled. Modified clicks (cmd/ctrl,
+middle button) still open the page in a new tab.
+
+The dialog markup is built in JS rather than pasted into seven files, so there
+is one copy to maintain. Its form carries the class `.enquiry-form` and shares
+the submit handler with the page form.
 
 ## Form handling
 
