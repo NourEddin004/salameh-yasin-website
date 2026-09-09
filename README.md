@@ -106,6 +106,14 @@ use line glyphs drawn to the same optical weight.
 If a specific concept should carry a real mark instead (e.g. a Scrum.org or PMI
 logo), say which and it can be swapped in.
 
+## Hero tile images
+
+Ten monochrome 3:4 photographs, ~410KB total. The columns are `display:none`
+below 1180px, so the images carry `data-src` and `main.js` attaches the real
+`src` only when the wide media query matches — small screens download none of
+it. That means no hero imagery without JavaScript, which is an acceptable trade
+for decorative tiles; the hero's text, stats and CTA are all in the HTML.
+
 ## Animation
 
 All motion respects `prefers-reduced-motion` and degrades to static. Includes:
@@ -114,15 +122,20 @@ reveals, the hero's opposed-direction tile columns and vertical text strip,
 stat count-up, section rule draws, card hover rules,
 paused-on-hover logo marquees, SVG rail draw-in with staggered nodes, a vertical
 spine that fills with scroll, animated tab indicator, filter transitions, and a
-radial glow on the CTA band.
+radial glow on the CTA band. Hero tiles lift and scale under the cursor, and
+hovering a column pauses its scroll so a photograph can be looked at.
 
 ## Before this goes live
 
 Blocking (from the build brief, §12):
 
-1. **Hero imagery** — the two scrolling columns are placeholder tiles. Swap each
-   `.fl-tile` for an `<img>` at 266x343 once real photography exists (project
-   shots, cohort/campus photos, a portrait). The scroll animation needs no change.
+1. **Hero imagery is stock, not his.** The ten tiles in `assets/img/hero-*.jpg`
+   are Unsplash photographs (free licence, commercial use permitted), converted
+   to monochrome and cropped to 3:4. They are deliberately atmospheric — screens,
+   whiteboards, workspaces, a full lecture room — and **not** posed groups, so
+   nothing implies these are his cohorts or his classrooms. Replace them with
+   real Orange / Upskills / HTU photography when it exists: same filenames, same
+   532x686 source, nothing else to change.
 2. **CV PDF** — drop at `assets/Salameh-Yasin-CV.pdf` to activate the download button.
 3. **Testimonials** — two to four, with permission. Slots are built and styled on
    `index.html` and `consulting.html`.

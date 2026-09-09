@@ -466,8 +466,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   font-weight: 400;
   font-size: clamp(44px, 7.4vw, 106px);
   line-height: .95;   /* 2 x 95 = 190, matching the reference block height */
-  letter-spacing: -0.01em;   /* serif caps need less negative tracking */
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
   margin: 0 0 32px;
   text-wrap: nowrap;
 }
@@ -618,6 +617,8 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .fl-col__track--down { animation: fl-marquee-down 40s linear infinite; }
 .fl-col__track--up   { animation: fl-marquee-up   40s linear infinite; }
+/* Hold the column still under the cursor so a tile can actually be looked at */
+.fl-col:hover .fl-col__track { animation-play-state: paused; }
 
 @keyframes fl-marquee-up {
   from { transform: translate3d(0, 0, 0); }
@@ -628,40 +629,35 @@ body[data-hero="flat"] main { padding-top: 0; }
   to   { transform: translate3d(0, 0, 0); }
 }
 
-/* Placeholder tiles standing in for the original's photography */
+/* Photographic tiles. Monochrome to match the scheme; they lift and sharpen
+   under the cursor so the column feels alive rather than decorative. */
 .fl-tile {
   flex: none;
+  margin: 0;
   width: 266px; height: 343px;
   border-radius: 6px;
-  border: 1px solid var(--rule);
-  background:
-    repeating-linear-gradient(-45deg, transparent 0 13px, var(--rule-soft) 13px 14px),
-    var(--raised);
-  display: flex; flex-direction: column; justify-content: space-between;
-  padding: 16px;
   overflow: hidden;
+  background: var(--rule-soft);
+  position: relative;
+  transition: transform 520ms var(--ease-out), box-shadow 520ms var(--ease);
 }
-.fl-tile__k {
-  font-family: var(--mono);
-  font-size: 10px; font-weight: 500;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--muted);
+.fl-tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(1);
+  transition: transform 900ms var(--ease-out), filter 520ms var(--ease);
 }
-.fl-tile__box {
-  flex: 1;
-  margin: 12px 0;
-  border: 1px dashed var(--rule);
-  border-radius: 4px;
-  display: grid; place-content: center;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: .14em; text-transform: uppercase;
+/* Hairline sits above the photo rather than on the box, so the crop stays square */
+.fl-tile::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.10);
+  pointer-events: none;
 }
-.fl-tile--a { border-color: color-mix(in srgb, var(--copper) 40%, var(--rule)); }
-.fl-tile--a .fl-tile__k { color: var(--copper); }
-.fl-tile--b { border-color: color-mix(in srgb, var(--teal) 36%, var(--rule)); }
-.fl-tile--b .fl-tile__k { color: var(--teal); }
+.fl-tile:hover { transform: translateY(-4px); box-shadow: 0 18px 34px -24px rgba(0,0,0,.5); }
+.fl-tile:hover img { transform: scale(1.06); filter: grayscale(1) contrast(1.08); }
 
 /* --------------------------------------------------------- hero responsive */
 @media (max-width: 1180px) {
@@ -1026,6 +1022,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 
 .wsvc__item {
   position: relative;
+  cursor: pointer;
   display: flex; gap: 14px; align-items: flex-start;
   width: 100%;
   background: none; border: 0; cursor: pointer;
@@ -1044,12 +1041,15 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 .wsvc__item:hover { background: color-mix(in srgb, var(--rule-soft) 55%, transparent); }
 .wsvc__item[aria-selected="true"] { background: var(--rule-soft); }
+.wsvc__item:hover .wsvc__name,
+.wsvc__item[aria-selected="true"] .wsvc__name { transform: translateX(3px); }
 .wsvc__item[aria-selected="true"]::before { transform: scaleX(1); }
 
 .wsvc__n { color: var(--muted); padding-top: 11px; flex: none; }
 .wsvc__item[aria-selected="true"] .wsvc__n { color: var(--action); }
 .wsvc__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .wsvc__name {
+  transition: transform 380ms var(--ease-out);
   font-family: var(--display);
   font-size: clamp(1.35rem, 2vw, 1.75rem);
   line-height: 1.12; letter-spacing: -.02em;
@@ -1160,6 +1160,8 @@ body[data-hero="flat"] main { padding-top: 0; }
   transition: transform 300ms var(--ease-out);
 }
 .wtrain__tile:hover { transform: translateY(-3px); }
+.wtrain__tile .ico { transition: transform 320ms var(--ease-out); }
+.wtrain__tile:hover .ico { transform: scale(1.08); }
 
 .wtrain__label {
   font-size: .8125rem;

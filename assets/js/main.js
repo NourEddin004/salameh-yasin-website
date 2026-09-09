@@ -115,8 +115,24 @@
     });
   }
 
-  /* --------------------------- 5. (hero photo tile removed — the replica hero
-     uses placeholder tiles with no <img>, so no fallback is needed here) */
+  /* ------------------------------------------- 5. hero tile photography */
+  // The tile columns are display:none below 1180px, but a plain src would
+  // still be fetched there — ~400KB for something nobody sees. Attach the
+  // src only when the columns are actually in play.
+  var tileImgs = $$(".fl-tile img[data-src]");
+  if (tileImgs.length) {
+    var wide = window.matchMedia("(min-width: 1181px)");
+    function loadTiles() {
+      if (!wide.matches) return;
+      tileImgs.forEach(function (img) {
+        if (img.getAttribute("src")) return;
+        img.src = img.getAttribute("data-src");
+      });
+    }
+    loadTiles();
+    if (wide.addEventListener) wide.addEventListener("change", loadTiles);
+    else if (wide.addListener) wide.addListener(loadTiles);
+  }
 
   /* ------------------------------------------------- 6. services tab group */
   $$("[data-tabs]").forEach(function (group) {
