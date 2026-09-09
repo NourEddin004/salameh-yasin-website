@@ -90,22 +90,29 @@ running an old copy and the site will look half-updated.
 
 ### Skill logos
 
-Development skills use the **real brand marks** from
-[Simple Icons](https://simpleicons.org) (CC0), inlined as SVG — no external
-request, no CDN dependency.
+The nine Development marks are the **real full-colour brand logos**, taken from
+[devicon](https://devicon.dev) and served from `assets/img/logos/` (56KB total):
 
-Marks sit bare at 40px — no tile, no border — rendered in ink to match the
-black-and-white scheme. Each brand's official colour is kept as a comment beside
-its rule in `style.css`, so colour can be restored per mark.
+| Mark | Colours |
+|---|---|
+| PHP | `#777BB3` with the wordmark gradient |
+| JavaScript | `#F0DB4F` square, `#323330` letters — the true two-tone mark |
+| HTML5 | `#E44D26` / `#F16529` shield |
+| CSS3 | `#1572B6` / `#33A9DC` shield |
+| jQuery | `#0868AC` |
+| MySQL | `#00618A` dolphin |
+| Magento | `#F26322` |
+| Apache | `#BD202E` feather with gradients |
+| Linux | full-colour Tux |
 
-Nine of the eleven Development skills are real brand logos: PHP, JavaScript,
-HTML5, CSS3, jQuery, MySQL, Magento, Linux, Apache. REST APIs and Web security
-have none, and neither does anything under Project management or Training —
-those are practices, not products, so no vendor publishes a mark for them. They
-use line glyphs drawn to the same optical weight.
+They are files rather than inline SVG for one reason: Tux as full-colour SVG is
+a 194KB illustration, far too heavy to inline on two pages. It ships as a 96px
+PNG (8KB) instead; the other eight stay SVG and scale cleanly.
 
-If a specific concept should carry a real mark instead (e.g. a Scrum.org or PMI
-logo), say which and it can be swapped in.
+The marks carry their own colours, so no CSS tints them. **The remaining
+sixteen entries have no official logo** — REST APIs, Web security and everything
+under Training and Project management are practices, not products. Those stay as
+drawn line glyphs in ink.
 
 ## Hero tile images
 

@@ -1175,19 +1175,21 @@ body[data-hero="flat"] main { padding-top: 0; }
 }
 
 .ico { width: 40px; height: 40px; fill: currentColor; }
+img.ico { fill: none; }
 .ico--line { fill: none; color: var(--ink); width: 38px; height: 38px; }
 
-/* Brand marks (Simple Icons) render monochrome to match the black-and-white
-   scheme. Each brand's official colour is kept here, commented, so colour can
-   be restored by swapping the value in. */
-.ico--php        { color: var(--ink); }  /* #777BB4 */
-.ico--javascript { color: var(--ink); }  /* #F7DF1E */
-.ico--html5      { color: var(--ink); }  /* #E34F26 */
-.ico--css3       { color: var(--ink); }  /* #1572B6 */
-.ico--mysql      { color: var(--ink); }  /* #4479A1 */
-.ico--magento    { color: var(--ink); }  /* #EE672F */
-.ico--linux      { color: var(--ink); }  /* #FCC624 */
-.ico--apache     { color: var(--ink); }  /* #D22128 */
+/* Brand marks are the real full-colour logo files (devicon), served from
+   assets/img/logos rather than inlined — Tux alone is a 194KB illustration as
+   SVG, so it ships as a small raster instead. They carry their own colours, so
+   nothing here tints them. */
+.ico--brand {
+  width: 40px; height: 40px;
+  object-fit: contain;
+  display: block;
+  transition: transform 320ms var(--ease-out);
+}
+/* Only the drawn concept glyphs follow the text colour */
+.wtrain__tile:hover .ico--brand { color: inherit; }
 
 @media (max-width: 1000px) {
   .wsvc { grid-template-columns: 1fr; row-gap: 26px; }
