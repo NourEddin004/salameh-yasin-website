@@ -32,6 +32,12 @@ White, black and red — red is a primary, not an accent.
   dark panels use the lighter red instead (7.05:1)
 - Instrument Serif (display) · Inter (body) · JetBrains Mono (metadata)
 
+**Measure.** One pair of tokens sets the width of everything: `--wrap: 1440px`
+and `--gutter: 12px` (16px below 700px). The nav, every section and the footer
+all read them, so content runs 12→1428 at a 1440 viewport and nothing is inset
+relative to anything else. The hero and services blocks used to hardcode this;
+they now read the tokens too, so there is a single place to change it.
+
 Red runs through four tokens. `--copper` and `--teal` carry the decorative uses
 — every eyebrow, section number, tag, chip, step marker, map pin and pillar
 reference. `--action` carries interaction — primary buttons, the active services
