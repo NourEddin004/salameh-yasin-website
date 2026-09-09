@@ -15,13 +15,19 @@
   --rule:       #E4E4E4;
   --rule-soft:  #F1F1F1;
 
-  /* Accents collapse to ink in the monochrome scheme. Named tokens are kept
-     so the pillar coding and every accent reference still resolve; restoring
-     colour is a matter of changing these four values. */
+  /* The page stays monochrome: --copper/--teal remain ink, so eyebrows,
+     section numbers, rules and marks are all black. */
   --copper:     #0B0B0B;
   --copper-lo:  #F2F2F2;
   --teal:       #0B0B0B;
   --teal-lo:    #F2F2F2;
+
+  /* One accent, one job. Used ONLY for actions and active states — primary
+     buttons, the active services row, hover, focus and selection. Never for
+     decoration. 5.1:1 on white, so it is safe for text and for white-on-red.
+     Set --action to var(--ink) to return the site to pure black and white. */
+  --action:     #D42A20;
+  --action-lo:  #FCEBE9;
 
   /* Per-page accent. Overridden on pillar pages via [data-accent]. */
   --accent:     var(--copper);
@@ -73,10 +79,10 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
 
-::selection { background: var(--copper); color: var(--paper); }
+::selection { background: var(--action); color: var(--paper); }
 
 :focus-visible {
-  outline: 2px solid var(--copper);
+  outline: 2px solid var(--action);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -231,14 +237,14 @@ p:last-child { margin-bottom: 0; }
   transition: color 240ms var(--ease), border-color 240ms var(--ease),
               background-color 240ms var(--ease);
 }
-.nav__cta:hover { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.nav__cta:hover { color: var(--paper); background: var(--action); border-color: var(--action); }
 .nav__cta[aria-current="page"] { color: var(--ink); border-color: var(--ink); }
 
 /* Scroll progress hairline sitting on the nav's bottom edge */
 .nav__progress {
   position: absolute; left: 0; bottom: -1px;
   height: 2px; width: 100%;
-  background: var(--ink);
+  background: var(--action);
   transform: scaleX(0); transform-origin: left;
   will-change: transform;
 }
@@ -322,7 +328,7 @@ p:last-child { margin-bottom: 0; }
 
 .btn--copper { --btn-bd: var(--copper); --btn-fg: var(--copper); }
 .btn--fill {
-  --btn-bg: var(--copper); --btn-bd: var(--copper); --btn-fg: var(--paper);
+  --btn-bg: var(--action); --btn-bd: var(--action); --btn-fg: var(--paper);
 }
 .btn--fill::before { background: var(--ink); }
 .btn--fill:hover { color: var(--paper); border-color: var(--ink); }
@@ -357,6 +363,7 @@ p:last-child { margin-bottom: 0; }
   transform: scaleX(0); transform-origin: right;
   transition: transform 380ms var(--ease-out);
 }
+.tlink:hover { color: var(--action); }
 .tlink:hover::after { transform: scaleX(1); transform-origin: left; }
 .tlink svg { transition: transform 380ms var(--ease-out); }
 .tlink:hover svg { transform: translateX(4px); }
@@ -495,8 +502,8 @@ body[data-hero="flat"] main { padding-top: 0; }
   cursor: pointer;
   transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
 }
-.fl-btn--primary { background: var(--fl-pink); color: var(--fl-white); }
-.fl-btn--primary:hover { background: #333333; }
+.fl-btn--primary { background: var(--action); color: var(--paper); }
+.fl-btn--primary:hover { background: #A81C14; }
 .fl-btn--ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .fl-btn--ghost:hover { background: var(--ink); color: var(--paper); }
 
@@ -1031,7 +1038,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wsvc__item::before {
   content: "";
   position: absolute; left: 0; top: 0; bottom: 0;
-  width: 4px; background: var(--copper);
+  width: 4px; background: var(--action);
   transform: scaleX(0); transform-origin: left;
   transition: transform 340ms var(--ease-out);
 }
@@ -1040,7 +1047,7 @@ body[data-hero="flat"] main { padding-top: 0; }
 .wsvc__item[aria-selected="true"]::before { transform: scaleX(1); }
 
 .wsvc__n { color: var(--muted); padding-top: 11px; flex: none; }
-.wsvc__item[aria-selected="true"] .wsvc__n { color: var(--copper); }
+.wsvc__item[aria-selected="true"] .wsvc__n { color: var(--action); }
 .wsvc__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .wsvc__name {
   font-family: var(--display);
@@ -1110,7 +1117,7 @@ body[data-hero="flat"] main { padding-top: 0; }
   transition: color 220ms var(--ease);
 }
 .wsvc__card p { color: var(--muted); font-size: .9375rem; line-height: 1.55; margin: 0; }
-.wsvc__card:hover h4 { color: var(--copper); }
+.wsvc__card:hover h4 { color: var(--action); }
 
 /* ---- "What we train" ---- */
 /* Three stacked groups. One skill per tile: mark above, name beneath. */
@@ -1372,8 +1379,8 @@ body[data-hero="flat"] main { padding-top: 0; }
 .field textarea { min-height: 132px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus {
   outline: none;
-  border-color: var(--copper);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--copper) 14%, transparent);
+  border-color: var(--action);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--action) 16%, transparent);
 }
 .field input::placeholder, .field textarea::placeholder { color: #A9A29B; }
 .form__note { color: var(--muted); font-size: .875rem; }

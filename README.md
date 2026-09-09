@@ -23,15 +23,27 @@ python3 -m http.server 4173
 
 ## Design system
 
-Black and white.
+Black and white, plus one accent that only marks actions.
 
 - Paper `#FFFFFF` · raised `#FAFAFA` · ink `#0B0B0B` · graphite `#2E2E2E` · muted `#6E6E6E` · rule `#E4E4E4`
+- Action `#D42A20` — 5.1:1 on white, so it is safe for text and for white-on-red
 - Instrument Serif (display) · Inter (body) · JetBrains Mono (metadata)
 
-The accent tokens (`--copper`, `--teal`) still exist but all resolve to ink, so
-every accent reference and the per-page `data-accent` pillar coding keeps
-working. **Restoring colour is a matter of changing those four values at the top
-of `style.css`** — nothing else is hard-coded.
+`--copper` and `--teal` remain ink, so eyebrows, section numbers, rules, marks
+and the pillar coding are all black. `--action` is the only colour on the site
+and appears in exactly twelve places: primary buttons, the hero button, the
+active services row (bar and number), service-card hover, text-link hover, the
+nav scroll-progress bar, the nav Contact hover, `::selection`, the focus ring
+and form-field focus.
+
+Set `--action: var(--ink)` to return the site to pure black and white. Change
+its value to recolour every action at once.
+
+This follows the category: of twelve peer sites measured (Clay, 42, Deloitte
+Digital, Monterail, Work & Co, thoughtbot, Netguru, Le Wagon, General Assembly,
+Thoughtworks, Pluralsight, Vardot), eleven lead with a near-black or near-white
+ground and spend a single saturated colour on the primary action. Only Vardot
+leads with colour.
 
 Two consequences of collapsing the accent to ink, both handled: elements that
 sat accent-on-ink (the CTA band's button and eyebrow, the contact panel, the
