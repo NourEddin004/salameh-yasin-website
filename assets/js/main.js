@@ -103,16 +103,27 @@
       drawer.classList.toggle("is-open", !open);
       document.body.style.overflow = !open ? "hidden" : "";
     });
+    function closeDrawer() {
+      burger.setAttribute("aria-expanded", "false");
+      drawer.classList.remove("is-open");
+      document.body.style.overflow = "";
+    }
     $$("a", drawer).forEach(function (a) {
-      a.addEventListener("click", function () {
-        burger.setAttribute("aria-expanded", "false");
-        drawer.classList.remove("is-open");
-        document.body.style.overflow = "";
-      });
+      a.addEventListener("click", closeDrawer);
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && drawer.classList.contains("is-open")) burger.click();
+      if (e.key === "Escape" && drawer.classList.contains("is-open")) {
+        closeDrawer();
+        burger.focus();
+      }
     });
+    // Match navigation.css: a desktop resize must release the mobile scroll lock.
+    var desktopNav = window.matchMedia("(min-width: 1101px)");
+    function syncDrawerLayout() {
+      if (desktopNav.matches) closeDrawer();
+    }
+    if (desktopNav.addEventListener) desktopNav.addEventListener("change", syncDrawerLayout);
+    else if (desktopNav.addListener) desktopNav.addListener(syncDrawerLayout);
   }
 
   /* ------------------------------------------- 5. hero tile photography */
@@ -319,77 +330,84 @@
         status.style.color = "var(--action)";
       }
       window.location.href = "mailto:salameh.yasin@yahoo.com"
-        + "?subject=" + encodeURIComponent("Enquiry via portfolio — " + (d.get("Organisation") || d.get("Name") || "New enquiry"))
+        + "?subject=" + encodeURIComponent("Consultancy project enquiry — " + (d.get("Organisation") || d.get("Name") || "New enquiry"))
         + "&body=" + encodeURIComponent(lines.join("\n"));
     });
   }
   $$("#enquiry, .enquiry-form").forEach(bindEnquiry);
 
-  /* --------------------------------------------- 12b. contact as a dialog */
-  // Every "Contact" / "Book a consultation" link still points at contact.html,
-  // so it works with JS off and remains a real, linkable page. With JS on the
-  // link is intercepted and the same form opens in a native <dialog>, which
-  // brings its own focus trap, Esc handling and inertness for free.
-  var dlg = null;
-
-  function buildDialog() {
-    if (dlg) return dlg;
-    dlg = document.createElement("dialog");
-    dlg.className = "cdlg";
-    dlg.innerHTML =
-      '<form method="dialog" class="cdlg__x">' +
-        '<button value="close" aria-label="Close">&times;</button>' +
-      '</form>' +
-      '<div class="cdlg__body">' +
-        '<span class="eyebrow">Contact</span>' +
-        '<h2 class="d3 cdlg__title">Tell me what you\'re building.</h2>' +
-        '<p class="cdlg__lead">Academy design, digital transformation, Agile adoption, or a technical team that needs to start shipping.</p>' +
-        '<form class="form enquiry-form">' +
-          '<div class="field"><label for="m-name">Name</label><input id="m-name" name="Name" required autocomplete="name"></div>' +
-          '<div class="field"><label for="m-email">Email</label><input id="m-email" name="Email" type="email" required autocomplete="email"></div>' +
-          '<div class="field"><label for="m-org">Organisation <span class="field__opt">optional</span></label><input id="m-org" name="Organisation" autocomplete="organization"></div>' +
-          '<div class="field"><label for="m-what">What are you building?</label><textarea id="m-what" name="What you are building" required></textarea></div>' +
-          '<div class="field"><label for="m-need">What do you need?</label>' +
-            '<select id="m-need" name="What you need" required>' +
-              '<option value="">Choose a service</option>' +
-              '<option>Development &amp; digital transformation</option>' +
-              '<option>Training &amp; consultation</option>' +
-              '<option>Project management</option>' +
-              '<option>Something else</option>' +
-            '</select></div>' +
-          '<button class="btn btn--fill" type="submit">Send enquiry <span class="btn__arrow" aria-hidden="true">&rarr;</span></button>' +
-          '<p class="form__note" role="status">This form opens your email client with the enquiry ready to send.</p>' +
-        '</form>' +
-        '<p class="cdlg__direct mono">Or go direct — ' +
-          '<a href="mailto:salameh.yasin@yahoo.com">salameh.yasin@yahoo.com</a> · ' +
-          '<a href="tel:+962776806986">+962 77 680 6986</a></p>' +
-      '</div>';
-    document.body.appendChild(dlg);
-    bindEnquiry(dlg.querySelector(".enquiry-form"));
-
-    // Click on the backdrop (outside the panel) closes it
-    dlg.addEventListener("click", function (e) {
-      if (e.target === dlg) dlg.close();
-    });
-    dlg.addEventListener("close", function () { document.body.style.overflow = ""; });
-    return dlg;
-  }
-
-  if (typeof HTMLDialogElement !== "undefined" && HTMLDialogElement.prototype.showModal) {
-    document.addEventListener("click", function (e) {
-      var a = e.target.closest('a[href^="contact.html"]');
-      if (!a) return;
-      // Let modified clicks (new tab / new window) behave normally
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-      e.preventDefault();
-      var d = buildDialog();
-      document.body.style.overflow = "hidden";
-      d.showModal();
-      var first = d.querySelector("input, select, textarea");
-      if (first) first.focus();
-    });
-  }
+  // Contact links navigate to the shared project enquiry page.
 
   /* ------------------------------------------------------------ 13. year */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  // Equal travel speed, independent of track length or viewport size.
+  var motionTracks = $$(".fl-proof__track, .fl-col__track, .marquee__track");
+  function syncMotionSpeed() {
+    var speed = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--motion-scroll-px")) || 40;
+    motionTracks.forEach(function (track) {
+      var rect = track.getBoundingClientRect();
+      var distance = (track.classList.contains("fl-col__track") ? rect.height : rect.width) / 2;
+      if (distance > 0) track.style.setProperty("--motion-loop-duration", (distance / speed) + "s");
+    });
+  }
+  if (typeof ResizeObserver !== "undefined") {
+    var motionObserver = new ResizeObserver(syncMotionSpeed);
+    motionTracks.forEach(function (track) { motionObserver.observe(track); });
+  } else { window.addEventListener("resize", syncMotionSpeed); }
+  window.addEventListener("load", syncMotionSpeed);
+  if (document.fonts) document.fonts.ready.then(syncMotionSpeed);
+  syncMotionSpeed();
+
+  // FLIP animation preserves the spatial relationship of filtered service cards.
+  var serviceCards = $$(".service-project");
+  var serviceFilters = $$("[data-service-filter]");
+  var serviceCount = $(".service-count");
+  var serviceAnimations = [];
+  var serviceExits = [];
+  function filterServices(key) {
+    serviceAnimations.forEach(function (animation) { animation.cancel(); });
+    serviceAnimations = [];
+    serviceExits.forEach(function (clone) { clone.remove(); });
+    serviceExits = [];
+    var grid = $(".service-portfolio__grid");
+    var gridRect = grid.getBoundingClientRect();
+    var before = new Map();
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var options = {duration:400,easing:"ease",fill:"both"};
+    serviceCards.forEach(function (card) {
+      if (!card.hidden) before.set(card, card.getBoundingClientRect());
+    });
+    serviceFilters.forEach(function (button) { button.setAttribute("aria-pressed", String(button.dataset.serviceFilter === key)); });
+    var visible = 0;
+    serviceCards.forEach(function (card) {
+      var show = key === "all" || card.dataset.serviceCategory === key;
+      var previous = before.get(card);
+      if (!show && previous && !reduce && card.animate) {
+        var clone = card.cloneNode(true);
+        clone.setAttribute("aria-hidden", "true");
+        clone.inert = true;
+        Object.assign(clone.style, {position:"absolute",left:(previous.left-gridRect.left)+"px",top:(previous.top-gridRect.top)+"px",width:previous.width+"px",height:previous.height+"px",margin:"0",pointerEvents:"none",zIndex:"1"});
+        grid.appendChild(clone);
+        serviceExits.push(clone);
+        var exitAnimation = clone.animate([{opacity:1,transform:"scale(1)"},{opacity:0,transform:"scale(0.001)"}],options);
+        exitAnimation.onfinish = function () { clone.remove(); };
+        serviceAnimations.push(exitAnimation);
+      }
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    serviceCards.forEach(function (card) {
+      if (card.hidden || reduce || !card.animate) return;
+      var previous = before.get(card), next = card.getBoundingClientRect();
+      var frames = previous
+        ? [{transform:"translate("+(previous.left-next.left)+"px,"+(previous.top-next.top)+"px)"},{transform:"translate(0,0)"}]
+        : [{opacity:0,transform:"scale(0.001)"},{opacity:1,transform:"scale(1)"}];
+      var animation = card.animate(frames, options);
+      animation.onfinish = function () { animation.cancel(); };
+      serviceAnimations.push(animation);
+    });
+    if (serviceCount) serviceCount.textContent = visible + " services";
+  }
+  serviceFilters.forEach(function (button) { button.addEventListener("click", function () { filterServices(button.dataset.serviceFilter); }); });
+  if (serviceCount) serviceCount.textContent = serviceCards.length + " services";
 })();
