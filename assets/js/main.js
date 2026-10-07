@@ -126,25 +126,6 @@
     else if (desktopNav.addListener) desktopNav.addListener(syncDrawerLayout);
   }
 
-  /* ------------------------------------------- 5. hero tile photography */
-  // The tile columns are display:none below 1180px, but a plain src would
-  // still be fetched there — ~400KB for something nobody sees. Attach the
-  // src only when the columns are actually in play.
-  var tileImgs = $$(".fl-tile img[data-src]");
-  if (tileImgs.length) {
-    var wide = window.matchMedia("(min-width: 1181px)");
-    function loadTiles() {
-      if (!wide.matches) return;
-      tileImgs.forEach(function (img) {
-        if (img.getAttribute("src")) return;
-        img.src = img.getAttribute("data-src");
-      });
-    }
-    loadTiles();
-    if (wide.addEventListener) wide.addEventListener("change", loadTiles);
-    else if (wide.addListener) wide.addListener(loadTiles);
-  }
-
   /* ------------------------------------------------- 6. services tab group */
   $$("[data-tabs]").forEach(function (group) {
     var tabs   = $$(".tab", group);
@@ -341,12 +322,12 @@
   /* ------------------------------------------------------------ 13. year */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
   // Equal travel speed, independent of track length or viewport size.
-  var motionTracks = $$(".fl-proof__track, .fl-col__track, .marquee__track");
+  var motionTracks = $$(".fl-proof__track, .marquee__track");
   function syncMotionSpeed() {
     var speed = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--motion-scroll-px")) || 40;
     motionTracks.forEach(function (track) {
       var rect = track.getBoundingClientRect();
-      var distance = (track.classList.contains("fl-col__track") ? rect.height : rect.width) / 2;
+      var distance = rect.width / 2;
       if (distance > 0) track.style.setProperty("--motion-loop-duration", (distance / speed) + "s");
     });
   }

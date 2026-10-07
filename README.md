@@ -17,17 +17,28 @@ The HTML pages and assets can also be served directly by a static web host.
 
 ## Current features
 
-- **Independent services:** the hero presents each service with its own scope,
-  roadmap and outcomes, alongside project and service-discovery links.
+- **Interactive hero:** drifting dots connect to the cursor and move away from it.
+  A rotating wheel presents Development, Training, Consulting and
+  Project Management as independent services around the visitor's goals.
+  Each card links to its service page. Hover or keyboard focus enlarges a card
+  and reveals more detail while the other cards shrink and gather on the
+  opposite arc. Small animations illustrate live coding, consulting questions,
+  completed training tasks and project-plan progress.
+  The wheel pauses for reading; card text stays upright. Mobile
+  shows the full descriptions without requiring hover. Motion respects reduced-motion
+  preferences and pauses when out of view or in a hidden tab. Cursor movement
+  smoothly accelerates the dots before they settle back to idle. Proof and recommendations sit in the
+  separate impact section.
 - **Dark and light themes:** navy, blue and white palettes, a compact sun/moon
   control, and a saved preference shared across pages through `localStorage`.
 - **Responsive navigation:** aligned wordmark, centered desktop links and a
   mobile drawer. Link descriptions appear on hover or keyboard focus and can
   be dismissed with Escape; the drawer shows the descriptions inline.
-- **Animated company panel:** a continuous horizontal logo track sits inside
-  the hero. Hover or keyboard focus pauses it. Reduced-motion preferences
+- **Animated company panel:** a continuous horizontal logo track sits in its
+  own founder-experience section between the hero and service details. Hover
+  or keyboard focus pauses it. Reduced-motion preferences
   replace the animation with a manually scrollable row and hide duplicate
-  logos. Hero photography uses separate animated columns on wide screens.
+  logos.
 - **Results and recommendations:** training outcomes sit beside attributed
   excerpts from LinkedIn professional recommendations, with links to their
   source. Company affiliations describe the founder’s experience.
@@ -48,8 +59,11 @@ The HTML pages and assets can also be served directly by a static web host.
 | `experience.html` | Filterable founder experience archive |
 | `contact.html` | Enquiry form and direct contact details |
 | `assets/css/style.css` | Shared design tokens, themes, page layouts and animation |
+| `assets/css/hero.css` | Homepage particle canvas, rotating service wheel and responsive layout |
 | `assets/css/navigation.css` | Navbar, theme control, drawer and link descriptions |
 | `assets/js/main.js` | Page interactions, filters, tabs, motion and enquiry handling |
+| `assets/js/hero-particles.js` | Theme-aware particle motion, cursor connections and repulsion |
+| `assets/js/hero-expertise.js` | Service wheel geometry, hover/focus and motion lifecycle |
 | `assets/js/navigation.js` | Keyboard dismissal for navigation descriptions |
 | `assets/js/theme.js` | Early theme application, switching and preference storage |
 | `assets/img/` | Local photographs and organisation/technology artwork |
@@ -63,9 +77,11 @@ Colours and spacing use CSS custom properties in `style.css`. Shared navigation
 styles load after it. The navbar and hero use full-width layouts with matching
 outer gutters; other sections use the shared content container.
 
-Current asset versions are `style.css?v=35`, `main.js?v=35`,
+Current asset versions are `style.css?v=35`, `main.js?v=36`,
 `navigation.css?v=2`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
-When editing a shared asset, update its version across all eight pages.
+The homepage also loads `hero.css?v=9`, `hero-particles.js?v=3` and
+`hero-expertise.js?v=5`. When editing a shared asset, update its version across
+all eight pages.
 
 Keep organisation affiliations, training clients and professional
 recommendations accurately labelled. Consult the artwork source notes when
