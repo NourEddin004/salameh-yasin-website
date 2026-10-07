@@ -14,6 +14,27 @@
 .fl-hero--interactive .fl-left { padding-block: 0; max-width: 670px; }
 .fl-hero--interactive .fl-title { font-size: clamp(40px, 4.3vw, 64px); }
 .fl-hero--interactive .fl-sub { font-size: clamp(16px, 1.3vw, 19px); max-width: 49ch; }
+.fl-hero--interactive .fl-btn--primary {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--action) 72%, var(--rule));
+  background: linear-gradient(110deg, var(--action) 0 38%, var(--action-dark) 50%, var(--action) 62% 100%);
+  background-size: 250% 100%;
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--action) 26%, transparent);
+  animation: hero-cta-shimmer 5.5s ease-in-out infinite;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.fl-hero--interactive .fl-btn--primary:is(:hover, :focus-visible) {
+  border-color: var(--action-dark);
+  background: linear-gradient(110deg, var(--action) 0 38%, var(--action-dark) 50%, var(--action) 62% 100%);
+  background-size: 250% 100%;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px color-mix(in srgb, var(--action) 36%, transparent);
+}
+@keyframes hero-cta-shimmer {
+  0%, 32% { background-position: 100% 50%; }
+  62%, 100% { background-position: 0 50%; }
+}
 /* Cards stay upright as their centres travel around the service wheel. */
 .hero-expertise { min-width: 0; width: 100%; max-width: 630px; margin: auto; }
 .hero-expertise__heading { margin-bottom: 4px; padding-left: 16px; }
@@ -192,6 +213,7 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-expertise *, .hero-expertise *::after { animation: none !important; transition: none; }
+  .fl-hero--interactive .fl-btn--primary { animation: none; }
 }
 
 /* Founder affiliations sit between the introduction and service details. */

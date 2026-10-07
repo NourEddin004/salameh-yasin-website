@@ -78,8 +78,8 @@ styles load after it. The navbar and hero use full-width layouts with matching
 outer gutters; other sections use the shared content container.
 
 Current asset versions are `style.css?v=35`, `main.js?v=36`,
-`navigation.css?v=2`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
-The homepage also loads `hero.css?v=9`, `hero-particles.js?v=3` and
+`navigation.css?v=4`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
+The homepage also loads `hero.css?v=11`, `hero-particles.js?v=3` and
 `hero-expertise.js?v=5`. When editing a shared asset, update its version across
 all eight pages.
 
