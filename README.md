@@ -36,10 +36,10 @@ The HTML pages and assets can also be served directly by a static web host.
   be dismissed with Escape; the drawer shows the descriptions inline.
 - **Interactive service deck:** a category rail switches the right-hand
   workspace between Development, Training, Consulting and Project Management.
-  Six service cards deal smoothly into place after each selection while the
-  hero's concept animations remain visible. Training also surfaces its core
-  technical and delivery skills. Reduced-motion users receive an immediate
-  static presentation.
+  Four concise, icon-led service cards deal smoothly into place after each
+  selection while a larger animated scene explains the practice visually.
+  Training also surfaces its original technology logos. Reduced-motion users
+  receive an immediate static presentation.
 - **Animated company panel:** a continuous horizontal logo track sits in its
   own founder-experience section between the hero and service details. Hover
   or keyboard focus pauses it. Reduced-motion preferences
@@ -126,7 +126,7 @@ the current website.
 
 #### Skill logos
 
-The nine Development marks are the **real full-colour brand logos**, taken from
+The nine Training marks are the **real full-colour brand logos**, taken from
 [devicon](https://devicon.dev) and served from `assets/img/logos/` (56KB total):
 
 | Mark | Colours |
