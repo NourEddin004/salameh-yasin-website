@@ -17,9 +17,9 @@
 
 <link rel="icon" type="image/svg+xml" href="favicon.svg?v=4">
 <script src="assets/js/theme.js?v=1"></script>
-<link rel="stylesheet" href="assets/css/style.css?v=35">
+<link rel="stylesheet" href="assets/css/style.css?v=36">
 <link rel="stylesheet" href="assets/css/navigation.css?v=4">
-<link rel="stylesheet" href="assets/css/hero.css?v=11">
+<link rel="stylesheet" href="assets/css/hero.css?v=15">
 <script src="assets/js/navigation.js?v=2" defer></script>
 
 <script type="application/ld+json">
@@ -197,15 +197,20 @@
 
   <section class="company-experience" aria-labelledby="company-experience-title">
     <div class="company-experience__inner">
-      <header class="company-experience__heading">
+      <header class="company-experience__heading rv">
         <span class="eyebrow">Founder’s experience</span>
-        <h2 id="company-experience-title">Experience across organisations.</h2>
-        <a href="experience.html">Explore Salameh’s experience</a>
+        <h2 id="company-experience-title">Built across teams that shaped the region’s digital landscape.</h2>
+        <p>Product, technology, education and leadership experience brought into every engagement.</p>
       </header>
-        <div class="hero-companies">
-          <div class="hero-companies__panel" role="region" aria-label="Companies Salameh has worked with" tabindex="0">
-            <div class="hero-companies__track">
-              <ul class="hero-companies__group">
+      <div class="company-experience__meta rv">
+        <strong>19</strong>
+        <span>years of experience</span>
+        <a href="experience.html">Explore the journey</a>
+      </div>
+      <div class="hero-companies">
+        <div class="hero-companies__panel" role="region" aria-label="Organisations Salameh has worked with" tabindex="0">
+          <div class="hero-companies__track">
+          <ul class="hero-companies__group">
             <li class="brand-plaque"><img src="assets/img/logos/orange.svg" alt="Orange Jordan" width="144" height="64" decoding="async"></li>
             <li class="brand-plaque"><img class="hero-company-logo--dark" src="assets/img/logos/souq-dark.svg" alt="Souq.com" width="144" height="64" decoding="async"><img class="hero-company-logo--light" src="assets/img/logos/souq-light.svg" alt="Souq.com" width="144" height="64" decoding="async"></li>
             <li class="brand-plaque brand-plaque--symbol"><img src="assets/img/logos/markavip-symbol.svg" alt="" width="36" height="36" decoding="async"><span class="brand-name">MarkaVIP</span></li>
@@ -217,7 +222,7 @@
             <li class="brand-plaque"><img src="assets/img/logos/mlc.png" alt="MLC Modern Language Center" width="144" height="64" decoding="async"></li>
             <li class="brand-plaque brand-plaque--symbol"><img src="assets/img/logos/fawzi-alnajjar-symbol.svg" alt="" width="36" height="36" decoding="async"><span class="brand-name">Fawzi Alnajjar &amp; Partner Co.</span></li>
           </ul>
-              <ul class="hero-companies__group" aria-hidden="true">
+          <ul class="hero-companies__group" aria-hidden="true">
             <li class="brand-plaque"><img src="assets/img/logos/orange.svg" alt="Orange Jordan" width="144" height="64" decoding="async"></li>
             <li class="brand-plaque"><img class="hero-company-logo--dark" src="assets/img/logos/souq-dark.svg" alt="Souq.com" width="144" height="64" decoding="async"><img class="hero-company-logo--light" src="assets/img/logos/souq-light.svg" alt="Souq.com" width="144" height="64" decoding="async"></li>
             <li class="brand-plaque brand-plaque--symbol"><img src="assets/img/logos/markavip-symbol.svg" alt="" width="36" height="36" decoding="async"><span class="brand-name">MarkaVIP</span></li>
@@ -229,226 +234,195 @@
             <li class="brand-plaque"><img src="assets/img/logos/mlc.png" alt="MLC Modern Language Center" width="144" height="64" decoding="async"></li>
             <li class="brand-plaque brand-plaque--symbol"><img src="assets/img/logos/fawzi-alnajjar-symbol.svg" alt="" width="36" height="36" decoding="async"><span class="brand-name">Fawzi Alnajjar &amp; Partner Co.</span></li>
           </ul>
-            </div>
           </div>
         </div>
+      </div>
     </div>
   </section>
 
-<section class="section section--ruled wsvc-section" id="agency-services">
-  <div class="wsvc-wrap">
-    <span id="services"></span>
-    <div class="wsvc" data-wtabs>
-      <header class="wsvc__head">
+<section class="section section--ruled services-simple" id="agency-services" aria-labelledby="services-title">
+  <span id="services"></span>
+  <div class="wrap">
+    <header class="services-simple__head rv">
+      <div>
         <span class="eyebrow">Services</span>
-        <h2 class="d2 wsvc__h">What we do</h2>
-        <p class="lead wsvc__lead">Choose a service to see what it covers.</p>
-      </header>
+        <h2 class="d2" id="services-title">Choose the expertise your challenge needs.</h2>
+      </div>
+      <p>Four focused practices. Each can stand alone or connect with the others when the work calls for it.</p>
+    </header>
 
-      <div class="wsvc__side">
-        <div class="wsvc__rail" role="tablist" aria-label="Services">
-          <button class="wsvc__item" type="button" role="tab" id="wsvc-tab-development" aria-controls="wsvc-panel-development" aria-selected="true" data-slug="development">
-            <span class="wsvc__n mono">01</span>
-            <span class="wsvc__body">
-              <span class="wsvc__name">Development &amp; Digital Transformation</span>
-              <span class="wsvc__sub">Custom software, platforms and modernisation</span>
-            </span>
+    <div class="service-deck rv" data-service-deck>
+      <aside class="service-deck__nav">
+        <div class="service-deck__tabs" role="tablist" aria-label="Service categories">
+          <button class="service-deck__tab" type="button" role="tab" id="service-tab-development" aria-controls="service-panel-development" aria-selected="true" data-service-slug="development">
+            <span class="service-deck__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"/></svg></span>
+            <span class="service-deck__tab-copy"><strong>Development</strong><small>Products and platforms</small></span>
+            <span class="service-deck__tab-number mono">01</span>
           </button>
-          <button class="wsvc__item" type="button" role="tab" id="wsvc-tab-training" aria-controls="wsvc-panel-training" aria-selected="false" data-slug="training" tabindex="-1">
-            <span class="wsvc__n mono">02</span>
-            <span class="wsvc__body">
-              <span class="wsvc__name">Training &amp; Consultation</span>
-              <span class="wsvc__sub">Academies, corporate upskilling and advisory</span>
-            </span>
+          <button class="service-deck__tab" type="button" role="tab" id="service-tab-training" aria-controls="service-panel-training" aria-selected="false" data-service-slug="training" tabindex="-1">
+            <span class="service-deck__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 8 10-5 10 5-10 5zM6 10v6c4 3 8 3 12 0v-6m4-2v8"/></svg></span>
+            <span class="service-deck__tab-copy"><strong>Training</strong><small>Skills and academies</small></span>
+            <span class="service-deck__tab-number mono">02</span>
           </button>
-          <button class="wsvc__item" type="button" role="tab" id="wsvc-tab-project-management" aria-controls="wsvc-panel-project-management" aria-selected="false" data-slug="project-management" tabindex="-1">
-            <span class="wsvc__n mono">03</span>
-            <span class="wsvc__body">
-              <span class="wsvc__name">Project Management</span>
-              <span class="wsvc__sub">PMP-led delivery, Agile and PMO setup</span>
-            </span>
+          <button class="service-deck__tab" type="button" role="tab" id="service-tab-consulting" aria-controls="service-panel-consulting" aria-selected="false" data-service-slug="consulting" tabindex="-1">
+            <span class="service-deck__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5z"/></svg></span>
+            <span class="service-deck__tab-copy"><strong>Consulting</strong><small>Direction and decisions</small></span>
+            <span class="service-deck__tab-number mono">03</span>
+          </button>
+          <button class="service-deck__tab" type="button" role="tab" id="service-tab-management" aria-controls="service-panel-management" aria-selected="false" data-service-slug="management" tabindex="-1">
+            <span class="service-deck__tab-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M14 4v16M5 8h1m4 3h2m4 4h3"/></svg></span>
+            <span class="service-deck__tab-copy"><strong>Project management</strong><small>Structure and delivery</small></span>
+            <span class="service-deck__tab-number mono">04</span>
           </button>
         </div>
-        <a class="wsvc__cta" href="contact.html">Request a proposal</a>
-      </div>
+        <div class="service-deck__nav-foot">
+          <span>Need help choosing?</span>
+          <a href="contact.html">Talk through the challenge</a>
+        </div>
+      </aside>
 
-      <div class="wsvc__panels">
-        <section class="wsvc__panel" role="tabpanel" id="wsvc-panel-development" aria-labelledby="wsvc-tab-development">
-          <div class="wsvc__grid">
-            <article class="wsvc__card"><h4>Custom web &amp; mobile platforms</h4><p>Full-stack delivery from architecture to launch &mdash; the stack behind Souq.com and MarkaVIP-scale e-commerce.</p></article>
-            <article class="wsvc__card"><h4>System architecture &amp; integration</h4><p>APIs, data models and third-party integration designed to survive growth.</p></article>
-            <article class="wsvc__card"><h4>Legacy modernisation</h4><p>Moving dated systems onto maintainable platforms without stopping the business.</p></article>
-            <article class="wsvc__card"><h4>Digital transformation programmes</h4><p>Process, tooling and team structure &mdash; not just software.</p></article>
-            <article class="wsvc__card"><h4>E-commerce &amp; Magento</h4><p>Storefronts, catalogue and checkout work with production experience behind it.</p></article>
-            <article class="wsvc__card"><h4>Maintenance &amp; performance</h4><p>Support retainers, security review and performance tuning.</p></article>
-          </div>
-        </section>
-
-        <section class="wsvc__panel" role="tabpanel" id="wsvc-panel-training" aria-labelledby="wsvc-tab-training" hidden>
-          <div class="wsvc__grid">
-            <article class="wsvc__card"><h4>Coding academies, end to end</h4><p>Curriculum, trainers, accreditation and cohort operations &mdash; the model behind a two-city academy.</p></article>
-            <article class="wsvc__card"><h4>Corporate upskilling</h4><p>Team programmes for government and enterprise: Arab Potash, UNHCR, USAID, Prime Ministry.</p></article>
-            <article class="wsvc__card"><h4>Full-stack developer tracks</h4><p>500+ developers trained; 86% of graduates raised their income.</p></article>
-            <article class="wsvc__card"><h4>Agile &amp; Scrum enablement</h4><p>Workshops and coaching that change how teams actually ship.</p></article>
-            <article class="wsvc__card"><h4>Technical advisory</h4><p>Architecture, hiring and delivery reviews for leadership teams.</p></article>
-            <article class="wsvc__card"><h4>Mentoring &amp; assessment</h4><p>1:1 mentoring, technical interviews and capability mapping.</p></article>
-          </div>
-
-          <div class="wtrain">
-            <h4 class="wtrain__title mono">What we train</h4>
-            <div class="wtrain__cols">
-              <div class="wtrain__group">
-                <h5 class="wtrain__grouptitle mono">Development</h5>
-                <ul class="wtrain__grid">
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/php.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">PHP</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/javascript.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">JavaScript</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/html5.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">HTML</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/css3.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">CSS</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/jquery.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">jQuery</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/mysql.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">MySQL</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/magento.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">Magento</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/linux.png" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">Linux</span></li>
-                </ul>
-              </div>
-              <div class="wtrain__group">
-                <h5 class="wtrain__grouptitle mono">Training</h5>
-                <ul class="wtrain__grid">
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 5.4A2 2 0 0 1 5.6 3.4H11v17.2H5.6a2 2 0 0 0-2 2z"/><path d="M20.4 5.4a2 2 0 0 0-2-2H13v17.2h5.4a2 2 0 0 1 2 2z"/></svg><span class="wtrain__label">Curriculum design</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.8" r="5.8"/><path d="M8.4 14.2 6.9 21.5 12 18.9l5.1 2.6-1.5-7.3"/></svg><span class="wtrain__label">Accreditation</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4.2" width="18.4" height="12.2" rx="1.4"/><path d="M12 16.4v4.2M8.4 20.6h7.2"/></svg><span class="wtrain__label">Workshops</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 21.6 8 12 13.2 2.4 8z"/><path d="M2.4 13l9.6 5.2L21.6 13"/></svg><span class="wtrain__label">Full-stack tracks</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7.8" r="3"/><path d="M3.2 20.4a5.8 5.8 0 0 1 11.6 0"/><path d="M17.2 4.9a3 3 0 0 1 0 5.9M19.4 20.4a5.8 5.8 0 0 0-3.1-5.2"/></svg><span class="wtrain__label">Mentoring</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8.6" r="2.6"/><circle cx="16" cy="8.6" r="2.6"/><path d="M2.8 19.4a5.2 5.2 0 0 1 10.4 0M13.4 19.4a5.2 5.2 0 0 1 7.8-4.4"/></svg><span class="wtrain__label">Cohort delivery</span></li>
-                </ul>
-              </div>
-              <div class="wtrain__group">
-                <h5 class="wtrain__grouptitle mono">Project management</h5>
-                <ul class="wtrain__grid">
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5.2" width="17.6" height="15.6" rx="2"/><path d="M3.2 10h17.6M8.2 3.2v4M15.8 3.2v4"/></svg><span class="wtrain__label">Project planning</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="4.2" width="5" height="15.6" rx="1.2"/><rect x="9.9" y="4.2" width="5" height="10.6" rx="1.2"/><rect x="16.6" y="4.2" width="4.2" height="6.6" rx="1.2"/></svg><span class="wtrain__label">Software project mgmt</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7.6 8.9 11 15.7M16.4 8.9 13 15.7M8.4 7h7.2"/></svg><span class="wtrain__label">Project coordination</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.3 12a8.3 8.3 0 1 1-3.2-6.5"/><path d="M20.3 3.8v5.4h-5.4"/></svg><span class="wtrain__label">Agile</span></li>
-                </ul>
-              </div>
+      <div class="service-deck__workspace">
+        <section class="service-deck__panel is-dealing" role="tabpanel" id="service-panel-development" aria-labelledby="service-tab-development" data-service-panel="development">
+          <header class="service-deck__panel-head">
+            <div class="service-deck__intro">
+              <span class="service-deck__kicker mono">Build &amp; modernise</span>
+              <h3>Software shaped around the business.</h3>
+              <p>From architecture to launch, each engagement creates a dependable product your team can own and grow.</p>
             </div>
+            <div class="service-deck__concept">
+              <div class="expertise-visual expertise-code" aria-hidden="true">
+                <span class="expertise-code__line"><code>IF brief.ready</code></span>
+                <span class="expertise-code__line"><code>BUILD product</code></span>
+                <span class="expertise-code__line"><code>RETURN value</code></span>
+                <b class="expertise-code__cursor"></b>
+              </div>
+              <span class="mono">Brief → stable release</span>
+            </div>
+          </header>
+          <div class="service-deck__offers-head">
+            <span class="service-deck__label mono">Development services</span>
+            <span class="service-deck__count"><i aria-hidden="true"></i> 6 cards in this practice</span>
           </div>
+          <div class="service-deck__cards">
+            <article class="service-deck__card" style="--deal-index:0;--deal-turn:-7deg"><span class="mono">01</span><h4>Custom web &amp; mobile platforms</h4><p>Purpose-built products from technical architecture through production launch.</p></article>
+            <article class="service-deck__card" style="--deal-index:1;--deal-turn:6deg"><span class="mono">02</span><h4>System architecture &amp; integration</h4><p>APIs, data models and connected systems designed for reliable growth.</p></article>
+            <article class="service-deck__card" style="--deal-index:2;--deal-turn:-5deg"><span class="mono">03</span><h4>Legacy system modernisation</h4><p>Move dated systems forward without disrupting the operation behind them.</p></article>
+            <article class="service-deck__card" style="--deal-index:3;--deal-turn:7deg"><span class="mono">04</span><h4>Digital transformation programmes</h4><p>Connect software, process and team change into one practical programme.</p></article>
+            <article class="service-deck__card" style="--deal-index:4;--deal-turn:-6deg"><span class="mono">05</span><h4>E-commerce &amp; Magento</h4><p>Storefront, catalogue and checkout work backed by production experience.</p></article>
+            <article class="service-deck__card" style="--deal-index:5;--deal-turn:5deg"><span class="mono">06</span><h4>Maintenance &amp; performance</h4><p>Ongoing support, security review and performance improvements.</p></article>
+          </div>
+          <a class="service-deck__action" href="developer.html">Explore development</a>
         </section>
 
-        <section class="wsvc__panel" role="tabpanel" id="wsvc-panel-project-management" aria-labelledby="wsvc-tab-project-management" hidden>
-          <div class="wsvc__grid">
-            <article class="wsvc__card"><h4>PMP-led project delivery</h4><p>Scope, plan, budget and risk run by a certified project manager.</p></article>
-            <article class="wsvc__card"><h4>Agile &amp; Scrum delivery</h4><p>Sprint cadence, backlog discipline and release planning.</p></article>
-            <article class="wsvc__card"><h4>PMO setup</h4><p>Standing up the templates, gates and reporting a growing organisation needs.</p></article>
-            <article class="wsvc__card"><h4>KPIs &amp; performance reporting</h4><p>Dashboards and reporting lines that upper management can act on.</p></article>
-            <article class="wsvc__card"><h4>Vendor &amp; partner management</h4><p>Selecting, contracting and holding suppliers to delivery.</p></article>
-            <article class="wsvc__card"><h4>Recovery of stalled projects</h4><p>Assessment, re-planning and getting delivery moving again.</p></article>
+        <section class="service-deck__panel" role="tabpanel" id="service-panel-training" aria-labelledby="service-tab-training" data-service-panel="training" hidden>
+          <header class="service-deck__panel-head">
+            <div class="service-deck__intro">
+              <span class="service-deck__kicker mono">Learn &amp; apply</span>
+              <h3>Training designed for practical progress.</h3>
+              <p>Structured learning, guided practice and useful assessment help people turn knowledge into confident performance.</p>
+            </div>
+            <div class="service-deck__concept">
+              <div class="expertise-visual expertise-checklist" aria-hidden="true">
+                <span><i></i><b></b></span><span><i></i><b></b></span><span><i></i><b></b></span>
+              </div>
+              <span class="mono">Learn → practise → apply</span>
+            </div>
+          </header>
+          <div class="service-deck__skills" aria-label="Training skills">
+            <span class="service-deck__label mono">Skills covered</span>
+            <ul>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/php.svg" alt="" width="32" height="32" decoding="async"><span>PHP</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/javascript.svg" alt="" width="32" height="32" decoding="async"><span>JavaScript</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/html5.svg" alt="" width="32" height="32" decoding="async"><span>HTML5</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/css3.svg" alt="" width="32" height="32" decoding="async"><span>CSS3</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/jquery.svg" alt="" width="32" height="32" decoding="async"><span>jQuery</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/mysql.svg" alt="" width="32" height="32" decoding="async"><span>MySQL</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/magento.svg" alt="" width="32" height="32" decoding="async"><span>Magento</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/apache.svg" alt="" width="32" height="32" decoding="async"><span>Apache</span></li>
+              <li><img class="service-deck__skill-logo" src="assets/img/logos/linux.png" alt="" width="32" height="32" decoding="async"><span>Linux</span></li>
+            </ul>
           </div>
+          <div class="service-deck__offers-head">
+            <span class="service-deck__label mono">Training services</span>
+            <span class="service-deck__count"><i aria-hidden="true"></i> 6 cards in this practice</span>
+          </div>
+          <div class="service-deck__cards">
+            <article class="service-deck__card" style="--deal-index:0;--deal-turn:-7deg"><span class="mono">01</span><h4>Coding academy design &amp; delivery</h4><p>Curriculum, trainers, accreditation and cohort operations built end to end.</p></article>
+            <article class="service-deck__card" style="--deal-index:1;--deal-turn:6deg"><span class="mono">02</span><h4>Corporate technical upskilling</h4><p>Focused programmes aligned to the capability a team needs next.</p></article>
+            <article class="service-deck__card" style="--deal-index:2;--deal-turn:-5deg"><span class="mono">03</span><h4>Full-stack developer tracks</h4><p>Progressive pathways that connect front-end, back-end and delivery practice.</p></article>
+            <article class="service-deck__card" style="--deal-index:3;--deal-turn:7deg"><span class="mono">04</span><h4>Agile &amp; Scrum workshops</h4><p>Hands-on sessions that improve planning, collaboration and delivery rhythm.</p></article>
+            <article class="service-deck__card" style="--deal-index:4;--deal-turn:-6deg"><span class="mono">05</span><h4>Trainer enablement</h4><p>Practical support for instructors and internal subject-matter experts.</p></article>
+            <article class="service-deck__card" style="--deal-index:5;--deal-turn:5deg"><span class="mono">06</span><h4>Mentoring &amp; assessment</h4><p>One-to-one support, technical interviews and capability mapping.</p></article>
+          </div>
+          <a class="service-deck__action" href="training.html">Explore training</a>
+        </section>
+
+        <section class="service-deck__panel" role="tabpanel" id="service-panel-consulting" aria-labelledby="service-tab-consulting" data-service-panel="consulting" hidden>
+          <header class="service-deck__panel-head">
+            <div class="service-deck__intro">
+              <span class="service-deck__kicker mono">Assess &amp; direct</span>
+              <h3>Clarity for important technical decisions.</h3>
+              <p>Independent guidance turns complexity into priorities, recommendations and a realistic path forward.</p>
+            </div>
+            <div class="service-deck__concept">
+              <div class="expertise-visual expertise-questions" aria-hidden="true">
+                <span>?</span><span>?</span><span>?</span><i class="expertise-questions__answer"><b></b><em></em></i>
+              </div>
+              <span class="mono">Questions → clear direction</span>
+            </div>
+          </header>
+          <div class="service-deck__offers-head">
+            <span class="service-deck__label mono">Consulting services</span>
+            <span class="service-deck__count"><i aria-hidden="true"></i> 6 cards in this practice</span>
+          </div>
+          <div class="service-deck__cards">
+            <article class="service-deck__card" style="--deal-index:0;--deal-turn:-7deg"><span class="mono">01</span><h4>Technical strategy</h4><p>Translate business priorities into an actionable technology direction.</p></article>
+            <article class="service-deck__card" style="--deal-index:1;--deal-turn:6deg"><span class="mono">02</span><h4>Architecture &amp; system reviews</h4><p>Assess structure, integration choices and the risks behind future growth.</p></article>
+            <article class="service-deck__card" style="--deal-index:2;--deal-turn:-5deg"><span class="mono">03</span><h4>Transformation roadmaps</h4><p>Sequence platform, process and team change into a realistic programme.</p></article>
+            <article class="service-deck__card" style="--deal-index:3;--deal-turn:7deg"><span class="mono">04</span><h4>Delivery health assessments</h4><p>Identify the blockers affecting quality, pace and predictability.</p></article>
+            <article class="service-deck__card" style="--deal-index:4;--deal-turn:-6deg"><span class="mono">05</span><h4>Team capability planning</h4><p>Clarify the skills, roles and practices required for the next stage.</p></article>
+            <article class="service-deck__card" style="--deal-index:5;--deal-turn:5deg"><span class="mono">06</span><h4>Vendor &amp; solution evaluation</h4><p>Compare options against technical fit, operating needs and long-term value.</p></article>
+          </div>
+          <a class="service-deck__action" href="consulting.html">Explore consulting</a>
+        </section>
+
+        <section class="service-deck__panel" role="tabpanel" id="service-panel-management" aria-labelledby="service-tab-management" data-service-panel="management" hidden>
+          <header class="service-deck__panel-head">
+            <div class="service-deck__intro">
+              <span class="service-deck__kicker mono">Plan &amp; deliver</span>
+              <h3>Structure that keeps delivery moving.</h3>
+              <p>Scope, teams, risks and reporting stay connected through a clear operating rhythm and visible progress.</p>
+            </div>
+            <div class="service-deck__concept">
+              <div class="expertise-visual expertise-plan" aria-hidden="true">
+                <span><i></i></span><span><i></i></span><span><i></i></span><b></b>
+              </div>
+              <span class="mono">Plan → align → deliver</span>
+            </div>
+          </header>
+          <div class="service-deck__offers-head">
+            <span class="service-deck__label mono">Project management services</span>
+            <span class="service-deck__count"><i aria-hidden="true"></i> 6 cards in this practice</span>
+          </div>
+          <div class="service-deck__cards">
+            <article class="service-deck__card" style="--deal-index:0;--deal-turn:-7deg"><span class="mono">01</span><h4>PMP-led project delivery</h4><p>Scope, plan, budget and risk managed through disciplined delivery.</p></article>
+            <article class="service-deck__card" style="--deal-index:1;--deal-turn:6deg"><span class="mono">02</span><h4>Agile &amp; Scrum delivery</h4><p>Sprint cadence, backlog discipline and release planning that teams can use.</p></article>
+            <article class="service-deck__card" style="--deal-index:2;--deal-turn:-5deg"><span class="mono">03</span><h4>PMO setup &amp; governance</h4><p>Templates, decision gates and reporting for a growing organisation.</p></article>
+            <article class="service-deck__card" style="--deal-index:3;--deal-turn:7deg"><span class="mono">04</span><h4>KPI &amp; performance reporting</h4><p>Dashboards and reporting lines that leadership can act on.</p></article>
+            <article class="service-deck__card" style="--deal-index:4;--deal-turn:-6deg"><span class="mono">05</span><h4>Vendor &amp; partner management</h4><p>Select, coordinate and hold suppliers accountable to delivery.</p></article>
+            <article class="service-deck__card" style="--deal-index:5;--deal-turn:5deg"><span class="mono">06</span><h4>Stalled project recovery</h4><p>Assess the situation, reset the plan and restore delivery momentum.</p></article>
+          </div>
+          <a class="service-deck__action" href="management.html">Explore project management</a>
         </section>
       </div>
     </div>
+
+    <div class="services-simple__foot rv">
+      <p>Not sure where to begin? Start with the outcome you need.</p>
+      <a class="btn btn--fill" href="contact.html">Start a conversation</a>
+    </div>
   </div>
 </section>
-
-<section class="section section--ruled service-portfolio" id="legacy-services" hidden><div class="wrap"><header class="shead"><h2 class="d2">Our services</h2></header><div class="service-filters" role="group" aria-label="Filter services"><button type="button" data-service-filter="all" aria-pressed="true">All</button><button type="button" data-service-filter="development" aria-pressed="false">Development</button><button type="button" data-service-filter="training" aria-pressed="false">Training &amp; Consulting</button><button type="button" data-service-filter="project-management" aria-pressed="false">Project Management</button></div><p class="service-count" role="status" aria-live="polite"></p><div class="service-portfolio__grid"><article class="service-project" data-service-category="development"><img class="service-project__image" src="assets/img/hero-a1.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Development</span>
-                <h3>Custom web &amp; mobile platforms</h3>
-                <p>Full-stack delivery from architecture to launch — the stack behind Souq.com and MarkaVIP-scale e-commerce.</p>
-              </div></article><article class="service-project" data-service-category="development"><img class="service-project__image" src="assets/img/hero-a1.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Development</span>
-                <h3>System architecture &amp; integration</h3>
-                <p>APIs, data models and third-party integration designed to survive growth.</p>
-              </div></article><article class="service-project" data-service-category="development"><img class="service-project__image" src="assets/img/hero-a1.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Development</span>
-                <h3>Legacy modernisation</h3>
-                <p>Moving dated systems onto maintainable platforms without stopping the business.</p>
-              </div></article><article class="service-project" data-service-category="development"><img class="service-project__image" src="assets/img/hero-a1.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Development</span>
-                <h3>Digital transformation programmes</h3>
-                <p>Process, tooling and team structure — not just software.</p>
-              </div></article><article class="service-project" data-service-category="development"><img class="service-project__image" src="assets/img/hero-a1.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Development</span>
-                <h3>E-commerce &amp; Magento</h3>
-                <p>Storefronts, catalogue and checkout work with production experience behind it.</p>
-              </div></article><article class="service-project" data-service-category="development"><img class="service-project__image" src="assets/img/hero-a1.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Development</span>
-                <h3>Maintenance &amp; performance</h3>
-                <p>Support retainers, security review and performance tuning.</p>
-              </div></article><article class="service-project" data-service-category="training"><img class="service-project__image" src="assets/img/hero-a3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Training &amp; Consulting</span>
-                <h3>Coding academies, end to end</h3>
-                <p>Curriculum, trainers, accreditation and cohort operations — the model behind a two-city academy.</p>
-              </div></article><article class="service-project" data-service-category="training"><img class="service-project__image" src="assets/img/hero-a3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Training &amp; Consulting</span>
-                <h3>Corporate upskilling</h3>
-                <p>Team programmes for government and enterprise: Arab Potash, UNHCR, USAID, Prime Ministry.</p>
-              </div></article><article class="service-project" data-service-category="training"><img class="service-project__image" src="assets/img/hero-a3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Training &amp; Consulting</span>
-                <h3>Full-stack developer tracks</h3>
-                <p>500+ developers trained; 86% of graduates raised their income.</p>
-              </div></article><article class="service-project" data-service-category="training"><img class="service-project__image" src="assets/img/hero-a3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Training &amp; Consulting</span>
-                <h3>Agile &amp; Scrum enablement</h3>
-                <p>Workshops and coaching that change how teams actually ship.</p>
-              </div></article><article class="service-project" data-service-category="training"><img class="service-project__image" src="assets/img/hero-a3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Training &amp; Consulting</span>
-                <h3>Technical advisory</h3>
-                <p>Architecture, hiring and delivery reviews for leadership teams.</p>
-              </div></article><article class="service-project" data-service-category="training"><img class="service-project__image" src="assets/img/hero-a3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Training &amp; Consulting</span>
-                <h3>Mentoring &amp; assessment</h3>
-                <p>1:1 mentoring, technical interviews and capability mapping.</p>
-              </div></article><article class="service-project" data-service-category="project-management"><img class="service-project__image" src="assets/img/hero-b3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Project Management</span>
-                <h3>PMP-led project delivery</h3>
-                <p>Scope, plan, budget and risk run by a certified project manager.</p>
-              </div></article><article class="service-project" data-service-category="project-management"><img class="service-project__image" src="assets/img/hero-b3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Project Management</span>
-                <h3>Agile &amp; Scrum delivery</h3>
-                <p>Sprint cadence, backlog discipline and release planning.</p>
-              </div></article><article class="service-project" data-service-category="project-management"><img class="service-project__image" src="assets/img/hero-b3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Project Management</span>
-                <h3>PMO setup</h3>
-                <p>Standing up the templates, gates and reporting a growing organisation needs.</p>
-              </div></article><article class="service-project" data-service-category="project-management"><img class="service-project__image" src="assets/img/hero-b3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Project Management</span>
-                <h3>KPIs &amp; performance reporting</h3>
-                <p>Dashboards and reporting lines that upper management can act on.</p>
-              </div></article><article class="service-project" data-service-category="project-management"><img class="service-project__image" src="assets/img/hero-b3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Project Management</span>
-                <h3>Vendor &amp; partner management</h3>
-                <p>Selecting, contracting and holding suppliers to delivery.</p>
-              </div></article><article class="service-project" data-service-category="project-management"><img class="service-project__image" src="assets/img/hero-b3.jpg" alt="" width="532" height="686" loading="lazy"><div class="service-project__body"><span class="service-project__category">Project Management</span>
-                <h3>Recovery of stalled projects</h3>
-                <p>Assessment, re-planning and getting delivery moving again.</p>
-              </div></article></div><div class="service-skills"><div class="wtrain">
-              <h4 class="wtrain__title mono">What we train</h4>
-              <div class="wtrain__cols">
-              <div class="wtrain__group">
-                <h5 class="wtrain__grouptitle mono">Development</h5>
-                <ul class="wtrain__grid">
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/php.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">PHP</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/javascript.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">JavaScript</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/html5.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">HTML</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/css3.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">CSS</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/jquery.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">jQuery</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/mysql.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">MySQL</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/magento.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">Magento</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/linux.png" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">Linux</span></li>
-                  <li class="wtrain__tile"><img class="ico ico--brand" src="assets/img/logos/apache.svg" alt="" width="40" height="40" decoding="async"><span class="wtrain__label">Apache</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5 4.5 12l5 7M14.5 5l5 7-5 7"/></svg><span class="wtrain__label">REST APIs</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2l7.2 3v5.9c0 4.2-3.1 6.8-7.2 9.1-4.1-2.3-7.2-4.9-7.2-9.1V6.2z"/><path d="M9.2 12.1l2.1 2.1 3.9-4"/></svg><span class="wtrain__label">Web security</span></li>
-                </ul>
-              </div>
-              <div class="wtrain__group">
-                <h5 class="wtrain__grouptitle mono">Training</h5>
-                <ul class="wtrain__grid">
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 5.4A2 2 0 0 1 5.6 3.4H11v17.2H5.6a2 2 0 0 0-2 2z"/><path d="M20.4 5.4a2 2 0 0 0-2-2H13v17.2h5.4a2 2 0 0 1 2 2z"/></svg><span class="wtrain__label">Curriculum design</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.8" r="5.8"/><path d="M8.4 14.2 6.9 21.5 12 18.9l5.1 2.6-1.5-7.3"/></svg><span class="wtrain__label">Accreditation</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="4.2" width="18.4" height="12.2" rx="1.4"/><path d="M12 16.4v4.2M8.4 20.6h7.2"/></svg><span class="wtrain__label">Workshops</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 21.6 8 12 13.2 2.4 8z"/><path d="M2.4 13l9.6 5.2L21.6 13"/></svg><span class="wtrain__label">Full-stack tracks</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7.8" r="3"/><path d="M3.2 20.4a5.8 5.8 0 0 1 11.6 0"/><path d="M17.2 4.9a3 3 0 0 1 0 5.9M19.4 20.4a5.8 5.8 0 0 0-3.1-5.2"/></svg><span class="wtrain__label">Mentoring</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8.6" r="2.6"/><circle cx="16" cy="8.6" r="2.6"/><path d="M2.8 19.4a5.2 5.2 0 0 1 10.4 0M13.4 19.4a5.2 5.2 0 0 1 7.8-4.4"/></svg><span class="wtrain__label">Cohort delivery</span></li>
-                </ul>
-              </div>
-              <div class="wtrain__group">
-                <h5 class="wtrain__grouptitle mono">Project management</h5>
-                <ul class="wtrain__grid">
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5.2" width="17.6" height="15.6" rx="2"/><path d="M3.2 10h17.6M8.2 3.2v4M15.8 3.2v4"/></svg><span class="wtrain__label">Project planning</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="4.2" width="5" height="15.6" rx="1.2"/><rect x="9.9" y="4.2" width="5" height="10.6" rx="1.2"/><rect x="16.6" y="4.2" width="4.2" height="6.6" rx="1.2"/></svg><span class="wtrain__label">Software project mgmt</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2.4"/><circle cx="18" cy="7" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7.6 8.9 11 15.7M16.4 8.9 13 15.7M8.4 7h7.2"/></svg><span class="wtrain__label">Project coordination</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.3 12a8.3 8.3 0 1 1-3.2-6.5"/><path d="M20.3 3.8v5.4h-5.4"/></svg><span class="wtrain__label">Agile</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 13.4-5.9"/><path d="M20 12a8 8 0 0 1-13.4 5.9"/><path d="M17.4 2.9v3.6h-3.6M6.6 21.1v-3.6h3.6"/></svg><span class="wtrain__label">Scrum</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.2 19.8V10.4M10.1 19.8V4.4M16 19.8v-7M21.5 19.8h-19"/></svg><span class="wtrain__label">KPI design</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.2" y="3.2" width="15.6" height="17.6" rx="2"/><path d="M8 13.6l3-3 2 2 3-4"/></svg><span class="wtrain__label">Executive reporting</span></li>
-                  <li class="wtrain__tile"><svg class="ico ico--line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.2 20.8h17.6"/><rect x="5" y="9" width="5" height="11.8" rx="1"/><rect x="14" y="4.5" width="5" height="16.3" rx="1"/></svg><span class="wtrain__label">PMO setup</span></li>
-                </ul>
-              </div>
-              </div>
-            </div></div><a class="btn btn--fill" href="contact.html">Request a proposal</a></div></section>
-<!-- ================================================== SERVICES (wireframe) -->
 
 
   <!-- ========================================================= 01 PROOF -->
@@ -485,37 +459,14 @@
     </div>
   </section>
 
-  <!-- ===================================================== 02 LOGO WALL -->
-  <section class="section section--ruled">
-    <div class="wrap">
-      <header class="shead rv">
-        <h2 class="d2 shead__title">Training experience.</h2>
-      </header>
-    </div>
-
-    <div class="wall">
-      <div class="wall__row">
-        <div class="wrap"><span class="wall__label mono">Founder’s training engagements through MLC, 2007–2008</span></div>
-        <div class="marquee marquee--rev" style="--speed:38s">
-          <div class="marquee__track">
-            <span class="logo brand-plaque"><img src="assets/img/logos/usaid.png" alt="USAID" width="144" height="64" decoding="async"></span>
-            <span class="logo brand-plaque"><img src="assets/img/logos/unhcr-dark.svg" alt="UNHCR Refugee Programme" width="144" height="64" decoding="async"></span>
-            <span class="logo brand-plaque"><img src="assets/img/logos/arab-potash.png" alt="Arab Potash Company" width="144" height="64" decoding="async"></span>
-            <span class="logo brand-plaque brand-plaque--symbol"><img src="assets/img/logos/prime-ministry-symbol.svg" alt="" width="36" height="36" decoding="async"><span class="brand-name">Jordanian Prime Ministry</span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- =========================================================== CTA -->
   <section class="cta">
     <div class="wrap cta__inner">
       <div>
-        <h2 class="d2 cta__title">Discuss your next project.</h2>
-        <p class="cta__sub">Academy design, digital transformation, Agile adoption, or a technical team that needs to start shipping.</p>
+        <h2 class="d2 cta__title">Ready to move the work forward?</h2>
+        <p class="cta__sub">Share the challenge. Salameh will help define the right path, scope and next step.</p>
       </div>
-      <a class="btn btn--onink" href="contact.html">Discuss your project <span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--onink" href="contact.html">Start a conversation</a>
     </div>
   </section>
 </main>
@@ -557,6 +508,7 @@
 </footer>
 
 <script src="assets/js/main.js?v=36"></script>
+<script src="assets/js/service-deck.js?v=2" defer></script>
 <script src="assets/js/hero-particles.js?v=3" defer></script>
 <script src="assets/js/hero-expertise.js?v=5" defer></script>
 </body>

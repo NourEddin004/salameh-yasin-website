@@ -34,6 +34,12 @@ The HTML pages and assets can also be served directly by a static web host.
 - **Responsive navigation:** aligned wordmark, centered desktop links and a
   mobile drawer. Link descriptions appear on hover or keyboard focus and can
   be dismissed with Escape; the drawer shows the descriptions inline.
+- **Interactive service deck:** a category rail switches the right-hand
+  workspace between Development, Training, Consulting and Project Management.
+  Six service cards deal smoothly into place after each selection while the
+  hero's concept animations remain visible. Training also surfaces its core
+  technical and delivery skills. Reduced-motion users receive an immediate
+  static presentation.
 - **Animated company panel:** a continuous horizontal logo track sits in its
   own founder-experience section between the hero and service details. Hover
   or keyboard focus pauses it. Reduced-motion preferences
@@ -77,7 +83,7 @@ Colours and spacing use CSS custom properties in `style.css`. Shared navigation
 styles load after it. The navbar and hero use full-width layouts with matching
 outer gutters; other sections use the shared content container.
 
-Current asset versions are `style.css?v=35`, `main.js?v=36`,
+Current asset versions are `style.css?v=36`, `main.js?v=36`,
 `navigation.css?v=4`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
 The homepage also loads `hero.css?v=11`, `hero-particles.js?v=3` and
 `hero-expertise.js?v=5`. When editing a shared asset, update its version across
@@ -113,21 +119,10 @@ the current website.
     exist for them.
   - The navbar is unchanged structurally; it just rides transparent over the dark
     hero and takes its normal paper treatment once the hero scrolls past.
-- **Services is built to the supplied wireframes** — it leads `index.html` in place of the old three-pillar cards, and the same block also appears on `consulting.html`.
-  A numbered rail on the left where the active row takes a fill and a copper bar,
-  a hairline, and a two-column grid of six services on the right. Eighteen
-  services across three practices:
-  1. Development & Digital Transformation
-  2. Training & Consultation
-  3. Project Management
-
-  Category 02 additionally carries the "What we train" block: three columns in
-  order — Development (11), Training (6), Project management (8) — divided by
-  hairlines, two tiles per column, 40px mark above the name.
-
-  The vertical rule sits hard against the rail with the whole gutter on the card
-  side, and the skill columns stretch to a common height so their dividers line
-  up.
+- **Homepage services use progressive disclosure** — all four practices stay
+  visible in the selector while the chosen practice receives the detailed
+  workspace. On narrow screens, the category rail becomes a compact two-by-two
+  control above the active service cards.
 
 #### Skill logos
 
