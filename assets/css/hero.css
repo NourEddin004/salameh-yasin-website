@@ -290,17 +290,34 @@
 }
 .company-experience .hero-companies__group {
   min-height: 80px;
-  gap: 20px;
-  padding-right: 20px;
+  gap: 16px;
+  padding-right: 16px;
 }
 .company-experience .hero-companies .brand-plaque {
-  flex-basis: 150px;
-  width: 150px;
+  flex-basis: auto;
+  width: auto;
+  min-width: 96px;
   height: 80px;
-  padding: 10px 14px;
+  padding: 10px 8px;
 }
 .company-experience .hero-companies .brand-plaque img { height: 32px; }
-.company-experience .hero-companies .brand-plaque--symbol img { width: 28px; height: 28px; }
+.company-experience .hero-companies .brand-plaque--named { gap: 8px; }
+.company-experience .hero-companies .brand-plaque--markavip { min-width: 112px; }
+.company-experience .hero-companies .brand-plaque--markavip img { width: 30px; height: 30px; }
+.company-experience .hero-companies .brand-plaque--shopgo { min-width: 118px; }
+.company-experience .hero-companies .brand-plaque--shopgo img { width: 108px; height: auto; }
+.company-experience .hero-companies .brand-plaque--indemaj { min-width: 132px; }
+.company-experience .hero-companies .brand-plaque--indemaj img { width: 122px; height: auto; }
+.company-experience .hero-companies .brand-plaque--wordmark { min-width: 124px; }
+.company-experience .hero-companies .brand-plaque--wordmark .brand-name {
+  max-width: none;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: -.01em;
+  white-space: nowrap;
+}
+.company-experience .hero-companies .brand-plaque--fawzi { min-width: 76px; }
+.company-experience .hero-companies .brand-plaque--fawzi img { width: 43px; height: 41px; }
 @media (max-width: 800px) {
   .company-experience__inner {
     grid-template-columns: 1fr;

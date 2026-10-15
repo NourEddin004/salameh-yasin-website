@@ -79,9 +79,9 @@ Colours and spacing use CSS custom properties in `style.css`. Shared navigation
 styles load after it. The navbar and hero use full-width layouts with matching
 outer gutters; other sections use the shared content container.
 
-Current asset versions are `style.css?v=36`, `main.js?v=36`,
+Current asset versions are `style.css?v=37`, `main.js?v=36`,
 `navigation.css?v=6`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
-The homepage also loads `hero.css?v=29` and `hero-particles.js?v=4`. When
+The homepage also loads `hero.css?v=30` and `hero-particles.js?v=4`. When
 editing a shared asset, update its version across all eight pages.
 
 Keep organisation affiliations, training clients and professional

@@ -1722,10 +1722,6 @@ img[src$="/jquery.svg"], img[src$="/mysql.svg"] { filter: brightness(0) saturate
 .logo.brand-plaque, .marquee__track:hover .logo.brand-plaque { opacity: 1; }
 
 /* Size visible artwork, accounting for source-file whitespace. */
-.logo-crop--shopgo { display: inline-block; position: relative; width: 132px; height: 44px; overflow: hidden; flex: none; }
-.brand-plaque .logo-crop--shopgo img,
-.org-logo .logo-crop--shopgo img { position: absolute; width: 139px; height: 139px; max-width: none; left: -4.3px; top: -47.7px; }
-.org-logo:has(.logo-crop--shopgo) { width: 156px; }
 .org-logo { width: auto; min-width: 96px; }
 .org-logo img { max-width: 180px; }
 .brand-plaque img[src$="/orange.svg"],
@@ -1775,16 +1771,6 @@ img[src$="/jquery.svg"], img[src$="/mysql.svg"] { filter: brightness(0) saturate
   max-width: 96px;
   font-size: 11px;
   line-height: 1.25;
-}
-.fl-proof .logo-crop--shopgo {
-  width: 92px;
-  height: 30px;
-}
-.fl-proof .brand-plaque .logo-crop--shopgo img {
-  width: 95px;
-  height: 95px;
-  left: -2px;
-  top: -32px;
 }
 .fl-proof .brand-plaque img[src$="/orange.svg"],
 .fl-proof .brand-plaque img[src$="/usaid.png"] {
@@ -2113,8 +2099,6 @@ img[src$="/jquery.svg"], img[src$="/mysql.svg"] { filter: brightness(0) saturate
 .hero-companies .brand-plaque--symbol { gap: 8px; }
 .hero-companies .brand-plaque--symbol img { width: 28px; height: 28px; flex: none; }
 .hero-companies .brand-name { min-width: 0; max-width: 90px; font-size: 11px; line-height: 1.35; overflow-wrap: normal; }
-.hero-companies .logo-crop--shopgo { width: 92px; max-width: 100%; height: 30px; }
-.hero-companies .brand-plaque .logo-crop--shopgo img { width: 95px; max-width: none; height: 95px; left: -2px; top: -32px; }
 @media (prefers-reduced-motion: reduce) {
   .hero-companies__track { animation: none; transform: none; will-change: auto; }
   .hero-companies__group[aria-hidden="true"] { display: none; }
