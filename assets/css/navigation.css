@@ -129,15 +129,15 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
-  box-shadow: 0 6px 18px color-mix(in srgb, var(--action) 18%, transparent);
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+  box-shadow: none;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
 }
 .nav__cta:is(:hover, :focus-visible) {
   color: var(--paper);
   border-color: var(--action-dark);
   background: var(--action-dark);
   transform: translateY(-1px);
-  box-shadow: 0 9px 22px color-mix(in srgb, var(--action) 25%, transparent);
+  box-shadow: none;
 }
 .nav__cta[aria-current="page"] { color: var(--paper); border-color: var(--action); }
 

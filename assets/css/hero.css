@@ -18,22 +18,15 @@
   position: relative;
   overflow: hidden;
   border-color: color-mix(in srgb, var(--action) 72%, var(--rule));
-  background: linear-gradient(110deg, var(--action) 0 38%, var(--action-dark) 50%, var(--action) 62% 100%);
-  background-size: 250% 100%;
-  box-shadow: 0 12px 32px color-mix(in srgb, var(--action) 26%, transparent);
-  animation: hero-cta-shimmer 5.5s ease-in-out infinite;
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  background: var(--action);
+  box-shadow: none;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
 }
 .fl-hero--interactive .fl-btn--primary:is(:hover, :focus-visible) {
   border-color: var(--action-dark);
-  background: linear-gradient(110deg, var(--action) 0 38%, var(--action-dark) 50%, var(--action) 62% 100%);
-  background-size: 250% 100%;
+  background: var(--action-dark);
   transform: translateY(-3px);
-  box-shadow: 0 16px 38px color-mix(in srgb, var(--action) 36%, transparent);
-}
-@keyframes hero-cta-shimmer {
-  0%, 32% { background-position: 100% 50%; }
-  62%, 100% { background-position: 0 50%; }
+  box-shadow: none;
 }
 /* Cards stay upright as their centres travel around the service wheel. */
 .hero-expertise { min-width: 0; width: 100%; max-width: 630px; margin: auto; }
@@ -1350,19 +1343,12 @@
   display: block;
   width: max-content;
   max-width: calc(100% - 24px);
-  background: linear-gradient(105deg, var(--ink) 10%, var(--action) 48%, var(--ink) 88%);
-  background-position: 100% 50%;
-  background-size: 220% auto;
-  background-clip: text;
-  color: transparent;
+  color: var(--ink);
   font-size: clamp(19px, 1.55vw, 24px);
   font-weight: 760;
   line-height: 1;
   letter-spacing: -.045em;
   text-wrap: nowrap;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: hero-label-glint 6s ease-in-out var(--float-delay) infinite;
   transition: letter-spacing 220ms ease, transform 220ms var(--ease-out);
 }
 .hero-float--consulting .hero-float__label {
@@ -1391,10 +1377,6 @@
   transform: translateY(-2px);
 }
 .hero-float:focus-visible { border-radius: 18px; outline: 2px solid var(--action); outline-offset: 5px; }
-@keyframes hero-label-glint {
-  0%, 30%, 100% { background-position: 100% 50%; }
-  55%, 75% { background-position: 0 50%; }
-}
 @media (max-width: 1180px) and (min-width: 901px) {
   .hero-float { width: 210px; height: 138px; }
   .hero-float__preview { height: 138px; }
@@ -1475,6 +1457,5 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-float__label { animation: none !important; }
   .hero-float:is(:hover, :focus-visible) .hero-float__preview { transform: none; }
 }
