@@ -36,7 +36,8 @@
       pushX: 0,
       pushY: 0,
       radius: 1 + Math.random() * 1.2,
-      opacity: 0.3 + Math.random() * 0.25
+      opacity: 0.3 + Math.random() * 0.25,
+      glowsOnCursor: Math.random() < 0.48
     };
   }
 
@@ -100,6 +101,8 @@
     var cursorDistance = width < 700 ? 170 : 220;
 
     particles.forEach(function (particle, index) {
+      var cursorLinkStrength = 0;
+
       // Quiet connections between nearby points keep the background uncluttered.
       for (var next = index + 1; next < particles.length; next++) {
         var neighbour = particles[next];
@@ -118,9 +121,28 @@
         var pointerDy = pointer.y - particle.y;
         var pointerDistance = Math.sqrt(pointerDx * pointerDx + pointerDy * pointerDy);
         if (pointerDistance < cursorDistance) {
+          cursorLinkStrength = (1 - pointerDistance / cursorDistance) * pointer.strength;
           line(pointer.x, pointer.y, particle.x, particle.y,
-            (1 - pointerDistance / cursorDistance) * pointer.strength * (lightTheme ? 0.35 : 0.45));
+            cursorLinkStrength * (lightTheme ? 0.35 : 0.45));
         }
+      }
+
+      // A limited set of cursor-connected stars brighten into soft focal points.
+      if (particle.glowsOnCursor && cursorLinkStrength > 0.025) {
+        context.save();
+        context.globalAlpha = cursorLinkStrength * (lightTheme ? 0.42 : 0.72);
+        context.shadowColor = color;
+        context.shadowBlur = 8 + cursorLinkStrength * 18;
+        context.beginPath();
+        context.arc(
+          particle.x,
+          particle.y,
+          particle.radius * (1.35 + cursorLinkStrength * 0.85),
+          0,
+          Math.PI * 2
+        );
+        context.fill();
+        context.restore();
       }
 
       context.globalAlpha = particle.opacity * (lightTheme ? 0.9 : 1);
