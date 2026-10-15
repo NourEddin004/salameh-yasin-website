@@ -1391,16 +1391,6 @@
   transform: translateY(-2px);
 }
 .hero-float:focus-visible { border-radius: 18px; outline: 2px solid var(--action); outline-offset: 5px; }
-.hero-space__note {
-  position: absolute;
-  bottom: 22px;
-  left: 50%;
-  color: var(--muted);
-  font-size: 8px;
-  letter-spacing: .16em;
-  transform: translateX(-50%);
-  white-space: nowrap;
-}
 @keyframes hero-label-glint {
   0%, 30%, 100% { background-position: 100% 50%; }
   55%, 75% { background-position: 0 50%; }
@@ -1451,7 +1441,6 @@
     left: 8px;
     text-align: left;
   }
-  .hero-space__note { position: static; grid-column: 1 / -1; justify-self: center; transform: none; margin-top: 12px; }
 }
 @media (max-width: 560px) {
   .fl-hero--constellation .fl-hero__inner.hero-space {
@@ -1484,7 +1473,6 @@
     max-width: calc(100% - 8px);
     font-size: clamp(14px, 4vw, 16px);
   }
-  .hero-space__note { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-float__label { animation: none !important; }
