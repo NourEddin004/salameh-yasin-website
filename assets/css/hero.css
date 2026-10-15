@@ -343,23 +343,10 @@
   position: relative;
   overflow: clip;
   padding-block: clamp(76px, 8vw, 116px);
-  background:
-    linear-gradient(180deg, color-mix(in srgb, var(--action) 2.5%, transparent), transparent 26%),
-    var(--paper);
-}
-.services-simple::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .18;
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--action) 9%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--action) 9%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  background: var(--paper);
 }
 .services-simple > .wrap { position: relative; z-index: 1; }
+.services-simple :is(h2, h3, h4, p, span, strong, small, a, button) { text-shadow: none; }
 .services-simple__head {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
@@ -801,10 +788,8 @@
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--action) 18%, var(--rule));
   border-radius: 24px;
-  background:
-    radial-gradient(circle at 82% 12%, color-mix(in srgb, var(--action) 9%, transparent), transparent 34%),
-    color-mix(in srgb, var(--raised) 72%, transparent);
-  box-shadow: 0 28px 80px rgb(0 0 0 / .11);
+  background: var(--raised);
+  box-shadow: none;
 }
 .service-deck__nav {
   display: flex;
@@ -812,8 +797,7 @@
   min-width: 0;
   padding: 14px;
   border-right: 1px solid var(--rule);
-  background: color-mix(in srgb, var(--paper) 67%, transparent);
-  backdrop-filter: blur(18px);
+  background: var(--paper);
 }
 .service-deck__tabs { display: grid; gap: 7px; }
 .service-deck__tab {
@@ -850,7 +834,7 @@
 .service-deck__tab[aria-selected="true"] {
   border-color: color-mix(in srgb, var(--action) 40%, var(--rule));
   background: color-mix(in srgb, var(--action-lo) 72%, transparent);
-  box-shadow: 0 12px 28px rgb(0 0 0 / .08);
+  box-shadow: none;
 }
 .service-deck__tab[aria-selected="true"]::before { transform: scaleY(1); }
 .service-deck__tab:focus-visible { outline: 2px solid var(--action); outline-offset: 3px; }
@@ -943,6 +927,7 @@
   color: var(--action);
   font-size: 11px;
   font-weight: 650;
+  box-shadow: none;
   transition: transform 200ms var(--ease-out), border-color 200ms ease, background-color 200ms ease;
 }
 .service-deck__action:is(:hover, :focus-visible) {
@@ -961,41 +946,8 @@
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--action) 32%, var(--rule));
   border-radius: 20px;
-  background:
-    linear-gradient(color-mix(in srgb, var(--action) 7%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--action) 7%, transparent) 1px, transparent 1px),
-    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--action) 13%, transparent), transparent 54%),
-    color-mix(in srgb, var(--paper) 44%, transparent);
-  background-size: 22px 22px, 22px 22px, auto, auto;
-  box-shadow: inset 0 0 46px color-mix(in srgb, var(--action) 7%, transparent);
-}
-.service-deck__concept::before {
-  content: "";
-  position: absolute;
-  width: 72%;
-  aspect-ratio: 1.8;
-  border: 1px solid color-mix(in srgb, var(--action) 17%, transparent);
-  border-radius: 50%;
-  transform: rotate(-8deg);
-}
-.service-deck__orbit {
-  position: absolute;
-  width: 88%;
-  aspect-ratio: 2.15;
-  border: 1px dashed color-mix(in srgb, var(--action) 27%, transparent);
-  border-radius: 50%;
-  animation: service-orbit-turn 14s linear infinite;
-}
-.service-deck__orbit::after {
-  content: "";
-  position: absolute;
-  left: 10%;
-  top: 5%;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--action);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--action) 86%, transparent);
+  background: var(--paper);
+  box-shadow: none;
 }
 .service-deck__concept .expertise-visual {
   z-index: 1;
@@ -1043,10 +995,8 @@
   overflow: hidden;
   border: 1px solid var(--rule);
   border-radius: 14px;
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--action) 8%, transparent), transparent 58%),
-    color-mix(in srgb, var(--paper) 44%, var(--raised));
-  box-shadow: 0 10px 24px rgb(0 0 0 / .07);
+  background: var(--paper);
+  box-shadow: none;
   transform-origin: 8% 92%;
   backface-visibility: hidden;
   will-change: transform, opacity;
@@ -1092,7 +1042,7 @@
 }
 .service-deck__card:is(:hover, :focus-within) {
   border-color: color-mix(in srgb, var(--action) 52%, var(--rule));
-  box-shadow: 0 18px 35px rgb(0 0 0 / .12);
+  box-shadow: none;
   transform: translateY(-4px);
 }
 .service-deck__card:is(:hover, :focus-within)::before { opacity: 1; transform: scaleX(1); }
@@ -1150,7 +1100,6 @@
   82% { transform: translate3d(4px, -2px, 0) rotate(calc(var(--deal-turn) * -.08)) scale(1.012); }
   100% { opacity: 1; transform: none; filter: blur(0); }
 }
-@keyframes service-orbit-turn { to { transform: rotate(360deg); } }
 @media (max-width: 1080px) {
   .service-deck { grid-template-columns: minmax(218px, 248px) minmax(0, 1fr); }
   .service-deck__workspace { padding: 32px; }
