@@ -1387,11 +1387,52 @@
   height: 1px;
   background: color-mix(in srgb, var(--action) 58%, transparent);
 }
+.hero-float__label {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 12px;
+  display: block;
+  width: max-content;
+  max-width: calc(100% - 24px);
+  background: linear-gradient(105deg, var(--ink) 10%, var(--action) 48%, var(--ink) 88%);
+  background-position: 100% 50%;
+  background-size: 220% auto;
+  background-clip: text;
+  color: transparent;
+  font-size: clamp(19px, 1.55vw, 24px);
+  font-weight: 760;
+  line-height: 1;
+  letter-spacing: -.045em;
+  text-wrap: nowrap;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: hero-label-glint 6s ease-in-out var(--float-delay) infinite;
+  transition: letter-spacing 220ms ease, transform 220ms var(--ease-out);
+}
+.hero-float--consulting .hero-float__label {
+  right: 12px;
+  left: auto;
+  text-align: right;
+}
+.hero-float--training .hero-float__label,
+.hero-float--management .hero-float__label {
+  top: auto;
+  bottom: calc(100% + 12px);
+}
+.hero-float--management .hero-float__label {
+  right: 12px;
+  left: auto;
+  text-align: right;
+}
 .hero-float:is(:hover, :focus-visible) { z-index: 6; animation-play-state: paused; }
 .hero-float:is(:hover, :focus-visible) .hero-float__preview {
   border-color: var(--action);
   box-shadow: 0 26px 64px color-mix(in srgb, var(--action) 18%, rgb(0 0 0 / .18));
   transform: translateY(-6px) scale(1.025);
+}
+.hero-float:is(:hover, :focus-visible) .hero-float__label {
+  letter-spacing: -.025em;
+  transform: translateY(-2px);
 }
 .hero-float:focus-visible { border-radius: 18px; outline: 2px solid var(--action); outline-offset: 5px; }
 .hero-space__note {
@@ -1412,6 +1453,10 @@
   0%, 20% { left: -48%; opacity: 0; }
   30% { opacity: 1; }
   58%, 100% { left: 112%; opacity: 0; }
+}
+@keyframes hero-label-glint {
+  0%, 30%, 100% { background-position: 100% 50%; }
+  55%, 75% { background-position: 0 50%; }
 }
 @media (max-width: 1180px) and (min-width: 901px) {
   .hero-float { width: 210px; height: 138px; }
@@ -1446,9 +1491,19 @@
     inset: auto;
     justify-self: center;
     width: min(100%, 270px);
-    height: 142px;
+    height: 178px;
   }
   .hero-float__preview { height: 142px; }
+  .hero-float__label,
+  .hero-float--consulting .hero-float__label,
+  .hero-float--training .hero-float__label,
+  .hero-float--management .hero-float__label {
+    top: 154px;
+    right: auto;
+    bottom: auto;
+    left: 8px;
+    text-align: left;
+  }
   .hero-space__note { position: static; grid-column: 1 / -1; justify-self: center; transform: none; margin-top: 12px; }
 }
 @media (max-width: 560px) {
@@ -1466,7 +1521,7 @@
   .hero-float--training,
   .hero-float--management {
     width: 100%;
-    height: 118px;
+    height: 150px;
     --tilt: 0deg;
   }
   .hero-float__preview { height: 118px; padding: 16px; border-radius: 13px; }
@@ -1474,10 +1529,20 @@
   .hero-float .expertise-code { font-size: 7px; }
   .hero-float .expertise-questions span { width: 24px; height: 22px; font-size: 11px; }
   .hero-float .expertise-questions__answer { top: 5px; height: 28px; }
+  .hero-float__label,
+  .hero-float--consulting .hero-float__label,
+  .hero-float--training .hero-float__label,
+  .hero-float--management .hero-float__label {
+    top: 128px;
+    left: 4px;
+    max-width: calc(100% - 8px);
+    font-size: clamp(14px, 4vw, 16px);
+  }
   .hero-space__note { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-float,
-  .hero-float__preview::before { animation: none !important; }
+  .hero-float__preview::before,
+  .hero-float__label { animation: none !important; }
   .hero-float:is(:hover, :focus-visible) .hero-float__preview { transform: none; }
 }
