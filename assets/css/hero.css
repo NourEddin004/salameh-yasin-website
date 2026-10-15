@@ -882,11 +882,11 @@
 .service-deck__panel { min-width: 0; animation: service-deck-panel-in 420ms var(--ease-out) both; }
 .service-deck__panel-head {
   display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(300px, 1.08fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(250px, .88fr);
   align-items: center;
   gap: clamp(30px, 5vw, 70px);
-  margin-bottom: 28px;
-  padding-bottom: 28px;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
   border-bottom: 1px solid var(--rule);
 }
 .service-deck__kicker,
@@ -941,20 +941,21 @@
   display: grid;
   place-items: center;
   min-width: 0;
-  height: 220px;
-  padding: 28px 30px 42px;
+  height: 168px;
+  padding: 22px 26px 36px;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--action) 32%, var(--rule));
-  border-radius: 20px;
+  border: 1px solid var(--rule);
+  border-radius: 16px;
   background: var(--paper);
   box-shadow: none;
 }
 .service-deck__concept .expertise-visual {
   z-index: 1;
-  width: min(76%, 270px);
-  height: 74px;
+  width: min(68%, 220px);
+  height: 62px;
   margin: 0;
   color: var(--action);
+  opacity: .72;
 }
 .service-deck__concept .expertise-code { font-size: 11px; padding-block: 4px; }
 .service-deck__concept .expertise-code__line { height: 13px; }
@@ -979,7 +980,7 @@
 .service-deck__cards {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 11px;
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1002,6 +1003,12 @@
   will-change: transform, opacity;
   transition: transform 220ms var(--ease-out), border-color 220ms ease, box-shadow 220ms ease;
 }
+.service-deck__card--detailed {
+  min-height: 178px;
+  border-color: color-mix(in srgb, var(--action) 24%, var(--rule));
+  background: var(--raised);
+}
+.service-deck__card-copy { align-self: end; }
 .service-deck__card::before {
   content: "";
   position: absolute;
@@ -1039,6 +1046,17 @@
   font-weight: 650;
   line-height: 1.28;
   letter-spacing: -.012em;
+}
+.service-deck__card-copy h4 {
+  margin-top: 16px;
+  color: var(--ink);
+  font-size: 14px;
+}
+.service-deck__card-copy p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
 }
 .service-deck__card:is(:hover, :focus-within) {
   border-color: color-mix(in srgb, var(--action) 52%, var(--rule));
@@ -1103,8 +1121,8 @@
 @media (max-width: 1080px) {
   .service-deck { grid-template-columns: minmax(218px, 248px) minmax(0, 1fr); }
   .service-deck__workspace { padding: 32px; }
-  .service-deck__panel-head { grid-template-columns: minmax(0, 1fr) minmax(235px, .9fr); gap: 28px; }
-  .service-deck__concept { height: 190px; }
+  .service-deck__panel-head { grid-template-columns: minmax(0, 1fr) minmax(220px, .75fr); gap: 28px; }
+  .service-deck__concept { height: 158px; }
   .service-deck__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-deck__skills ul { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
@@ -1116,7 +1134,7 @@
   .service-deck__tab-icon { width: 36px; height: 36px; }
   .service-deck__tab-copy small, .service-deck__tab-number, .service-deck__help { display: none; }
   .service-deck__workspace { min-height: 0; }
-  .service-deck__panel-head { grid-template-columns: minmax(0, .85fr) minmax(260px, 1.15fr); }
+  .service-deck__panel-head { grid-template-columns: minmax(0, 1fr) minmax(230px, .75fr); }
   .service-deck__cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .service-deck__skills ul { grid-template-columns: repeat(9, minmax(0, 1fr)); }
 }
@@ -1126,7 +1144,7 @@
   .service-deck__tab-copy small { display: block; }
   .service-deck__panel-head { grid-template-columns: 1fr; gap: 24px; }
   .service-deck__intro h3 { font-size: clamp(32px, 9vw, 42px); }
-  .service-deck__concept { height: 184px; }
+  .service-deck__concept { height: 150px; }
   .service-deck__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service-deck__skills ul { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
@@ -1136,9 +1154,10 @@
   .service-deck__tab { min-height: 68px; }
   .service-deck__tab-copy small { display: none; }
   .service-deck__workspace { padding: 26px 16px 28px; }
-  .service-deck__concept { height: 170px; padding-inline: 22px; }
+  .service-deck__concept { height: 148px; padding-inline: 22px; }
   .service-deck__concept .expertise-visual { width: 82%; }
   .service-deck__card { min-height: 120px; padding: 15px 13px 14px; }
+  .service-deck__card--detailed { min-height: 164px; }
   .service-deck__card svg { width: 34px; height: 34px; }
   .service-deck__card h4 { margin-top: 15px; font-size: 12px; }
   .service-deck__skills ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
