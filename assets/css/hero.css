@@ -1358,39 +1358,18 @@
   background: var(--action);
   box-shadow: 0 0 13px color-mix(in srgb, var(--action) 90%, transparent);
 }
-.hero-float__title {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  max-width: 100%;
-  min-height: 32px;
-  padding: 4px 11px 4px 5px;
-  border: 1px solid color-mix(in srgb, var(--action) 44%, var(--rule));
-  border-radius: 10px;
-  background: linear-gradient(120deg, color-mix(in srgb, var(--action-lo) 92%, transparent), color-mix(in srgb, var(--paper) 78%, transparent));
-  box-shadow: 0 8px 22px color-mix(in srgb, var(--action) 10%, transparent);
-  backdrop-filter: blur(10px);
-}
-.hero-float__title strong {
-  overflow: hidden;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: -.015em;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 .hero-float .expertise-visual {
   position: absolute;
+  top: 50%;
   right: 26px;
-  bottom: 35px;
+  bottom: auto;
   left: 26px;
   z-index: 1;
   width: auto;
-  height: 54px;
+  height: 60px;
   margin: 0;
   color: var(--action);
+  transform: translateY(-50%);
 }
 .hero-float .expertise-code { padding-block: 2px; font-size: 9px; }
 .hero-float .expertise-code__line { height: 12px; }
@@ -1408,16 +1387,6 @@
   height: 1px;
   background: color-mix(in srgb, var(--action) 58%, transparent);
 }
-.hero-float__icon {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  background: var(--action-lo);
-  color: var(--action);
-}
-.hero-float__icon svg { width: 15px; height: 15px; }
 .hero-float:is(:hover, :focus-visible) { z-index: 6; animation-play-state: paused; }
 .hero-float:is(:hover, :focus-visible) .hero-float__preview {
   border-color: var(--action);
@@ -1501,13 +1470,10 @@
     --tilt: 0deg;
   }
   .hero-float__preview { height: 118px; padding: 16px; border-radius: 13px; }
-  .hero-float .expertise-visual { right: 18px; bottom: 29px; left: 18px; height: 42px; }
+  .hero-float .expertise-visual { top: 50%; right: 18px; bottom: auto; left: 18px; height: 46px; transform: translateY(-50%); }
   .hero-float .expertise-code { font-size: 7px; }
   .hero-float .expertise-questions span { width: 24px; height: 22px; font-size: 11px; }
   .hero-float .expertise-questions__answer { top: 5px; height: 28px; }
-  .hero-float__title { min-height: 28px; gap: 4px; padding: 3px 6px 3px 3px; border-radius: 8px; }
-  .hero-float__title strong { font-size: 9px; }
-  .hero-float__icon { width: 21px; height: 21px; }
   .hero-space__note { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
