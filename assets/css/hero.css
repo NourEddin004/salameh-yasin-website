@@ -1269,13 +1269,6 @@
   letter-spacing: -.055em;
 }
 .fl-hero--constellation .fl-title span { display: block; }
-.fl-hero--constellation .fl-sub {
-  max-width: 46ch;
-  margin: 0 0 28px;
-  color: var(--graphite);
-  font-size: clamp(15px, 1.25vw, 18px);
-  line-height: 1.55;
-}
 .fl-hero--constellation .fl-cta {
   justify-content: center;
   margin: 0;
@@ -1330,12 +1323,51 @@
 }
 .hero-float .expertise-code { padding-block: 2px; font-size: 9px; }
 .hero-float .expertise-code__line { height: 12px; }
-.hero-float .expertise-questions { overflow: visible; }
-.hero-float .expertise-questions span { width: 31px; height: 27px; }
-.hero-float .expertise-questions__answer { top: 8px; max-width: 112px; height: 32px; padding-top: 8px; }
-.hero-float .expertise-checklist span { height: 14px; }
+.hero-float .expertise-questions {
+  justify-content: center;
+  gap: 8px;
+  padding: 0 6px;
+  overflow: hidden;
+}
+.hero-float .expertise-questions span {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 25px;
+  animation: hero-question-pop 4.8s ease-in-out infinite;
+}
+.hero-float .expertise-questions span:nth-child(2) { animation-delay: .16s; }
+.hero-float .expertise-questions span:nth-child(3) { animation-delay: .32s; }
+.hero-float .expertise-questions__answer {
+  top: 50%;
+  right: 50%;
+  width: 64%;
+  max-width: 112px;
+  height: 30px;
+  padding-top: 7px;
+  transform: translate(50%, -50%) scale(.88);
+  transform-origin: center;
+  animation: hero-answer 4.8s ease-in-out infinite;
+}
+.hero-float .expertise-questions__answer b,
+.hero-float .expertise-questions__answer em { animation: hero-answer-line 4.8s ease-in-out infinite; }
+.hero-float .expertise-checklist {
+  gap: 5px;
+  justify-content: center;
+  padding: 2px 8px;
+}
+.hero-float .expertise-checklist span { width: 100%; height: 14px; gap: 9px; }
 .hero-float .expertise-checklist i { width: 11px; height: 11px; }
-.hero-float .expertise-checklist b { height: 3px; }
+.hero-float .expertise-checklist b {
+  flex: 0 1 auto;
+  max-width: calc(100% - 22px);
+  height: 3px;
+  transform: scaleX(.12);
+  transform-origin: left;
+  animation: hero-task-line 4.2s ease-in-out infinite;
+}
+.hero-float .expertise-checklist span:nth-child(1) b { width: 58%; }
+.hero-float .expertise-checklist span:nth-child(2) b { width: 72%; animation-delay: .42s; }
+.hero-float .expertise-checklist span:nth-child(3) b { width: 50%; animation-delay: .84s; }
 .hero-float__label {
   position: absolute;
   top: calc(100% + 12px);
@@ -1377,6 +1409,24 @@
   transform: translateY(-2px);
 }
 .hero-float:focus-visible { border-radius: 18px; outline: 2px solid var(--action); outline-offset: 5px; }
+@keyframes hero-question-pop {
+  0%, 8%, 50%, 100% { opacity: 0; transform: translateY(4px) scale(.84); }
+  18%, 38% { opacity: .82; transform: translateY(0) scale(1); }
+}
+@keyframes hero-answer {
+  0%, 58% { opacity: 0; transform: translate(50%, -50%) scale(.88); }
+  70%, 90% { opacity: 1; transform: translate(50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(50%, -50%) scale(.94); }
+}
+@keyframes hero-answer-line {
+  0%, 62% { transform: scaleX(.12); }
+  76%, 92% { transform: scaleX(1); }
+  100% { transform: scaleX(.12); }
+}
+@keyframes hero-task-line {
+  0%, 14%, 82%, 100% { opacity: .12; transform: scaleX(.12); }
+  28%, 72% { opacity: .34; transform: scaleX(1); }
+}
 @media (max-width: 1180px) and (min-width: 901px) {
   .hero-float { width: 210px; height: 138px; }
   .hero-float__preview { height: 138px; }
@@ -1431,7 +1481,6 @@
   }
   .hero-space__center { margin-bottom: 20px; }
   .fl-hero--constellation .fl-title { margin-bottom: 18px; font-size: clamp(39px, 11.5vw, 52px); }
-  .fl-hero--constellation .fl-sub { max-width: 32ch; margin-bottom: 22px; font-size: 14px; }
   .hero-float,
   .hero-float--development,
   .hero-float--consulting,
@@ -1444,8 +1493,9 @@
   .hero-float__preview { height: 118px; padding: 16px; border-radius: 13px; }
   .hero-float .expertise-visual { top: 50%; right: 18px; bottom: auto; left: 18px; height: 46px; transform: translateY(-50%); }
   .hero-float .expertise-code { font-size: 7px; }
-  .hero-float .expertise-questions span { width: 24px; height: 22px; font-size: 11px; }
-  .hero-float .expertise-questions__answer { top: 5px; height: 28px; }
+  .hero-float .expertise-questions { gap: 6px; padding-inline: 2px; }
+  .hero-float .expertise-questions span { flex-basis: 24px; width: 24px; height: 22px; font-size: 11px; }
+  .hero-float .expertise-questions__answer { top: 50%; height: 28px; }
   .hero-float__label,
   .hero-float--consulting .hero-float__label,
   .hero-float--training .hero-float__label,
