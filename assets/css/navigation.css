@@ -36,29 +36,39 @@
 
 .nav__links {
   justify-self: center;
-  gap: 2px;
+  gap: clamp(20px, 2vw, 32px);
   margin: 0;
-  padding: 4px;
-  border: 1px solid color-mix(in srgb, var(--rule) 78%, transparent);
-  border-radius: 11px;
-  background: color-mix(in srgb, var(--raised) 58%, transparent);
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .nav__link {
-  min-height: 36px;
-  padding: 0 14px;
-  border-radius: 7px;
+  position: relative;
+  min-height: 44px;
+  padding: 0 2px;
   color: var(--graphite);
   font-size: 13.5px;
   font-weight: 500;
   line-height: 1.4;
-  transition: color 160ms ease, background-color 160ms ease;
+  transition: color 160ms ease;
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  right: 50%;
+  bottom: 6px;
+  left: 50%;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--action);
+  transition: right 180ms var(--ease-out), left 180ms var(--ease-out);
 }
 
 .nav__link:hover, .nav__link[aria-current="page"] {
   color: var(--action);
-  background: var(--action-lo);
 }
+.nav__link:is(:hover, :focus-visible, [aria-current="page"])::after { right: 0; left: 0; }
 
 /* Descriptions stay attached to their link, with a hoverable transparent bridge. */
 .nav__item { position: relative; display: flex; align-items: center; }
