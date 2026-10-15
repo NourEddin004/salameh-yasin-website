@@ -1302,22 +1302,21 @@
 }
 .hero-float {
   --tilt: 0deg;
-  --tag-tilt: 0deg;
   --float-delay: 0s;
   position: absolute;
   z-index: 3;
   display: block;
   width: clamp(210px, 18vw, 270px);
-  height: 190px;
+  height: 152px;
   color: var(--ink);
   text-decoration: none;
   transform: rotate(var(--tilt));
   animation: hero-object-drift 7s ease-in-out var(--float-delay) infinite;
 }
-.hero-float--development { top: 7%; left: 4%; --tilt: -4deg; --tag-tilt: 4deg; --float-delay: -1.4s; }
-.hero-float--consulting { top: 7%; right: 5%; --tilt: 4deg; --tag-tilt: -4deg; --float-delay: -4.2s; }
-.hero-float--training { bottom: 6%; left: 8%; --tilt: 3deg; --tag-tilt: -3deg; --float-delay: -5.6s; }
-.hero-float--management { right: 7%; bottom: 5%; --tilt: 5deg; --tag-tilt: -5deg; --float-delay: -2.8s; }
+.hero-float--development { top: 7%; left: 4%; --tilt: -4deg; --float-delay: -1.4s; }
+.hero-float--consulting { top: 7%; right: 5%; --tilt: 4deg; --float-delay: -4.2s; }
+.hero-float--training { bottom: 6%; left: 8%; --tilt: 3deg; --float-delay: -5.6s; }
+.hero-float--management { right: 7%; bottom: 5%; --tilt: 5deg; --float-delay: -2.8s; }
 .hero-float__preview {
   position: relative;
   display: block;
@@ -1359,14 +1358,28 @@
   background: var(--action);
   box-shadow: 0 0 13px color-mix(in srgb, var(--action) 90%, transparent);
 }
-.hero-float__index {
+.hero-float__title {
   position: relative;
-  z-index: 1;
-  display: block;
-  color: color-mix(in srgb, var(--action) 76%, var(--muted));
-  font-size: 8px;
-  font-weight: 650;
-  letter-spacing: .12em;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 32px;
+  padding: 4px 11px 4px 5px;
+  border: 1px solid color-mix(in srgb, var(--action) 44%, var(--rule));
+  border-radius: 10px;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--action-lo) 92%, transparent), color-mix(in srgb, var(--paper) 78%, transparent));
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--action) 10%, transparent);
+  backdrop-filter: blur(10px);
+}
+.hero-float__title strong {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -.015em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .hero-float .expertise-visual {
   position: absolute;
@@ -1395,26 +1408,6 @@
   height: 1px;
   background: color-mix(in srgb, var(--action) 58%, transparent);
 }
-.hero-float__tag {
-  position: absolute;
-  right: -16px;
-  bottom: 0;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 7px 12px 7px 8px;
-  border: 1px solid color-mix(in srgb, var(--action) 36%, var(--rule));
-  border-radius: 11px;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  box-shadow: 0 10px 26px rgb(0 0 0 / .15);
-  backdrop-filter: blur(14px);
-  transform: rotate(var(--tag-tilt));
-}
-.hero-float--consulting .hero-float__tag,
-.hero-float--management .hero-float__tag { right: auto; left: -16px; }
-.hero-float__tag strong { font-size: 13px; font-weight: 650; letter-spacing: -.015em; white-space: nowrap; }
 .hero-float__icon {
   display: grid;
   place-items: center;
@@ -1452,7 +1445,7 @@
   58%, 100% { left: 112%; opacity: 0; }
 }
 @media (max-width: 1180px) and (min-width: 901px) {
-  .hero-float { width: 210px; height: 174px; }
+  .hero-float { width: 210px; height: 138px; }
   .hero-float__preview { height: 138px; }
   .hero-float--development { left: 2.5%; }
   .hero-float--consulting { right: 3%; }
@@ -1484,12 +1477,9 @@
     inset: auto;
     justify-self: center;
     width: min(100%, 270px);
-    height: 180px;
+    height: 142px;
   }
   .hero-float__preview { height: 142px; }
-  .hero-float__tag { right: -8px; }
-  .hero-float--consulting .hero-float__tag,
-  .hero-float--management .hero-float__tag { left: -8px; }
   .hero-space__note { position: static; grid-column: 1 / -1; justify-self: center; transform: none; margin-top: 12px; }
 }
 @media (max-width: 560px) {
@@ -1507,20 +1497,17 @@
   .hero-float--training,
   .hero-float--management {
     width: 100%;
-    height: 150px;
+    height: 118px;
     --tilt: 0deg;
-    --tag-tilt: 0deg;
   }
   .hero-float__preview { height: 118px; padding: 16px; border-radius: 13px; }
   .hero-float .expertise-visual { right: 18px; bottom: 29px; left: 18px; height: 42px; }
   .hero-float .expertise-code { font-size: 7px; }
   .hero-float .expertise-questions span { width: 24px; height: 22px; font-size: 11px; }
   .hero-float .expertise-questions__answer { top: 5px; height: 28px; }
-  .hero-float__tag,
-  .hero-float--consulting .hero-float__tag,
-  .hero-float--management .hero-float__tag { right: 8px; bottom: 0; left: auto; min-height: 34px; padding: 5px 9px 5px 6px; }
-  .hero-float__tag strong { font-size: 11px; white-space: normal; }
-  .hero-float__icon { width: 23px; height: 23px; }
+  .hero-float__title { min-height: 28px; gap: 4px; padding: 3px 6px 3px 3px; border-radius: 8px; }
+  .hero-float__title strong { font-size: 9px; }
+  .hero-float__icon { width: 21px; height: 21px; }
   .hero-space__note { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
