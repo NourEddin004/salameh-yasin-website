@@ -81,7 +81,7 @@ outer gutters; other sections use the shared content container.
 
 Current asset versions are `style.css?v=37`, `main.js?v=36`,
 `navigation.css?v=6`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
-The homepage also loads `hero.css?v=34` and `hero-particles.js?v=4`. When
+The homepage also loads `hero.css?v=35` and `hero-particles.js?v=4`. When
 editing a shared asset, update its version across all eight pages.
 
 Keep organisation affiliations, training clients and professional

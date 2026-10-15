@@ -875,7 +875,7 @@
 .service-deck__help:focus-visible { outline: 2px solid var(--action); outline-offset: 3px; }
 .service-deck__workspace {
   min-width: 0;
-  min-height: 610px;
+  min-height: 0;
   padding: clamp(28px, 4vw, 52px);
 }
 .service-deck__panel[hidden] { display: none !important; }
@@ -1004,11 +1004,15 @@
   transition: transform 220ms var(--ease-out), border-color 220ms ease, box-shadow 220ms ease;
 }
 .service-deck__card--detailed {
-  min-height: 178px;
+  min-height: 270px;
   border-color: color-mix(in srgb, var(--action) 24%, var(--rule));
   background: var(--raised);
 }
-.service-deck__card-copy { align-self: end; }
+.service-deck__card-copy {
+  display: grid;
+  align-self: end;
+  gap: 0;
+}
 .service-deck__card::before {
   content: "";
   position: absolute;
@@ -1050,6 +1054,30 @@
   color: var(--muted);
   font-size: 11px;
   line-height: 1.45;
+}
+.service-deck__card-points {
+  display: grid;
+  gap: 6px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.service-deck__card-points li {
+  position: relative;
+  padding-left: 12px;
+  color: var(--graphite);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.service-deck__card-points li::before {
+  content: "";
+  position: absolute;
+  top: .55em;
+  left: 0;
+  width: 5px;
+  height: 1px;
+  background: var(--action);
 }
 .service-deck__card:is(:hover, :focus-within) {
   border-color: color-mix(in srgb, var(--action) 52%, var(--rule));
@@ -1150,7 +1178,8 @@
   .service-deck__concept { height: 148px; padding-inline: 22px; }
   .service-deck__concept .expertise-visual { width: 82%; }
   .service-deck__card { min-height: 120px; padding: 15px 13px 14px; }
-  .service-deck__card--detailed { min-height: 164px; }
+  #service-panel-development .service-deck__cards { grid-template-columns: 1fr; }
+  .service-deck__card--detailed { min-height: 220px; }
   .service-deck__card svg { width: 34px; height: 34px; }
   .service-deck__card h4 { margin-top: 15px; font-size: 12px; }
   .service-deck__skills ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
