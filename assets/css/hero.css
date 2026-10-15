@@ -1311,7 +1311,6 @@
   color: var(--ink);
   text-decoration: none;
   transform: rotate(var(--tilt));
-  animation: hero-object-drift 7s ease-in-out var(--float-delay) infinite;
 }
 .hero-float--development { top: 7%; left: 4%; --tilt: -4deg; --float-delay: -1.4s; }
 .hero-float--consulting { top: 7%; right: 5%; --tilt: 4deg; --float-delay: -4.2s; }
@@ -1332,17 +1331,6 @@
   box-shadow: 0 20px 50px rgb(0 0 0 / .17), inset 0 0 36px color-mix(in srgb, var(--action) 5%, transparent);
   backdrop-filter: blur(16px);
   transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms var(--ease-out);
-}
-.hero-float__preview::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  bottom: -60%;
-  left: -48%;
-  width: 38%;
-  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--action) 14%, transparent), transparent);
-  transform: skewX(-18deg);
-  animation: hero-object-scan 6s ease-in-out var(--float-delay) infinite;
 }
 .hero-float .expertise-visual {
   position: absolute;
@@ -1402,7 +1390,7 @@
   left: auto;
   text-align: right;
 }
-.hero-float:is(:hover, :focus-visible) { z-index: 6; animation-play-state: paused; }
+.hero-float:is(:hover, :focus-visible) { z-index: 6; }
 .hero-float:is(:hover, :focus-visible) .hero-float__preview {
   border-color: var(--action);
   box-shadow: 0 26px 64px color-mix(in srgb, var(--action) 18%, rgb(0 0 0 / .18));
@@ -1422,15 +1410,6 @@
   letter-spacing: .16em;
   transform: translateX(-50%);
   white-space: nowrap;
-}
-@keyframes hero-object-drift {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--tilt)); }
-  50% { transform: translate3d(0, -10px, 0) rotate(var(--tilt)); }
-}
-@keyframes hero-object-scan {
-  0%, 20% { left: -48%; opacity: 0; }
-  30% { opacity: 1; }
-  58%, 100% { left: 112%; opacity: 0; }
 }
 @keyframes hero-label-glint {
   0%, 30%, 100% { background-position: 100% 50%; }
@@ -1519,8 +1498,6 @@
   .hero-space__note { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-float,
-  .hero-float__preview::before,
   .hero-float__label { animation: none !important; }
   .hero-float:is(:hover, :focus-visible) .hero-float__preview { transform: none; }
 }
