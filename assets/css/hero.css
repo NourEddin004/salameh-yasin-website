@@ -1317,9 +1317,7 @@
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--action) 38%, var(--rule));
   border-radius: 17px;
-  background:
-    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--action) 13%, transparent), transparent 42%),
-    color-mix(in srgb, var(--raised) 88%, transparent);
+  background: color-mix(in srgb, var(--raised) 94%, var(--paper));
   box-shadow: 0 20px 50px rgb(0 0 0 / .17), inset 0 0 36px color-mix(in srgb, var(--action) 5%, transparent);
   backdrop-filter: blur(16px);
   transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms var(--ease-out);
