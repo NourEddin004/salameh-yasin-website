@@ -18,17 +18,14 @@ The HTML pages and assets can also be served directly by a static web host.
 ## Current features
 
 - **Interactive hero:** drifting dots connect to the cursor and move away from it.
-  A rotating wheel presents Development, Training, Consulting and
-  Project Management as independent services around the visitor's goals.
-  Each card links to its service page. Hover or keyboard focus enlarges a card
-  and reveals more detail while the other cards shrink and gather on the
-  opposite arc. Small animations illustrate live coding, consulting questions,
-  completed training tasks and project-plan progress.
-  The wheel pauses for reading; card text stays upright. Mobile
-  shows the full descriptions without requiring hover. Motion respects reduced-motion
-  preferences and pauses when out of view or in a hidden tab. Cursor movement
-  smoothly accelerates the dots before they settle back to idle. Proof and recommendations sit in the
-  separate impact section.
+  Four floating visual cards surround a centered introduction, presenting
+  Development, Training, Consulting and Project Management as independent
+  services. Each card links to its service page and carries its own compact
+  animation: live code, answered questions, completed tasks or project-plan
+  progress. Mobile rearranges the cards into a clear two-by-two grid. Motion
+  respects reduced-motion preferences and pauses when out of view or in a
+  hidden tab. Cursor movement smoothly accelerates the dots before they settle
+  back to idle.
 - **Dark and light themes:** navy, blue and white palettes, a compact sun/moon
   control, and a saved preference shared across pages through `localStorage`.
 - **Responsive navigation:** aligned wordmark, centered desktop links and a
@@ -65,11 +62,10 @@ The HTML pages and assets can also be served directly by a static web host.
 | `experience.html` | Filterable founder experience archive |
 | `contact.html` | Enquiry form and direct contact details |
 | `assets/css/style.css` | Shared design tokens, themes, page layouts and animation |
-| `assets/css/hero.css` | Homepage particle canvas, rotating service wheel and responsive layout |
+| `assets/css/hero.css` | Homepage particle canvas, floating service objects and responsive layout |
 | `assets/css/navigation.css` | Navbar, theme control, drawer and link descriptions |
 | `assets/js/main.js` | Page interactions, filters, tabs, motion and enquiry handling |
 | `assets/js/hero-particles.js` | Theme-aware particle motion, cursor connections and repulsion |
-| `assets/js/hero-expertise.js` | Service wheel geometry, hover/focus and motion lifecycle |
 | `assets/js/navigation.js` | Keyboard dismissal for navigation descriptions |
 | `assets/js/theme.js` | Early theme application, switching and preference storage |
 | `assets/img/` | Local photographs and organisation/technology artwork |
@@ -85,9 +81,8 @@ outer gutters; other sections use the shared content container.
 
 Current asset versions are `style.css?v=36`, `main.js?v=36`,
 `navigation.css?v=4`, `navigation.js?v=2`, `theme.js?v=1` and `favicon.svg?v=4`.
-The homepage also loads `hero.css?v=11`, `hero-particles.js?v=3` and
-`hero-expertise.js?v=5`. When editing a shared asset, update its version across
-all eight pages.
+The homepage also loads `hero.css?v=17` and `hero-particles.js?v=3`. When
+editing a shared asset, update its version across all eight pages.
 
 Keep organisation affiliations, training clients and professional
 recommendations accurately labelled. Consult the artwork source notes when

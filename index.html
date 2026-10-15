@@ -19,7 +19,7 @@
 <script src="assets/js/theme.js?v=1"></script>
 <link rel="stylesheet" href="assets/css/style.css?v=36">
 <link rel="stylesheet" href="assets/css/navigation.css?v=4">
-<link rel="stylesheet" href="assets/css/hero.css?v=16">
+<link rel="stylesheet" href="assets/css/hero.css?v=17">
 <script src="assets/js/navigation.js?v=2" defer></script>
 
 <script type="application/ld+json">
@@ -91,107 +91,86 @@
 
   <!-- ============================================================== HERO -->
   <!-- Independent services, supported by founder experience. -->
-  <section class="fl-hero fl-hero--interactive">
+  <section class="fl-hero fl-hero--interactive fl-hero--constellation" aria-labelledby="hero-title">
     <canvas class="hero-particles" aria-hidden="true"></canvas>
-    <div class="fl-hero__inner">
-
-      <div class="fl-left">
-        <h1 class="fl-title">
+    <div class="fl-hero__inner hero-space">
+      <div class="hero-space__center">
+        <span class="hero-space__eyebrow mono">Development · Training · Consulting · Delivery</span>
+        <h1 class="fl-title" id="hero-title">
           <span class="fl-title__a">Your challenge.</span>
           <span class="fl-title__b">The right expertise.</span>
         </h1>
-
-        <p class="fl-sub">Turn a software idea into a working product, strengthen your team’s technical skills, or bring a complex project under control. Choose the service you need, with its own scope, roadmap and outcomes.</p>
-
+        <p class="fl-sub">Four independent services. Choose the expertise your challenge needs.</p>
         <div class="fl-cta">
-          <a class="fl-btn fl-btn--primary" href="contact.html">Discuss your project</a><a class="agency-secondary" href="#agency-services">Explore services</a>
+          <a class="fl-btn fl-btn--primary" href="contact.html">Discuss your project</a>
+          <a class="agency-secondary" href="#agency-services">Explore services</a>
         </div>
       </div>
 
-      <aside class="hero-expertise" aria-labelledby="expertise-title" data-active="development">
-        <header class="hero-expertise__heading">
-          <span class="hero-expertise__eyebrow">THE EXPERTISE YOU NEED</span>
-          <h2 id="expertise-title">Different strengths.<br> Shared ambition.</h2>
-        </header>
-        <div class="expertise-map">
-          <div class="expertise-orbits" aria-hidden="true">
-            <span class="expertise-orbits__marker"></span><span class="expertise-orbits__marker"></span>
-          </div>
-          <div class="expertise-core" aria-hidden="true">
-            <span class="expertise-core__spark"></span>
-            <strong>Your goals</strong>
-            <span>at the centre</span>
-          </div>
+      <a class="hero-float hero-float--development" href="developer.html" aria-label="Explore Development services">
+        <span class="hero-float__preview">
+          <span class="hero-float__index mono">01 / BUILD</span>
+          <span class="expertise-visual expertise-code" aria-hidden="true">
+            <span class="expertise-code__line"><code>IF brief.ready</code></span>
+            <span class="expertise-code__line"><code>BUILD product</code></span>
+            <span class="expertise-code__line"><code>RETURN value</code></span>
+            <b class="expertise-code__cursor"></b>
+          </span>
+          <span class="hero-float__rule" aria-hidden="true"></span>
+        </span>
+        <span class="hero-float__tag">
+          <span class="hero-float__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"/></svg></span>
+          <strong>Development</strong>
+        </span>
+      </a>
 
-          <a class="expertise-card expertise-card--development" data-service="development" href="developer.html" aria-labelledby="expertise-development" aria-describedby="expertise-development-desc expertise-development-detail">
-            <div class="expertise-card__heading">
-              <span class="expertise-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-14-2 18"/></svg></span>
-              <h3 id="expertise-development">Development</h3>
-            </div>
-            <p id="expertise-development-desc">Software built for your business.</p>
-            <div class="expertise-visual expertise-code" aria-hidden="true">
-              <span class="expertise-code__line"><code>IF brief.ready</code></span>
-              <span class="expertise-code__line"><code>BUILD product</code></span>
-              <span class="expertise-code__line"><code>RETURN value</code></span>
-              <b class="expertise-code__cursor"></b>
-            </div>
-            <div class="expertise-card__detail"><div class="expertise-card__detail-inner">
-              <p id="expertise-development-detail">Build custom web applications, e-commerce platforms and integrations, with architecture and engineering shaped around your business.</p>
-              <span class="expertise-card__action">Explore development</span>
-            </div></div>
-          </a>
+      <a class="hero-float hero-float--consulting" href="consulting.html" aria-label="Explore Consulting services">
+        <span class="hero-float__preview">
+          <span class="hero-float__index mono">03 / CLARIFY</span>
+          <span class="expertise-visual expertise-questions" aria-hidden="true">
+            <span>?</span><span>?</span><span>?</span>
+            <i class="expertise-questions__answer"><b></b><em></em></i>
+          </span>
+          <span class="hero-float__rule" aria-hidden="true"></span>
+        </span>
+        <span class="hero-float__tag">
+          <span class="hero-float__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5z"/></svg></span>
+          <strong>Consulting</strong>
+        </span>
+      </a>
 
-          <a class="expertise-card expertise-card--training" data-service="training" href="training.html" aria-labelledby="expertise-training" aria-describedby="expertise-training-desc expertise-training-detail">
-            <div class="expertise-card__heading">
-              <span class="expertise-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m2 8 10-5 10 5-10 5zM6 10v6c4 3 8 3 12 0v-6m4-2v8"/></svg></span>
-              <h3 id="expertise-training">Training</h3>
-            </div>
-            <p id="expertise-training-desc">Practical skills. Stronger teams.</p>
-            <div class="expertise-visual expertise-checklist" aria-hidden="true">
-              <span><i></i><b></b></span>
-              <span><i></i><b></b></span>
-              <span><i></i><b></b></span>
-            </div>
-            <div class="expertise-card__detail"><div class="expertise-card__detail-inner">
-              <p id="expertise-training-detail">Develop practical skills through hands-on workshops, team upskilling and coding academy programmes tailored to your people.</p>
-              <span class="expertise-card__action">Explore training</span>
-            </div></div>
-          </a>
+      <a class="hero-float hero-float--training" href="training.html" aria-label="Explore Training services">
+        <span class="hero-float__preview">
+          <span class="hero-float__index mono">02 / LEARN</span>
+          <span class="expertise-visual expertise-checklist" aria-hidden="true">
+            <span><i></i><b></b></span>
+            <span><i></i><b></b></span>
+            <span><i></i><b></b></span>
+          </span>
+          <span class="hero-float__rule" aria-hidden="true"></span>
+        </span>
+        <span class="hero-float__tag">
+          <span class="hero-float__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m2 8 10-5 10 5-10 5zM6 10v6c4 3 8 3 12 0v-6m4-2v8"/></svg></span>
+          <strong>Training</strong>
+        </span>
+      </a>
 
-          <a class="expertise-card expertise-card--consulting" data-service="consulting" href="consulting.html" aria-labelledby="expertise-consulting" aria-describedby="expertise-consulting-desc expertise-consulting-detail">
-            <div class="expertise-card__heading">
-              <span class="expertise-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5z"/></svg></span>
-              <h3 id="expertise-consulting">Consulting</h3>
-            </div>
-            <p id="expertise-consulting-desc">Clarity for your next big decision.</p>
-            <div class="expertise-visual expertise-questions" aria-hidden="true">
-              <span>?</span><span>?</span><span>?</span>
-              <i class="expertise-questions__answer"><b></b><em></em></i>
-            </div>
-            <div class="expertise-card__detail"><div class="expertise-card__detail-inner">
-              <p id="expertise-consulting-detail">Get expert guidance on software architecture, digital transformation and technical decisions, with clear recommendations for your next steps.</p>
-              <span class="expertise-card__action">Explore consulting</span>
-            </div></div>
-          </a>
+      <a class="hero-float hero-float--management" href="management.html" aria-label="Explore Project Management services">
+        <span class="hero-float__preview">
+          <span class="hero-float__index mono">04 / DELIVER</span>
+          <span class="expertise-visual expertise-plan" aria-hidden="true">
+            <span><i></i></span><span><i></i></span><span><i></i></span>
+            <b></b>
+          </span>
+          <span class="hero-float__rule" aria-hidden="true"></span>
+        </span>
+        <span class="hero-float__tag">
+          <span class="hero-float__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M14 4v16M5 8h1m4 3h2m4 4h3"/></svg></span>
+          <strong>Project management</strong>
+        </span>
+      </a>
 
-          <a class="expertise-card expertise-card--management" data-service="management" href="management.html" aria-labelledby="expertise-management" aria-describedby="expertise-management-desc expertise-management-detail">
-            <div class="expertise-card__heading">
-              <span class="expertise-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 4v16M14 4v16M5 8h1m4 3h2m4 4h3"/></svg></span>
-              <h3 id="expertise-management">Project management</h3>
-            </div>
-            <p id="expertise-management-desc">Structure that keeps delivery on track.</p>
-            <div class="expertise-visual expertise-plan" aria-hidden="true">
-              <span><i></i></span><span><i></i></span><span><i></i></span>
-              <b></b>
-            </div>
-            <div class="expertise-card__detail"><div class="expertise-card__detail-inner">
-              <p id="expertise-management-detail">Bring structure to complex projects with clear planning, Agile delivery, team coordination and progress reporting.</p>
-              <span class="expertise-card__action">Explore project management</span>
-            </div></div>
-          </a>
-        </div>
-        <p class="hero-expertise__caption">Four independent services. Built around you.</p>
-      </aside>
+      <span class="hero-space__note mono">FOUR FOCUSED PATHS · BUILT AROUND YOUR GOAL</span>
     </div>
   </section>
 
@@ -489,6 +468,5 @@
 <script src="assets/js/main.js?v=36"></script>
 <script src="assets/js/service-deck.js?v=2" defer></script>
 <script src="assets/js/hero-particles.js?v=3" defer></script>
-<script src="assets/js/hero-expertise.js?v=5" defer></script>
 </body>
 </html>
